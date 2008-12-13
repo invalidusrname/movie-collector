@@ -1,4 +1,4 @@
 = Movie Collector
 
-Movie Collector gives people the ability to catalog their movies. You can enter film information manually, or simply enter a UPC code and let the app fill out the formation for you. Along with cataloging, you can loan your films out or borrow from another user’s collection. Future enhancements will one day include viewing movies current out in the theater and their showtimes.
+Movie Collector gives people the ability to catalog their movies. You can enter film information manually, or simply enter a UPC code and let the app fill out the formation for you. Along with cataloging, you can loan your films out or borrow from another user’s collection. Future enhancements I'd like to include listing movies currently out in the theater and their showtimes, as well as release dates for dvd/blu-ray movies.
 
