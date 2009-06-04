@@ -1,0 +1,34 @@
+/* line 19, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.13/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
+body {
+  text-align: center; }
+  /* line 32, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.13/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
+  * html body legend {
+    margin: 0px -8px 16px 0;
+    padding: 0; }
+  /* line 36, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.13/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
+  html>body p code {
+    *white-space: normal; }
+
+/* line 40, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.13/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
+.container {
+  text-align: left; }
+
+/* line 42, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.13/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
+ol {
+  margin-left: 2em; }
+
+/* line 44, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.13/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
+sup {
+  vertical-align: text-top; }
+
+/* line 46, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.13/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
+sub {
+  vertical-align: text-bottom; }
+
+/* line 48, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.13/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
+hr {
+  margin: -8px auto 11px; }
+
+/* line 50, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.13/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
+fieldset {
+  padding-top: 0; }
