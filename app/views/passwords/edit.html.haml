@@ -1,0 +1,20 @@
+%h2 Change your password
+
+%p Your password has been reset. Choose a new password below.
+
+= error_messages_for :user,  :class => 'error'
+
+- form_for(:user, |
+    :url => user_password_path(@user, :token    => @user.token), |
+    :html => { :method => :put }) do |form| |
+  %p.password_field
+    = form.label :password, "Choose password"
+    %br
+    = form.password_field :password, :class => 'text'
+  %p.password_field
+    = form.label :password_confirmation, "Confirm password"
+    %br
+    = form.password_field :password_confirmation, :class => 'text'
+  %p.submit_field
+    = form.submit "Save this password", :disable_with => "Please wait..."
+

@@ -1,0 +1,9 @@
+%h2 Editing movie
+
+- form_for(@movie) do |form|
+  = render :partial => "form", :object => form
+  %p
+    = form.submit 'Update'
+
+= link_to 'Show', @movie |
+= link_to 'Back', movies_path

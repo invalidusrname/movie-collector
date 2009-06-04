@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    = stylesheet_link_tag 'compiled/application.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'compiled/print.css', :media => 'print'
+    /[if IE]
+      = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
+    %title= "Title"
+  %body
+    #container
+      #header
+        %h1= link_to 'Movie Collector', root_path 
+        %ul#links
+          %li= link_to 'Source Code', 'http://github.com/invalidusrname/movie_collector'
+      #sidebar
+        %ul#links
+          - if signed_in?
+            %li= current_user.email
+            #li= link_to 'Movies', movies_path
+            %li= link_to 'Logout', logout_path
+          - else
+            %li= link_to 'Login', new_session_path
+      #content
+        = render :partial => 'layouts/flashes'
+        = yield
+      #footer
+        &copy; 2009 Matt McMahand

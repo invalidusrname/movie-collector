@@ -1,0 +1,13 @@
+= form.error_messages :class => 'error'
+%p.text_field
+  = form.label :email
+  %br
+  = form.text_field :email, :class => 'text'
+%p.text_field
+  = form.label :password
+  %br
+  = form.password_field :password, :class => 'text'
+%p.text_field
+  = form.label :password_confirmation, "Confirm password", :class => 'text'
+  %br
+  = form.password_field :password_confirmation, :class => 'text'

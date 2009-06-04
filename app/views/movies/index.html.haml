@@ -1,0 +1,29 @@
+%h2 Listing movies
+
+- if @movies.size > 0
+  %table
+    %thead
+      %tr
+        %th Title
+        %th Format
+        %th Private
+        %th ASIN
+        %th.last Borrowed By
+    %tbody
+      - @movies.each do |movie|
+        %tr{:class => cycle('odd', 'even')}
+          %td= h movie.title
+          %td= h movie.format
+          %td= h movie.private
+          %td= h movie.asin
+          %td= h movie.borrower.email if movie.borrower
+          %td= link_to 'Show', movie
+          %td= link_to 'Edit', edit_movie_path(movie)
+          %td= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete
+  %br
+  = link_to 'New movie', new_movie_path
+- else
+  %p
+    You don't have any movies.
+    =link_to 'Add some', new_movie_path
+

@@ -1,0 +1,24 @@
+= form.error_messages :class => 'error'
+%p.text_field
+  = form.label :title
+  %br
+  = form.text_field :title, :class => 'text'
+
+%p.text_field
+  = form.label :format
+  %br
+  = form.text_field :format, :class => 'text'
+
+%p.text_field
+  = form.label :private
+  = form.check_box :private
+
+%p.text_field
+  = form.label :asin, "ASIN"
+  %br
+  = form.text_field :asin, :class => 'text'
+
+%p.text_field
+  = form.label :borrower
+  %br
+  = form.text_field :borrower_id, :class => 'text'
