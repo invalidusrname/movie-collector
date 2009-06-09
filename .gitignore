@@ -9,3 +9,4 @@ doc/app
 config/database.yml
 config/amazonrc.txt
 app/stylesheets/.sass-cache*
+vendor/gems
