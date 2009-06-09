@@ -1,4 +1,12 @@
 = form.error_messages :class => 'error'
+
+- if @movie.new_record?
+  %p.text_field
+    = form.label :upc, 'UPC'
+    %br
+    = form.text_field :upc, :class => 'text'
+    = observe_field :movie_upc, :url => { :action => :amazon_search }, :complete => "upcResponse(request.responseJSON);", :with => 'upc'
+
 %p.text_field
   = form.label :title
   %br

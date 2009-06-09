@@ -5,7 +5,6 @@ one:
   format: MyString
   private: false
   asin: MyString
-  checked_out_to: 1
   user: 
 
 two:
@@ -13,5 +12,4 @@ two:
   format: MyString
   private: false
   asin: MyString
-  checked_out_to: 1
   user: 

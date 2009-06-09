@@ -85,4 +85,14 @@ class MoviesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def amazon_search
+    m = Movie.lookup_on_amazon(params[:upc])
+    respond_to do |format|
+      format.json {
+        render :json => m
+      }
+    end
+  end
+
 end
