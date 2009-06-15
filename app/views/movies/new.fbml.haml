@@ -1,7 +1,7 @@
 %h2 New movie
 
 - form_for(@movie) do |form|
-  = render :partial => "form", :object => form
+  = render :partial => "form.html", :object => form
   %p
     = form.submit 'Create', :onclick => 'submitMovie(this.form);'
 

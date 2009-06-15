@@ -1,6 +1,7 @@
 = form.error_messages :class => 'error'
 
 - if @movie.new_record?
+
   %p.text_field
     = form.label :upc, 'UPC'
     %br
@@ -25,6 +26,23 @@
   = form.label :asin, "ASIN"
   %br
   = form.text_field :asin, :class => 'text'
+
+%p.text_field
+  = form.label :image, "Picture"
+  %br
+  = form.text_field :image, :class => 'text'
+
+%p.text_field
+  = form.label :image_link, "Picture Link"
+  %br
+  = form.text_field :image_link, :class => 'text'
+
+%p.text_field
+  = form.label :thumbnail, "Thumbnail"
+  %br
+  = form.text_field :thumbnail, :class => 'text'
+
+#img_holder
 
 %p.text_field
   = form.label :borrower
