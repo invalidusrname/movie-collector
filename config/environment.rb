@@ -43,8 +43,8 @@ Rails::Initializer.run do |config|
     :version => '>= 0.6.0'
 
   config.gem "mmangino-facebooker",
-    :lib     => "facebooker"
-    :source  => 'http://gems.github.com'
+    :lib     => "facebooker",
+    :source  => 'http://gems.github.com',
     :version => '>= 1.0.37'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
