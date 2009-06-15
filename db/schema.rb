@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090603221209) do
+ActiveRecord::Schema.define(:version => 20090615175118) do
 
   create_table "movies", :force => true do |t|
     t.string   "title"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(:version => 20090603221209) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "thumbnail"
+    t.text     "image"
+    t.text     "image_link"
   end
 
   add_index "movies", ["borrower_id"], :name => "index_movies_on_borrower_id"
@@ -32,9 +35,13 @@ ActiveRecord::Schema.define(:version => 20090603221209) do
     t.string   "token",              :limit => 128
     t.datetime "token_expires_at"
     t.boolean  "email_confirmed",                   :default => false, :null => false
+    t.integer  "facebook_id",        :limit => 20
+    t.string   "session_key"
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["facebook_id"], :name => "index_users_on_facebook_id", :unique => true
   add_index "users", ["id", "token"], :name => "index_users_on_id_and_token"
   add_index "users", ["token"], :name => "index_users_on_token"
 

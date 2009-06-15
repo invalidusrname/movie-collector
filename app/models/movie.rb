@@ -22,13 +22,15 @@ class Movie < ActiveRecord::Base
     items = resp.item_lookup_response.items
 
     if items && items.item
-      item = items.item
-      asin  = item.asin.to_s
-      img   = item.medium_image.url.to_s
-      link  = item.detail_page_url.to_s
-      title = item.item_attributes.title.to_s
-      type  = item.item_attributes.product_group.to_s
-      return {:asin => asin, :link => link, :title => title, :type => type, :img => img}
+      item  = items.item
+      attributes = {}
+      attributes[:asin]  = item.asin.to_s
+      attributes[:thumbnail] = item.image_sets.image_set.thumbnail_image.url.to_s
+      attributes[:image]  = item.medium_image.url.to_s
+      attributes[:link]  = item.detail_page_url.to_s
+      attributes[:title] = item.item_attributes.title.to_s
+      attributes[:type]  = item.item_attributes[0].binding.to_s || item.item_attributes.product_group.to_s
+      return attributes
     end
 
     Hash.new

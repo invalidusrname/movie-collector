@@ -471,3 +471,5 @@ table tr.odd td.even { background-color: #GGG-#FFF; }
 table tr.even td { background-color: #CCC; }
 table tr.even td.even { background-color: #CCC-#FFF; }
 table tfoot th, table tfoot td { background-color: white; background-color: white-#FFF; }
+
+#img_holder { width: 150px; height: 170px; }

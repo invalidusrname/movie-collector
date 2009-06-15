@@ -1,15 +1,15 @@
 class MoviesController < ApplicationController
-
-  before_filter :require_login, :unless => :signed_in?
+  # before_filter :require_login, :unless => :signed_in?
   
   # GET /movies
   # GET /movies.xml
   def index
-    @movies = Movie.all
+    @movies = current_user.movies.all(:order => sort_order(params))
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @movies }
+      format.fbml
     end
   end
 
@@ -20,6 +20,7 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.fbml
       format.xml  { render :xml => @movie }
     end
   end
@@ -32,12 +33,13 @@ class MoviesController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @movie }
+      format.fbml
     end
   end
 
   # GET /movies/1/edit
   def edit
-    @movie = Movie.find(params[:id])
+    @movie = current_user.movies.find(params[:id])
   end
 
   # POST /movies
@@ -94,5 +96,12 @@ class MoviesController < ApplicationController
       }
     end
   end
+
+  private
+    def sort_order(params)
+      sort = Movie.column_names.include?(params[:sort]) ? params[:sort] : 'movies.title'
+      dir = (params[:dir] && params[:dir].downcase == 'desc') ? 'desc' : 'asc'
+      "#{sort} #{dir}"
+    end
 
 end
