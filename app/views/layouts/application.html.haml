@@ -1,5 +1,5 @@
 !!!
-%html
+%html{ 'xmlns' => "http://www.w3.org/1999/xhtml", 'xmlns:fb' => "http://www.facebook.com/2008/fbml"}
   %head
     = stylesheet_link_tag 'compiled/application.css', :media => 'screen, projection'
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
@@ -9,6 +9,7 @@
     = javascript_include_tag 'prototype'
     %title= "Title"
   %body
+    = fb_connect_javascript_tag
     #container
       #header
         %h1= link_to 'Movie Collector', root_path 
