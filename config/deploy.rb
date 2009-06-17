@@ -28,8 +28,9 @@ end
 namespace :db do
   desc "Make symlink for database yaml" 
   task :symlink do
-    run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
-    run "ln -nfs #{shared_path}/facebooker.yml #{release_path}/config/facebooker.yml"
+    ['database', 'facebooker', 'newrelic'].each do |name|
+      run "ln -nfs #{shared_path}/#{name}.yml #{release_path}/config/#{name}.yml"
+    end
   end
 end
 

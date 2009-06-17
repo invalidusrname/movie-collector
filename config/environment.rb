@@ -25,6 +25,7 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
 
   config.gem 'json'
+  config.gem "newrelic_rpm"
 
   config.gem "thoughtbot-clearance", 
     :lib     => 'clearance', 
