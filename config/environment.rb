@@ -24,6 +24,8 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
 
+  config.gem 'json'
+
   config.gem "thoughtbot-clearance", 
     :lib     => 'clearance', 
     :source  => 'http://gems.github.com', 
@@ -40,7 +42,7 @@ Rails::Initializer.run do |config|
 
   config.gem 'ruby-aaws',
     :lib     => 'amazon',
-    :version => '>= 0.6.0'
+    :version => '= 0.6.0'
 
   config.gem "mmangino-facebooker",
     :lib     => "facebooker",

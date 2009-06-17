@@ -3,13 +3,13 @@ set :repository,  "git@github.com:invalidusrname/movie_collector.git"
 set :scm, :git
 set :user, 'inali'
 set :use_sudo, false
-set :user, 'inali'
+set :user, 'deploy'
 
 set :deploy_to, "/home/#{user}/www/#{application}"
 
-role :app, "invalid8.com"
-role :web, "invalid8.com"
-role :db,  "invalid8.com", :primary => true
+role :app, "fb.invalid8.com"
+role :web, "fb.invalid8.com"
+role :db,  "fb.invalid8.com", :primary => true
 
 namespace :mod_rails do
   desc <<-DESC
