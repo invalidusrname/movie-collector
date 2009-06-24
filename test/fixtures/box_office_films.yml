@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  url: MyText
+  amount: MyString
+  ticket_url: MyText
+
+two:
+  title: MyString
+  url: MyText
+  amount: MyString
+  ticket_url: MyText

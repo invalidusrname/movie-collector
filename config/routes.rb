@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.resources :movies
+  map.resources :users_movies
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -38,6 +39,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.login  '/login',  :controller => 'Clearance::Sessions', :action => 'new'
   map.logout '/logout', :controller => 'Clearance::Sessions', :action => 'destroy'
+
+  map.box_office '/top_movies', :controller => 'BoxOfficeFilms'
+  map.my_movies '/my_movies', :controller => 'UsersMovies'
+  map.friends_movies '/friends_movies', :controller => 'UsersMovies', :action => 'friends'
 
   # See how all your routes lay out with "rake routes"
 
