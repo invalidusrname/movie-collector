@@ -1,6 +1,7 @@
 set :application, "fb_movie_collector"
 set :repository,  "git@github.com:invalidusrname/movie_collector.git"
 set :scm, :git
+set :rake, '/opt/ruby-enterprise-1.8.6-20090610/bin/rake'
 set :user, 'inali'
 set :use_sudo, false
 set :user, 'deploy'
