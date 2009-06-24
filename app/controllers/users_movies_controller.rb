@@ -22,8 +22,8 @@ class UsersMoviesController < ApplicationController
     end
   end
 
-  # GET /movies/new
-  # GET /movies/new.xml
+  # GET /users_movies/new
+  # GET /users_movies/new.xml
   def new
     @users_movie = UsersMovie.new
 
@@ -31,6 +31,41 @@ class UsersMoviesController < ApplicationController
       format.html # new.html.erb
       format.xml  { render :xml => @users_movie }
       format.fbml
+    end
+  end
+
+  # POST /users_movies
+  # POST /users_movies.xml
+  def create
+    if params[:movie][:upc]
+      movie = Movie.find_by_upc(params[:movie][:upc])
+
+      if movie.nil?
+        movie = Movie.new(Movie.lookup_on_amazon(params[:movie][:upc]))
+      end
+    end
+
+    respond_to do |format|
+      if movie.valid?
+        current_user.movies << movie unless current_user.movies.include?(movie)
+
+        flash[:notice] = 'Movie was successfully created.'
+        format.html { redirect_to(users_movies_path) }
+      else
+        format.html { render :action => "new" }
+      end
+    end
+  end
+  
+  # DELETE /users_movies/1
+  # DELETE /users_movies/1.xml
+  def destroy
+    @users_movie = UsersMovie.find(params[:id])
+    @users_movie.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(users_movies_url) }
+      format.xml  { head :ok }
     end
   end
 end

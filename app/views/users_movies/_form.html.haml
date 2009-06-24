@@ -18,4 +18,9 @@
   %br
   = select_tag 'movie[format]', options_for_select(Movie::FORMATS), :class => 'text'
 
+%p.text_field
+  = form.label :rating
+  %br
+  = form.text_field :rating, :class => 'text'
+
 #img_holder

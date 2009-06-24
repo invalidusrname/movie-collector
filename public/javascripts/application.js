@@ -6,10 +6,10 @@ function upcResponse(json) {
   if(json && json['asin']) {
     $('movie_asin').value   = json['asin'];
     $('movie_title').value  = json['title'];
-    $('movie_format').value = json['type'];
+    $('movie_format').value = json['format'];
     $('img_holder').appendChild(new Element('img', { 'src': json['image'] }));
     $('movie_image').value = json['image'];
-    $('movie_image_link').value  = json['link'];
+    $('movie_image_link').value  = json['image_link'];
     $('movie_thumbnail').value  = json['thumbnail'];
   }
 }
@@ -17,7 +17,7 @@ function upcResponse(json) {
 function user_upcResponse(json) {
   if(json && json['title']) {
     $('movie_title').value  = json['title'];
-    $('movie_format').value = json['type'];
+    $('movie_format').value = json['format'];
     $('img_holder').appendChild(new Element('img', { 'src': json['image'] }));
   }
 }

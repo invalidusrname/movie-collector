@@ -1,11 +1,9 @@
 class Movie < ActiveRecord::Base
   has_many :users, :through => :users_movies
-  has_many :users_movies
+  has_many :users_movies, :dependent => :destroy
 
   validates_presence_of :title
   validates_presence_of :format
-
-  attr_accessor :upc
 
   FORMATS = ['Blu-Ray', 'DVD', 'HD-DVD', 'LaserDisc', 'VHS']
 
@@ -27,13 +25,14 @@ class Movie < ActiveRecord::Base
     if items && items.item
       item  = items.item
       attributes = {}
-      attributes[:asin]  = item.asin.to_s
-      attributes[:thumbnail] = item.image_sets.image_set.thumbnail_image.url.to_s
-      attributes[:image]  = item.medium_image.url.to_s
-      attributes[:link]  = item.detail_page_url.to_s
-      attributes[:title] = item.item_attributes.title.to_s
+      attributes[:asin]         = item.asin.to_s
+      attributes[:upc]          = upc
+      attributes[:thumbnail]    = item.image_sets.image_set.thumbnail_image.url.to_s
+      attributes[:image]        = item.medium_image.url.to_s
+      attributes[:image_link]   = item.detail_page_url.to_s
+      attributes[:title]        = item.item_attributes.title.to_s
       attributes[:release_date] = item.item_attributes.release_date.to_s
-      attributes[:type]  = item.item_attributes[0].binding.to_s || item.item_attributes.product_group.to_s
+      attributes[:format]       = item.item_attributes[0].binding.to_s || item.item_attributes.product_group.to_s
       return attributes
     end
 
