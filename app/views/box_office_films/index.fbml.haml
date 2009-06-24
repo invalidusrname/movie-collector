@@ -1,0 +1,34 @@
+%h2 Top Films
+
+%p Here's the top 10 movies out in theaters  now:
+
+%table
+  %thead
+    %tr
+      %th 
+      %th Title
+      %th Earned
+  %tbody
+    - @films.each_with_index do |film, index|
+      %tr
+        %td= index + 1
+        %td= link_to film.title, film.url
+        %td= film.amount
+        %td= link_to "Buy Tickets", film.ticket_url
+
+%h2 Out this week
+
+%table
+  %thead
+    %tr
+      %th 
+      %th Title
+      %th Release Date
+  %tbody
+    - @this_weeks_films.each_with_index do |film, index|
+      %tr
+        %td= index + 1
+        %td= link_to film.title, film.url
+        %td= rel_date(film.release_date)
+        - if film.release_date <= Date.today
+          %td= link_to "Buy Tickets", film.ticket_url
