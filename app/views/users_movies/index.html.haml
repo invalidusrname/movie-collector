@@ -1,28 +1,28 @@
 %h2 Listing movies
 
-%br
-
-- if @movies.size > 0
+- if @users_movies.size > 0
   %table
     %thead
       %tr
-        %th 
+        %th
         %th
           = sortable_link 'Title', :column => 'title'
         %th
           = sortable_link 'Format', :column => 'format'
     %tbody
-      - @movies.each do |movie|
+      - @users_movies.each do |users_movie|
+        - movie = users_movie.movie
         %tr{:class => cycle('odd', 'even')}
           %td= link_to(image_tag(movie.thumbnail), movie) unless movie.thumbnail.nil?
           %td= h movie.title
           %td= h movie.format
-          %td= link_to 'Edit', edit_movie_path(movie)
-          %td= link_to 'Remove', movie, :confirm => 'Are you sure?', :method => :delete
+          %td= link_to 'Show', users_movie
+          %td= link_to 'Edit', edit_users_movie_path(users_movie)
+          %td= link_to 'Delete', users_movie, :confirm => 'Are you sure?', :method => :delete
   %br
-  = link_to 'New movie', new_movie_path
+  = link_to 'New movie', new_users_movie_path
 - else
   %p
     You don't have any movies.
-    =link_to 'Add some', new_movie_path
+    =link_to 'Add some', new_users_movie_path
 

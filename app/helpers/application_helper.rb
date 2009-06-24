@@ -21,4 +21,20 @@ module ApplicationHelper
 
     link_to link_name, request.parameters.merge(options), html_options
   end
+
+  # snagged from http://snippets.dzone.com/posts/show/487
+  def rel_date(date)
+    date = Date.parse(date, true) unless /Date.*/ =~ date.class.to_s
+    days = (date - Date.today).to_i
+
+    return 'today'     if days >= 0 and days < 1
+    return 'tomorrow'  if days >= 1 and days < 2
+    return 'yesterday' if days >= -1 and days < 0
+
+    return "in #{days} days"      if days.abs < 60 and days > 0
+    return "#{days.abs} days ago" if days.abs < 60 and days < 0
+
+    return date.strftime('%A, %B %e') if days.abs < 182
+    return date.strftime('%A, %B %e, %Y')
+  end
 end

@@ -1,10 +1,13 @@
 class Movie < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :borrower, :class_name => "User", :foreign_key => "borrower_id"
+  has_many :users, :through => :users_movies
+  has_many :users_movies
+
   validates_presence_of :title
   validates_presence_of :format
 
   attr_accessor :upc
+
+  FORMATS = ['Blu-Ray', 'DVD', 'HD-DVD', 'LaserDisc', 'VHS']
 
   def self.lookup_on_amazon(upc)
     lookup_attributes = {'ItemId' => upc, 'SearchIndex' => 'Video'}
@@ -29,6 +32,7 @@ class Movie < ActiveRecord::Base
       attributes[:image]  = item.medium_image.url.to_s
       attributes[:link]  = item.detail_page_url.to_s
       attributes[:title] = item.item_attributes.title.to_s
+      attributes[:release_date] = item.item_attributes.release_date.to_s
       attributes[:type]  = item.item_attributes[0].binding.to_s || item.item_attributes.product_group.to_s
       return attributes
     end

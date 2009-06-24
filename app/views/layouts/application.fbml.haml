@@ -2,9 +2,9 @@
 %br
 
 - fb_tabs do
-  = fb_tab_item "Your Movies", movies_path,  :selected => (!@movies.nil?)
-  = fb_tab_item "Add Movie", new_movie_path, :selected => (!params['id'].present? && !@movie.nil?)
-  = fb_tab_item "Playing in theaters", '#'
+  = fb_tab_item "Your Movies", my_movies_path,  :selected => (!@users_movies.nil?)
+  = fb_tab_item "Add Movie", users_movies_path, :selected => (!params['id'].present? && !@movie.nil?)
+  = fb_tab_item "Playing in theaters", box_office_path, :selected => (!@films.nil?)
   = fb_tab_item "Out on Video", '#'
 
 %br

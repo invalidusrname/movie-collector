@@ -19,7 +19,9 @@
         %ul#links
           - if signed_in?
             %li= current_user.email
-            #li= link_to 'Movies', movies_path
+            %li= link_to 'Admin Movies', movies_path if current_user.admin?
+            #li= link_to 'Movies', my_movies_path
+            #li= link_to "Box Office", box_office_path
             %li= link_to 'Logout', logout_path
           - else
             %li= link_to 'Login', new_session_path

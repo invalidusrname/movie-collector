@@ -8,17 +8,10 @@
   %b Format:
   =h @movie.format 
 
-%p
-  %b Private:
-  =h @movie.private 
 
 %p
   %b ASIN:
   =h @movie.asin 
-
-%p
-  %b Borrowed By:
-  =h @movie.borrower.email if @movie.borrower 
 
 = link_to 'Edit', edit_movie_path(@movie)  |
 = link_to 'Back', movies_path 

@@ -9,18 +9,12 @@
           = sortable_link 'Title', :column => 'title'
         %th
           = sortable_link 'Format', :column => 'format'
-        %th
-          = sortable_link 'Private', :column => 'private'
-        %th.last
-          = sortable_link 'Borrowed By', :column => 'private'
     %tbody
       - @movies.each do |movie|
         %tr{:class => cycle('odd', 'even')}
           %td= link_to(image_tag(movie.thumbnail), movie) unless movie.thumbnail.nil?
           %td= h movie.title
           %td= h movie.format
-          %td= h movie.private? ? 'Yes' : ''
-          %td= h movie.borrower.email if movie.borrower
           %td= link_to 'Show', movie
           %td= link_to 'Edit', edit_movie_path(movie)
           %td= link_to 'Delete', movie, :confirm => 'Are you sure?', :method => :delete

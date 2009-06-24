@@ -15,6 +15,18 @@ class ApplicationController < ActionController::Base
   
   protected
     def require_login
-        deny_access("Login Required")
+      deny_access("Login Required")
+    end
+
+    def require_admin
+      unless signed_in? && current_user.admin?
+        deny_access("Resticted Area")
+      end
+    end
+    
+    def movie_sort_order(params)
+      sort = Movie.column_names.include?(params[:sort]) ? params[:sort] : 'movies.title'
+      dir = (params[:dir] && params[:dir].downcase == 'desc') ? 'desc' : 'asc'
+      "#{sort} #{dir}"
     end
 end

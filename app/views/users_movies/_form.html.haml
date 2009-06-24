@@ -1,0 +1,21 @@
+= form.error_messages :class => 'error'
+
+- if @users_movie.new_record?
+
+  %p.text_field
+    = form.label :upc, 'UPC'
+    %br
+    = text_field_tag 'movie[upc]', nil, :class => 'text'
+    = observe_field :movie_upc, :url => { :controller => :movies, :action => :amazon_search }, :complete => "user_upcResponse(request.responseJSON);", :with => 'upc'
+
+%p.text_field
+  = form.label :title
+  %br
+  = text_field_tag 'movie[title]', nil, :class => 'text'
+
+%p.text_field
+  = form.label :format
+  %br
+  = select_tag 'movie[format]', options_for_select(Movie::FORMATS), :class => 'text'
+
+#img_holder

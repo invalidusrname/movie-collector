@@ -2,8 +2,7 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 
-function upcResponse(json)
-{
+function upcResponse(json) {
   if(json && json['asin']) {
     $('movie_asin').value   = json['asin'];
     $('movie_title').value  = json['title'];
@@ -12,6 +11,14 @@ function upcResponse(json)
     $('movie_image').value = json['image'];
     $('movie_image_link').value  = json['link'];
     $('movie_thumbnail').value  = json['thumbnail'];
+  }
+}
+
+function user_upcResponse(json) {
+  if(json && json['title']) {
+    $('movie_title').value  = json['title'];
+    $('movie_format').value = json['type'];
+    $('img_holder').appendChild(new Element('img', { 'src': json['image'] }));
   }
 }
 
