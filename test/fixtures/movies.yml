@@ -3,13 +3,9 @@
 one:
   title: MyString
   format: MyString
-  private: false
   asin: MyString
-  user: 
 
 two:
   title: MyString
   format: MyString
-  private: false
   asin: MyString
-  user: 
