@@ -4,8 +4,8 @@
 class ApplicationController < ActionController::Base
 
   include Clearance::Authentication
-  # include FacebookerAuthentication::Controller
-  # before_filter :facebook_login_required
+  include FacebookerAuthentication::Controller
+  before_filter :facebook_login_required
 
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
