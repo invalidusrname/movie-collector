@@ -9,6 +9,8 @@
           = sortable_link 'Title', :column => 'title'
         %th
           = sortable_link 'Format', :column => 'format'
+          %th
+            Rating
     %tbody
       - @users_movies.each do |users_movie|
         - movie = users_movie.movie
@@ -16,6 +18,7 @@
           %td= link_to(image_tag(movie.thumbnail), movie) unless movie.thumbnail.nil?
           %td= h movie.title
           %td= h movie.format
+          %td= h users_movie.rating
           %td= link_to 'Show', users_movie
           %td= link_to 'Edit', edit_users_movie_path(users_movie)
           %td= link_to 'Delete', users_movie, :confirm => 'Are you sure?', :method => :delete

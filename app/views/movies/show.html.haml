@@ -2,7 +2,8 @@
   =h @movie.title 
 
 %p
-  = link_to image_tag(@movie.image), @movie.image_link
+  - if @movie.image && @movie.image_link
+    = link_to(image_tag(@movie.image), @movie.image_link)
 
 %p
   %b Format:
@@ -13,5 +14,5 @@
   %b ASIN:
   =h @movie.asin 
 
-= link_to 'Edit', edit_movie_path(@movie)  |
-= link_to 'Back', movies_path 
+= link_to 'Edit', edit_movie_path(@movie) |
+= link_to 'Back', movies_path

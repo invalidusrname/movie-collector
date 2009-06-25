@@ -14,11 +14,49 @@ function upcResponse(json) {
   }
 }
 
-function user_upcResponse(json) {
+function userUpcResponse(json) {
   if(json && json['title']) {
-    $('movie_title').value  = json['title'];
-    $('movie_format').value = json['format'];
+
+    updateMovieFields(json['title'], json['upc'], json['format']);
+
+    removeImages();
+
     $('img_holder').appendChild(new Element('img', { 'src': json['image'] }));
+  }
+}
+
+function userTitleResponse(json) {
+  if(json) {
+    elements = $('img_holder').childElements();
+
+    removeImages();
+    
+    $('img_holder').appendChild(new Element('ul', { 'id': 'aaa'}));
+    
+    json.each(function(s) {
+      json = Object.toJSON(s);
+      json = json.evalJSON();
+      e = new Element('li');
+      onclick = "updateMovieFields('" + escape(json['title']) + "','" +  json['upc'] + "','" + json['format'] + "');"
+      e.appendChild(new Element('img', { 'src': json['thumbnail'], 'onclick':  onclick}));
+      $('aaa').appendChild(e);
+    });
+  }
+}
+
+function updateMovieFields(title, upc, format) {
+  $('movie_title').value  = unescape(title);
+  $('movie_upc').value    = upc;
+  $('movie_format').value = format;
+}
+
+function removeImages() {
+  elements = $('img_holder').childElements();
+
+  if(elements) {
+    elements.each(function(s) {
+      s.remove();
+    });
   }
 }
 

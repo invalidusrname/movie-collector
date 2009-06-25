@@ -49,6 +49,10 @@ class UsersMoviesController < ApplicationController
       if movie.valid?
         current_user.movies << movie unless current_user.movies.include?(movie)
 
+        users_movie = current_user.users_movies.find_by_movie_id(movie.id)
+        users_movie.rating = params[:movie][:rating]
+        users_movie.save
+
         flash[:notice] = 'Movie was successfully created.'
         format.html { redirect_to(users_movies_path) }
       else

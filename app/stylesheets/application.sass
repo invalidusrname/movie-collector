@@ -32,7 +32,7 @@
   +column(7)
   ul
     +no-bullets
-  
+
 #content
   +column(17, true)
 
@@ -54,6 +54,9 @@ table
   +alternating-rows-and-columns("#CCC", "#GGG", "#FFF")
 
 #img_holder
-  width: 150px
-  height: 170px
-  
+  max-width: 480px
+  min-height: 130px
+  max-height: 230px
+  +horizontal-list
+  li
+    margin: 5px

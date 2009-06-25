@@ -1,17 +1,24 @@
 = form.error_messages :class => 'error'
 
+%p Add a new movie by either adding the UPC code, or searching by title
+
 - if @users_movie.new_record?
 
   %p.text_field
     = form.label :upc, 'UPC'
     %br
     = text_field_tag 'movie[upc]', nil, :class => 'text'
-    = observe_field :movie_upc, :url => { :controller => :movies, :action => :amazon_search }, :complete => "user_upcResponse(request.responseJSON);", :with => 'upc'
+    = observe_field :movie_upc, :url => { :controller => :movies, :action => :amazon_search }, :complete => "userUpcResponse(request.responseJSON);", :with => 'upc'
 
 %p.text_field
   = form.label :title
   %br
   = text_field_tag 'movie[title]', nil, :class => 'text'
+  = observe_field :movie_title, :url => { :controller => :movies, :action => :amazon_search }, :complete => "userTitleResponse(request.responseJSON);", :with => 'title'
+
+%h4 Search Results
+
+#img_holder
 
 %p.text_field
   = form.label :format
@@ -21,6 +28,5 @@
 %p.text_field
   = form.label :rating
   %br
-  = form.text_field :rating, :class => 'text'
+  = select_tag 'movie[rating]', options_for_select(Movie::RATINGS), :class => 'text'
 
-#img_holder

@@ -472,4 +472,9 @@ table tr.even td { background-color: #CCC; }
 table tr.even td.even { background-color: #CCC-#FFF; }
 table tfoot th, table tfoot td { background-color: white; background-color: white-#FFF; }
 
-#img_holder { width: 150px; height: 170px; }
+#img_holder { max-width: 480px; min-height: 130px; max-height: 230px; margin: 0; padding: 0; border: 0; overflow: hidden; display: inline-block; }
+#img_holder { display: block; }
+#img_holder li { list-style-type: none; margin-left: 0px; white-space: nowrap; display: inline; float: left; padding-left: 4px; padding-right: 4px; }
+#img_holder li.first { padding-left: 0px; }
+#img_holder li.last { padding-right: 0px; }
+#img_holder li { margin: 5px; }

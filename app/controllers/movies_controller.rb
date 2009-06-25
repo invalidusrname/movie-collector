@@ -89,7 +89,14 @@ class MoviesController < ApplicationController
   end
   
   def amazon_search
-    m = Movie.lookup_on_amazon(params[:upc])
+    if params[:title].present?
+      m = Movie.search_titles_on_amazon(params[:title])
+    elsif params[:upc].present?
+      m = Movie.lookup_on_amazon(params[:upc])
+    else
+      m = Hash.new
+    end
+
     respond_to do |format|
       format.json {
         render :json => m
