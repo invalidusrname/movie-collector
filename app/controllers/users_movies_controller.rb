@@ -5,7 +5,11 @@ class UsersMoviesController < ApplicationController
   # GET /users_movies.xml
   # GET /users_movies.fbml
   def index
-    @users_movies = current_user.users_movies.all(:include => :movie, :order => movie_sort_order(params))
+    if params[:search]
+      @users_movies = current_user.users_movies.search(params[:search])
+    else
+      @users_movies = current_user.users_movies.all(:include => :movie, :order => movie_sort_order(params))
+    end
 
     respond_to do |format|
       format.html # index.html.erb

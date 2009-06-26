@@ -10,4 +10,12 @@ class UsersMovie < ActiveRecord::Base
   def return_movie
     self.borrower = nil
   end
+  
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['movies.title LIKE ?', "%#{search}%"], :include => :movie)
+    else
+      find(:all, :include => :movie)
+    end
+  end
 end

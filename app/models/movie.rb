@@ -67,7 +67,7 @@ class Movie < ActiveRecord::Base
     end
 
     items = resp.item_lookup_response.items
-    
+
     if items && items.item
       item  = items.item
       attributes = {}
@@ -83,5 +83,13 @@ class Movie < ActiveRecord::Base
     end
 
     Hash.new
+  end
+
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
   end
 end
