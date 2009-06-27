@@ -7,11 +7,14 @@
       %tr
         %th
         %th
-          = sortable_link 'Title', :column => 'title'
+          = sortable_link 'Title', :column => 'movies.title'
         %th
-          = sortable_link 'Format', :column => 'format'
-          %th
-            Rating
+          = sortable_link 'Format', :column => 'movies.format'
+        %th
+          Rating
+        %th
+        %th
+        %th
     %tbody
       - @users_movies.each do |users_movie|
         - movie = users_movie.movie

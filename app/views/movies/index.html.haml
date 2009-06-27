@@ -10,6 +10,9 @@
           = sortable_link 'Title', :column => 'title'
         %th
           = sortable_link 'Format', :column => 'format'
+        %th 
+        %th 
+        %th 
     %tbody
       - @movies.each do |movie|
         %tr{:class => cycle('odd', 'even')}
