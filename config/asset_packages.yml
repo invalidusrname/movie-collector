@@ -1,17 +1,18 @@
---- 
-javascripts: 
-- base: 
+---
+javascripts:
+- base:
   - prototype
-  - facebooker
   - effects
   - dragdrop
   - controls
   - application
-stylesheets: 
-- base: 
+- facebook:
+  - facebooker
+stylesheets:
+- base:
   - compiled/application
   - compiled/screen
-- print: 
+- print:
   - compiled/print
-- ie: 
+- ie:
   - compiled/ie
