@@ -1,12 +1,11 @@
 !!!
 %html{ 'xmlns' => "http://www.w3.org/1999/xhtml", 'xmlns:fb' => "http://www.facebook.com/2008/fbml"}
   %head
-    = stylesheet_link_tag 'compiled/application.css', :media => 'screen, projection'
-    = stylesheet_link_tag 'compiled/print.css', :media => 'print'
+    = stylesheet_link_merged :base, :media => 'screen, projection'
+    = stylesheet_link_merged :print, :media => 'print'
     /[if IE]
-      = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
-    = javascript_include_tag 'application'
-    = javascript_include_tag 'prototype'
+      = stylesheet_link_merged :ie, :media => 'screen, projection'
+    = javascript_include_merged :base
     %title= "Title"
   %body
     = fb_connect_javascript_tag
