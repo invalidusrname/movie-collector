@@ -4,8 +4,7 @@
 class ApplicationController < ActionController::Base
 
   include Clearance::Authentication
-  # include FacebookerAuthentication::Controller
-  # before_filter :facebook_login_required
+  include FacebookerAuthentication::Controller
 
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
@@ -20,7 +19,7 @@ class ApplicationController < ActionController::Base
 
     def require_admin
       unless signed_in? && current_user.admin?
-        deny_access("Resticted Area")
+        deny_access("Restricted Area")
       end
     end
     
