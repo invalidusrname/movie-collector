@@ -37,19 +37,16 @@ Rails::Initializer.run do |config|
     :lib     => 'haml',
     :version => '>= 2.1'
 
-  config.gem 'chriseppstein-compass',
-    :lib     => 'compass',
-    :source  => 'http://gems.github.com',
-    :version => '>= 0.6.13'
-
   config.gem 'ruby-aaws',
     :lib     => 'amazon',
     :version => '= 0.6.0'
 
+  config.gem 'ruby-debug'
+
   config.gem "mmangino-facebooker",
     :lib     => "facebooker",
     :source  => 'http://gems.github.com',
-    :version => '>= 1.0.37'
+    :version => '>= 1.0.39'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

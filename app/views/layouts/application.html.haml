@@ -23,7 +23,7 @@
             #li= link_to "Box Office", box_office_path
             %li= link_to 'Logout', logout_path
           - else
-            %li= link_to 'Login', new_session_path
+            %li= link_to 'Login', login_path
       #content
         = render :partial => 'layouts/flashes'
         = yield

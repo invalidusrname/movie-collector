@@ -3,3 +3,8 @@
 - form_for @user do |form|
   = render :partial => '/users/form', :object => form
   = form.submit 'Sign up', :disable_with => 'Please wait...'
+
+%br
+
+%h3 Sign in with Facebook
+= link_to image_tag('connect_light_medium_long.gif'), facebook_new_session_path

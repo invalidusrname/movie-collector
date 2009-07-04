@@ -18,7 +18,10 @@
     =link_to "Forgot password?", new_password_path
 %br
 
-%p
+%p 
+  = link_to image_tag('connect_light_medium_long.gif'), facebook_new_session_path
+
+%p 
   Not a member?
-  =link_to "Sign up", new_user_path
+  = link_to "Sign up", new_user_path
 

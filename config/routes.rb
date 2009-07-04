@@ -37,8 +37,10 @@ ActionController::Routing::Routes.draw do |map|
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => 'home'
 
-  map.login  '/login',  :controller => 'Clearance::Sessions', :action => 'new'
-  map.logout '/logout', :controller => 'Clearance::Sessions', :action => 'destroy'
+  map.login  '/login',  :controller => 'Sessions', :action => 'new'
+  map.logout '/logout', :controller => 'Sessions', :action => 'destroy'
+
+  map.resource :session, :member => { :facebook_new => :get, :facebook_create => :get }
 
   map.box_office '/top_movies', :controller => 'BoxOfficeFilms'
   map.my_movies '/my_movies', :controller => 'UsersMovies'
