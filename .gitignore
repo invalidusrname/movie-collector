@@ -8,5 +8,11 @@ doc/api
 doc/app
 config/database.yml
 config/amazonrc.txt
+config/facebooker.yml
+config/newrelic.yml
+# compiled files
 app/stylesheets/.sass-cache*
+public/stylesheets/compiled/*
+public/stylesheets/*packaged*
+public/javascripts/*packaged*
 vendor/gems
