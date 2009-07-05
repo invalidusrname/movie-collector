@@ -9,7 +9,22 @@ class SessionsController < Clearance::SessionsController
 
   # TODO: find_or_create user based on facebook credentials
   def facebook_create
-    sign_user_in(current_user)
+    facebook_user = facebook_session.user
+    facebook_id = facebook_user.facebook_id
+
+    user = User.find_by_facebook_id(facebook_id)
+    
+    unless user
+      user = User.create! do |u|
+        u.facebook_id = facebook_id
+        u.confirmed = true
+      end
+
+      mail = ClearanceMailer.create_facebook_welcome(user)
+      facebook_user.send_email(mail.subject, mail.body)
+    end
+
+    sign_user_in(user)
     set_current_user
     redirect_to my_movies_path
   end
