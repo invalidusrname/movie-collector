@@ -1,3 +1,4 @@
-<%= debug request_comes_from_facebook? %>
-<%= debug current_user %>
-Signed in: <%= signed_in? %>
+<h1><%= fb_name current_user, :capitalize => true, :use_you => false %></h1>
+
+<%= fb_profile_pic current_user, :size => 'small' %>
+
