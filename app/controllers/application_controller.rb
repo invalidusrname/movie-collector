@@ -6,7 +6,8 @@ class ApplicationController < ActionController::Base
   include Clearance::Authentication
   include FacebookerAuthentication::Controller
 
-  before_filter :facebook_login_required, :if => :request_comes_from_facebook?
+  # FIXME: figure out how to handle facebook canvas and facebook connect using this filter
+  # before_filter :facebook_login_required, :if => :request_comes_from_facebook?
 
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
