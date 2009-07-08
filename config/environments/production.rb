@@ -36,7 +36,7 @@ config.action_mailer.smtp_settings = {
   :address => APP_CONFIG['mail']['address'],
   :port => APP_CONFIG['mail']['port'],
   :domain => APP_CONFIG['mail']['domain'],
-  :authentication => :plain,
+  :authentication => APP_CONFIG['mail']['authentication'],
   :user_name => APP_CONFIG['mail']['user_name'],
   :password => APP_CONFIG['mail']['password']
 }
