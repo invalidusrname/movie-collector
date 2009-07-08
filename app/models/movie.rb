@@ -10,6 +10,10 @@ class Movie < ActiveRecord::Base
 
 
   def self.search_titles_on_amazon(title, limit = 5)
+    if title.to_s.length < 4
+      return Hash.new
+    end
+    
     is = Amazon::AWS::ItemSearch.new('Video', { 'Title' => title })
     rg = Amazon::AWS::ResponseGroup.new('Medium')
 
@@ -54,6 +58,10 @@ class Movie < ActiveRecord::Base
   end
 
   def self.lookup_on_amazon(upc)
+    if upc.to_s.length < 4
+      return Hash.new
+    end
+
     lookup_attributes = {'ItemId' => upc, 'SearchIndex' => 'Video'}
 
     il = Amazon::AWS::ItemLookup.new('UPC', lookup_attributes)

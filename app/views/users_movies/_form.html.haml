@@ -7,13 +7,13 @@
   %p.text_field
     = form.label :upc, 'UPC'
     %br
-    = text_field_tag 'movie[upc]', nil, :class => 'text'
+    = text_field_tag 'movie[upc]', nil, :class => 'text', :tabindex => 1
     = observe_field :movie_upc, :url => { :controller => :movies, :action => :amazon_search }, :complete => "userUpcResponse(request.responseJSON);", :with => 'upc'
 
 %p.text_field
   = form.label :title
   %br
-  = text_field_tag 'movie[title]', nil, :class => 'text'
+  = text_field_tag 'movie[title]', nil, :class => 'text', :tabindex => 2
   = observe_field :movie_title, :url => { :controller => :movies, :action => :amazon_search }, :complete => "userTitleResponse(request.responseJSON);", :with => 'title'
 
 %h4 Search Results
@@ -21,12 +21,12 @@
 #img_holder
 
 %p.text_field
-  = form.label :format
+  = form.label :format, {}, :for => 'movie_format'
   %br
-  = select_tag 'movie[format]', options_for_select(Movie::FORMATS), :class => 'text'
+  = select_tag 'movie[format]', options_for_select(Movie::FORMATS), :class => 'text', :tabindex => 3
 
 %p.text_field
-  = form.label :rating
+  = form.label :rating, {}, :for => 'movie_rating'
   %br
-  = select_tag 'movie[rating]', options_for_select(Movie::RATINGS), :class => 'text'
+  = select_tag 'movie[rating]', options_for_select(Movie::RATINGS), :class => 'text', :tabindex => 4
 
