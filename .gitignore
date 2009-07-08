@@ -10,6 +10,7 @@ config/database.yml
 config/amazonrc.txt
 config/facebooker.yml
 config/newrelic.yml
+config/config.yml
 # compiled files
 app/stylesheets/.sass-cache*
 public/stylesheets/compiled/*

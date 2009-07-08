@@ -27,4 +27,18 @@ config.action_view.cache_template_loading            = true
 # Enable threaded mode
 # config.threadsafe!
 
-HOST = "fb.invalid8.com"
+# MAIL SETTINGS
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.perform_deliveries = true
+config.action_mailer.delivery_method = :smtp
+
+config.action_mailer.smtp_settings = {
+  :address => APP_CONFIG['mail']['address'],
+  :port => APP_CONFIG['mail']['port'],
+  :domain => APP_CONFIG['mail']['domain'],
+  :authentication => :plain,
+  :user_name => APP_CONFIG['mail']['user_name'],
+  :password => APP_CONFIG['mail']['password']
+}
+
+HOST = "moviecollector.org"
