@@ -5,7 +5,7 @@ RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 
 # $DEBUG = true
 
-DO_NOT_REPLY = "donotreply@example.com"
+DO_NOT_REPLY = APP_CONFIG['mail']['no_reply']
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
