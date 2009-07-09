@@ -2,6 +2,7 @@
 
 - if @movies.size > 0
   = render :partial => "search"
+  = will_paginate @movies
   %table
     %thead
       %tr
@@ -19,10 +20,10 @@
           %td= link_to(image_tag(movie.thumbnail), movie) unless movie.thumbnail.nil?
           %td= h movie.title
           %td= h movie.format
-          %td= link_to 'Show', movie
           %td= link_to 'Edit', edit_movie_path(movie)
           %td= link_to 'Delete', movie, :confirm => 'Are you sure?', :method => :delete
   %br
+  = will_paginate @movies
   = link_to 'New movie', new_movie_path
 - else
   %p

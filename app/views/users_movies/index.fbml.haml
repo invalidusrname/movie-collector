@@ -1,14 +1,16 @@
 %h2 Listing movies
 
 - if @users_movies.size > 0
+  = render :partial => "search.html.haml"
+  = will_paginate @users_movies
   %table
     %thead
       %tr
         %th
         %th
-          = sortable_link 'Title', :column => 'title'
+          = sortable_link 'Title', :column => 'movies.title'
         %th
-          = sortable_link 'Format', :column => 'format'
+          = sortable_link 'Format', :column => 'movies.format'
     %tbody
       - @users_movies.each do |users_movie|
         - movie = users_movie.movie
@@ -16,11 +18,11 @@
           %td= link_to(image_tag(movie.thumbnail), movie) unless movie.thumbnail.nil?
           %td= h movie.title
           %td= h movie.format
-          %td= link_to 'Show', users_movie
           %td= link_to 'Edit', edit_users_movie_path(users_movie)
           %td= link_to 'Delete', users_movie, :confirm => 'Are you sure?', :method => :delete
   %br
-  = link_to 'New movie', new_users_movie_path
+  = will_paginate @users_movies  
+  = link_to 'New movie', new_users_movie_path, :class => 'inputsubmit'
 - else
   %p
     You don't have any movies.
