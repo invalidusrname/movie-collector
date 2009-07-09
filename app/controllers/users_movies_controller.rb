@@ -5,12 +5,11 @@ class UsersMoviesController < ApplicationController
   # GET /users_movies.xml
   # GET /users_movies.fbml
   def index
-    if params[:search]
-      @users_movies = current_user.users_movies.search(params[:search])
-    else
-      @users_movies = current_user.users_movies.all(:include => :movie, :order => movie_sort_order(params))
-    end
-
+    @users_movies = current_user.users_movies.search(params[:search],
+                                                     :order => movie_sort_order(params),
+                                                     :include => :movie,
+                                                     :page => params[:page],
+                                                     :per_page => 10)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @users_movies }
@@ -74,6 +73,15 @@ class UsersMoviesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(users_movies_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  def show
+    @users_movie = current_user.users_movies.find(params[:id])
+    respond_to do |format|
+      format.html 
+      format.xml
+      format.fbml
     end
   end
 end

@@ -11,11 +11,10 @@ class UsersMovie < ActiveRecord::Base
     self.borrower = nil
   end
   
-  def self.search(search)
-    if search
-      find(:all, :conditions => ['movies.title LIKE ?', "%#{search}%"], :include => :movie)
-    else
-      find(:all, :include => :movie)
+  def self.search(search, options = {})
+    if search.to_s.length > 0
+      options.merge!(:conditions => ['movies.title LIKE ?', "%#{search}%"])
     end
+    paginate(:all, options)
   end
 end

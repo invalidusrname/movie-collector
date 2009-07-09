@@ -62,9 +62,9 @@ class Movie < ActiveRecord::Base
       return Hash.new
     end
 
-    lookup_attributes = {'ItemId' => upc, 'SearchIndex' => 'Video'}
+    lookup_attributes = {'ItemId' => upc}#, 'SearchIndex' => 'Video'}
 
-    il = Amazon::AWS::ItemLookup.new('UPC', lookup_attributes)
+    il = Amazon::AWS::ItemLookup.new('ASIN', lookup_attributes)
     rg = Amazon::AWS::ResponseGroup.new('Medium')
     req = Amazon::AWS::Search::Request.new
 
@@ -78,10 +78,11 @@ class Movie < ActiveRecord::Base
 
     if items && items.item
       item  = items.item
+
       attributes = {}
       attributes[:asin]         = item.asin.to_s
       attributes[:upc]          = item.item_attributes.upc.to_s
-      attributes[:thumbnail]    = item.image_sets.image_set.thumbnail_image.url.to_s
+      attributes[:thumbnail]    = item.image_sets.image_set[0].thumbnail_image.url.to_s
       attributes[:image]        = item.medium_image.url.to_s
       attributes[:image_link]   = item.detail_page_url.to_s
       attributes[:title]        = item.item_attributes.title.to_s
@@ -93,11 +94,10 @@ class Movie < ActiveRecord::Base
     Hash.new
   end
 
-  def self.search(search)
-    if search
-      find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
-    else
-      find(:all)
+  def self.search(search, options = {})
+    if search.to_s.length > 0
+      options.merge!(:conditions => ['title LIKE ?', "%#{search}%"])
     end
+    paginate(:all, options)
   end
 end

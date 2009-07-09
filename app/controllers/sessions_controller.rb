@@ -1,4 +1,9 @@
 class SessionsController < Clearance::SessionsController
+  # skip application controller's filter
+  # will allow facebook convas and facebook connect to work
+  skip_before_filter :facebook_login_required
+
+  # but still use filter for these actions
   before_filter :facebook_login_required, :only => %w(facebook_new facebook_create)
 
   def facebook_new
