@@ -1,34 +1,31 @@
-/* line 19, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.13/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-body {
-  text-align: center; }
-  /* line 32, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.13/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-  * html body legend {
-    margin: 0px -8px 16px 0;
-    padding: 0; }
-  /* line 36, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.13/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-  html>body p code {
-    *white-space: normal; }
+body { text-align: center; }
+* html body legend { margin: 0px -8px 16px 0; padding: 0; }
+html>body p code { *white-space: normal; }
 
-/* line 40, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.13/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-.container {
-  text-align: left; }
+.container { text-align: left; }
 
-/* line 42, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.13/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-ol {
-  margin-left: 2em; }
+ol { margin-left: 2em; }
 
-/* line 44, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.13/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-sup {
-  vertical-align: text-top; }
+sup { vertical-align: text-top; }
 
-/* line 46, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.13/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-sub {
-  vertical-align: text-bottom; }
+sub { vertical-align: text-bottom; }
 
-/* line 48, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.13/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-hr {
-  margin: -8px auto 11px; }
+hr { margin: -8px auto 11px; }
 
-/* line 50, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/chriseppstein-compass-0.6.13/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-fieldset {
-  padding-top: 0; }
+img { -ms-interpolation-mode: bicubic; }
+
+fieldset { padding-top: 0; }
+
+input.text { margin: 0.5em 0; background-color: #fff; border: 1px solid #bbb; }
+input.text:focus { border: 1px solid #666; }
+input.title { margin: 0.5em 0; background-color: #fff; border: 1px solid #bbb; }
+input.title:focus { border: 1px solid #666; }
+input.checkbox { position: relative; top: 0.25em; }
+input.radio { position: relative; top: 0.25em; }
+input.button { position: relative; top: 0.25em; }
+
+textarea { margin: 0.5em 0; }
+
+select { margin: 0.5em 0; }
+
+button { position: relative; top: 0.25em; }

@@ -16,3 +16,5 @@ stylesheets:
   - compiled/print
 - ie:
   - compiled/ie
+- facebook:
+  - compiled/facebook
