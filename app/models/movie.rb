@@ -62,9 +62,9 @@ class Movie < ActiveRecord::Base
       return Hash.new
     end
 
-    lookup_attributes = {'ItemId' => upc}#, 'SearchIndex' => 'Video'}
+    lookup_attributes = {'ItemId' => upc, 'SearchIndex' => 'Video'}
 
-    il = Amazon::AWS::ItemLookup.new('ASIN', lookup_attributes)
+    il = Amazon::AWS::ItemLookup.new('UPC', lookup_attributes)
     rg = Amazon::AWS::ResponseGroup.new('Medium')
     req = Amazon::AWS::Search::Request.new
 
@@ -82,8 +82,8 @@ class Movie < ActiveRecord::Base
       attributes = {}
       attributes[:asin]         = item.asin.to_s
       attributes[:upc]          = item.item_attributes.upc.to_s
-      attributes[:thumbnail]    = item.image_sets.image_set[0].thumbnail_image.url.to_s
-      attributes[:image]        = item.medium_image.url.to_s
+      attributes[:thumbnail]    = item.image_sets.image_set[0].thumbnail_image.url.to_s unless item.image_sets.nil?
+      attributes[:image]        = item.medium_image.url.to_s unless item.medium_image.nil?
       attributes[:image_link]   = item.detail_page_url.to_s
       attributes[:title]        = item.item_attributes.title.to_s
       attributes[:release_date] = item.item_attributes.release_date.to_s
