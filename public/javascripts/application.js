@@ -35,9 +35,9 @@ function userTitleResponse(json) {
     json.each(function(s) {
       json = Object.toJSON(s);
       json = json.evalJSON();
-      e = new Element('li');
-      onclick = "updateMovieFields('" + escape(json['title']) + "','" +  json['upc'] + "','" + json['format'] + "');"
-      e.appendChild(new Element('img', { 'src': json['thumbnail'], 'onclick':  onclick}));
+      _onclick = "updateMovieFields('" + escape(json['title']) + "','" +  json['upc'] + "','" + json['format'] + "');"
+      e = new Element('li', {'onclick':  _onclick});
+      e.appendChild(new Element('img', { 'src': json['thumbnail']}));
       $('aaa').appendChild(e);
     });
   }
