@@ -14,15 +14,10 @@ module FacebookerAuthentication
       #this is a facebooker method to make sure we have a session
       set_facebook_session
       # if the session isn't secured, we don't have a good user id
-      if facebook_session and 
-         facebook_session.secured? and 
-         !request_is_facebook_tab?
-         # commented out because Clearance also uses current_user
-         # self.current_user = User.for_facebook_id(facebook_session.user.to_i,facebook_session) 
-         # sign_user_in(self.current_user)
-         current_user = User.for_facebook_id(facebook_session.user.to_i,facebook_session) 
+      if facebook_session and facebook_session.secured? and !request_is_facebook_tab?
+         current_user = User.for_facebook_id(facebook_session.user.to_i,facebook_session)
+         current_user.update_attribute(:email_confirmed, true) unless current_user.email_confirmed?
          sign_user_in(current_user)
-         logger.debug("Set Current user: #{current_user.inspect}")
       end
     end
 

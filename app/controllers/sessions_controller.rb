@@ -22,7 +22,7 @@ class SessionsController < Clearance::SessionsController
     unless user
       user = User.create! do |u|
         u.facebook_id = facebook_id
-        u.confirmed = true
+        u.email_confirmed = true
       end
 
       mail = ClearanceMailer.create_facebook_welcome(user)
