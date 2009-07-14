@@ -77,7 +77,7 @@ class Movie < ActiveRecord::Base
     items = resp.item_lookup_response.items
 
     if items && items.item
-      item  = items.item
+      item  = items.item[0]
 
       attributes = {}
       attributes[:asin]         = item.asin.to_s
