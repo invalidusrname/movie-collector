@@ -19,7 +19,9 @@
 %br
 
 %p 
-  = link_to image_tag('connect_light_medium_long.gif'), facebook_new_session_path
+  = fb_connect_javascript_tag
+  = init_fb_connect "XFBML","Api"
+  = fb_login_and_redirect facebook_new_session_path
 
 %p 
   Not a member?

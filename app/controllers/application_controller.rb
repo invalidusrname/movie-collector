@@ -24,6 +24,13 @@ class ApplicationController < ActionController::Base
         deny_access("Restricted Area")
       end
     end
+
+    # redirect users once they've authorized the application
+    # intended to work with facebook canvas pages, not facebook connect
+    def after_facebook_login_url
+      # request.request_uri
+      "http://apps.facebook.com/#{Facebooker.facebooker_config['canvas_page_name']}"
+    end
     
     def movie_sort_order(params)
       sort = Movie.column_names.include?(params[:sort]) ? params[:sort] : 'movies.title'
