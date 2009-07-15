@@ -8,9 +8,9 @@ set :user, 'deploy'
 
 set :deploy_to, "/home/#{user}/www/#{application}"
 
-role :app, "fb.invalid8.com"
-role :web, "fb.invalid8.com"
-role :db,  "fb.invalid8.com", :primary => true
+role :app, "moviecollector.org"
+role :web, "moviecollector.org"
+role :db,  "moviecollector.org", :primary => true
 
 namespace :mod_rails do
   desc <<-DESC
