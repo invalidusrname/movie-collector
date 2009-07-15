@@ -21,7 +21,7 @@
       - @users_movies.each do |users_movie|
         - movie = users_movie.movie
         %tr{:class => cycle('odd', 'even')}
-          %td= link_to(image_tag(movie.thumbnail), movie) unless movie.thumbnail.nil?
+          %td= link_to(image_tag(movie.thumbnail), users_movie) unless movie.thumbnail.nil?
           %td= h movie.title
           %td= h movie.format
           %td= h users_movie.rating

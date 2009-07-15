@@ -2,27 +2,35 @@
 
 - if @users_movies.size > 0
   = render :partial => "search.html.haml"
+  = link_to 'New movie', new_users_movie_path
   = will_paginate @users_movies
   %table
     %thead
       %tr
         %th
-        %th Title
-        %th Format
+        %th
+          = sortable_link 'Title', :column => 'movies.title'
+        %th
+          = sortable_link 'Format', :column => 'movies.format'
+        %th
+          Rating
+        %th
+        %th
+        %th
     %tbody
       - @users_movies.each do |users_movie|
         - movie = users_movie.movie
         %tr{:class => cycle('odd', 'even')}
-          %td= link_to(image_tag(movie.thumbnail), movie) unless movie.thumbnail.nil?
+          %td= link_to(image_tag(movie.thumbnail), users_movie) unless movie.thumbnail.nil?
           %td= h movie.title
           %td= h movie.format
+          %td= h users_movie.rating
           %td= link_to 'Edit', edit_users_movie_path(users_movie)
           %td= link_to 'Delete', users_movie, :confirm => 'Are you sure?', :method => :delete
   %br
-  = will_paginate @users_movies  
-  = link_to 'New movie', new_users_movie_path, :class => 'inputsubmit'
+  = will_paginate @users_movies
+  %b= "#{@users_movies.total_entries} total movies"  
 - else
   %p
     You don't have any movies.
     =link_to 'Add some', new_users_movie_path
-
