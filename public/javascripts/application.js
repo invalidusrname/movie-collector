@@ -1,6 +1,10 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
+// fuck
+
+// ---
+
 function upcResponse(json) {
   if(json && json['asin']) {
     $('movie_asin').value   = json['asin'];
@@ -44,9 +48,9 @@ function userTitleResponse(json) {
 }
 
 function updateMovieFields(title, upc, format) {
-  $('movie_title').value  = unescape(title);
-  $('movie_upc').value    = upc;
-  $('movie_format').value = format;
+  $('users_movie_movie_attributes_title').value  = unescape(title);
+  $('users_movie_movie_attributes_upc').value    = upc;
+  $('users_movie_movie_attributes_format').value = format;
 }
 
 function removeImages() {

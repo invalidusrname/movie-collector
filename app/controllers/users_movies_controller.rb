@@ -29,6 +29,7 @@ class UsersMoviesController < ApplicationController
   # GET /users_movies/new.xml
   def new
     @users_movie = UsersMovie.new
+    @users_movie.build_movie
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,26 +41,29 @@ class UsersMoviesController < ApplicationController
   # POST /users_movies
   # POST /users_movies.xml
   def create
-    if params[:movie][:upc]
-      movie = Movie.find_by_upc(params[:movie][:upc])
+    @users_movie = UsersMovie.new(params[:users_movie])
+    @users_movie.user = current_user
 
-      if movie.nil?
-        movie = Movie.new(Movie.lookup_on_amazon(params[:movie][:upc]))
-      end
+    upc = @users_movie.movie.upc
+    movie = Movie.find_by_upc(upc)
+
+    if movie.nil? && upc.present?
+      @users_movie.movie = Movie.new(Movie.lookup_on_amazon(upc))
     end
 
     respond_to do |format|
-      if movie.valid?
-        current_user.movies << movie unless current_user.movies.include?(movie)
+      if @users_movie.valid?
 
-        users_movie = current_user.users_movies.find_by_movie_id(movie.id)
-        users_movie.rating = params[:movie][:rating]
-        users_movie.save
+        unless current_user.movies.find_by_upc(@users_movie.movie.upc)
+          @users_movie.save
+        end
 
         flash[:notice] = 'Movie was successfully created.'
         format.html { redirect_to(users_movies_path) }
+        format.fbml { redirect_to(users_movies_path) }
       else
         format.html { render :action => "new" }
+        format.fbml { render :action => "new" }
       end
     end
   end

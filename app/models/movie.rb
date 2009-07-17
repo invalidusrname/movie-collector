@@ -2,12 +2,12 @@ class Movie < ActiveRecord::Base
   has_many :users, :through => :users_movies
   has_many :users_movies, :dependent => :destroy
 
-  validates_presence_of :title
-  validates_presence_of :format
-
   FORMATS = ['Blu-ray', 'DVD', 'HD-DVD', 'LaserDisc', 'VHS Tape']
   RATINGS = [nil, 1, 2, 3, 4, 5]
 
+  validates_presence_of :title
+  validates_presence_of :upc
+  validates_inclusion_of :format, :in => FORMATS
 
   def self.search_titles_on_amazon(title, limit = 5)
     if title.to_s.length < 4

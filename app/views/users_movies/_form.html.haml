@@ -1,32 +1,34 @@
-= form.error_messages :class => 'error'
+= form.error_messages :object_name => 'movie', :class => 'error'
 
 %p Add a new movie by either adding the UPC code, or searching by title
 
-- if @users_movie.new_record?
+/ = debug @users_movie.movie['format']
+/ = debug @users_movie.rating
+= @users_movie.inspect
+
+- form.fields_for :movie do |movie_form|
+  %p.text_field
+    = movie_form.label :upc, "UPC"
+    %br
+    = movie_form.text_field :upc, :class => 'text', :tabindex => 1
+    = observe_field :users_movie_movie_attributes_upc, :url => { :controller => :movies, :action => :amazon_search }, :complete => "userUpcResponse(request.responseJSON);", :with => 'upc'
+  %p.text_field
+    = movie_form.label :title
+    %br
+    = movie_form.text_field :title, :class => 'text', :tabindex => 2
+    = observe_field :users_movie_movie_attributes_title, :url => { :controller => :movies, :action => :amazon_search }, :complete => "userTitleResponse(request.responseJSON);", :with => 'title'
+
+  %h4 Search Results
+
+  #img_holder
 
   %p.text_field
-    = form.label :upc, 'UPC'
+    = movie_form.label :format
     %br
-    = text_field_tag 'movie[upc]', nil, :class => 'text', :tabindex => 1
-    = observe_field :movie_upc, :url => { :controller => :movies, :action => :amazon_search }, :complete => "userUpcResponse(request.responseJSON);", :with => 'upc'
+    = select_tag 'users_movie[movie_attributes][format]', options_for_select(Movie::FORMATS, @users_movie.movie.format), :class => 'text', :tabindex => 3
 
-%p.text_field
-  = form.label :title
-  %br
-  = text_field_tag 'movie[title]', nil, :class => 'text', :tabindex => 2
-  = observe_field :movie_title, :url => { :controller => :movies, :action => :amazon_search }, :complete => "userTitleResponse(request.responseJSON);", :with => 'title'
-
-%h4 Search Results
-
-#img_holder
-
-%p.text_field
-  = form.label :format, {}, :for => 'movie_format'
-  %br
-  = select_tag 'movie[format]', options_for_select(Movie::FORMATS), :class => 'text', :tabindex => 3
-
-%p.text_field
-  = form.label :rating, {}, :for => 'movie_rating'
-  %br
-  = select_tag 'movie[rating]', options_for_select(Movie::RATINGS), :class => 'text', :tabindex => 4
+  %p.text_field
+    = form.label :rating, {}
+    %br
+    = select_tag 'users_movie[rating]', options_for_select(Movie::RATINGS, @users_movie.rating), :class => 'text', :tabindex => 4
 
