@@ -487,3 +487,7 @@ table tfoot th, table tfoot td { background-color: white; background-color: whit
 #img_holder li.first { padding-left: 0px; }
 #img_holder li.last { padding-right: 0px; }
 #img_holder li { margin: 5px; }
+
+#recently_added { margin-top: 50px; }
+#recently_added ul { list-style-type: none; margin: 0px; padding: 0px; display: inline; }
+#recently_added ul li { margin: 0px; padding: 0px; display: inline; }

@@ -17,6 +17,15 @@ class UsersMoviesController < ApplicationController
     end
   end
 
+  def recently_added
+    @users_movies = current_user.users_movies.all(:include => :movie, :limit => 5, :order => 'users_movies.id DESC')
+    
+    respond_to do |format|
+      format.html
+      format.fbml
+    end
+  end
+
   def friends
     respond_to do |format|
       format.html # friends.html.erb
