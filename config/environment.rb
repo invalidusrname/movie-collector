@@ -31,11 +31,11 @@ Rails::Initializer.run do |config|
   config.gem "thoughtbot-clearance", 
     :lib     => 'clearance', 
     :source  => 'http://gems.github.com', 
-    :version => '0.6.4'
+    :version => '0.6.9'
 
-  config.gem "haml-edge",
+  config.gem "haml",
     :lib     => 'haml',
-    :version => '>= 2.1'
+    :version => '>= 2.2.1'
 
   config.gem 'ruby-aaws',
     :lib     => 'amazon',
@@ -46,7 +46,7 @@ Rails::Initializer.run do |config|
   config.gem "mmangino-facebooker",
     :lib     => "facebooker",
     :source  => 'http://gems.github.com',
-    :version => '>= 1.0.39'
+    :version => '>= 1.0.43'
 
   config.gem 'mislav-will_paginate', 
     :lib => 'will_paginate', 
