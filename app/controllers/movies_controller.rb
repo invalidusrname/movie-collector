@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   before_filter :require_admin, :except => 'amazon_search'
-  
+
   # GET /movies
   # GET /movies.xml
   def index

@@ -29,7 +29,7 @@ class SessionsController < Clearance::SessionsController
       facebook_user.send_email(mail.subject, mail.body)
     end
 
-    sign_user_in(user)
+    sign_in(user)
     set_current_user
     redirect_to my_movies_path
   end

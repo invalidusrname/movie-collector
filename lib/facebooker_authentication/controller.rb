@@ -17,7 +17,7 @@ module FacebookerAuthentication
       if facebook_session and facebook_session.secured? and !request_is_facebook_tab?
          current_user = User.for_facebook_id(facebook_session.user.to_i,facebook_session)
          current_user.update_attribute(:email_confirmed, true) unless current_user.email_confirmed?
-         sign_user_in(current_user)
+         sign_in(current_user)
       end
     end
 
