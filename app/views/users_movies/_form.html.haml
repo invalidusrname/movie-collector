@@ -2,10 +2,6 @@
 
 %p Add a new movie by either adding the UPC code, or searching by title
 
-/ = debug @users_movie.movie['format']
-/ = debug @users_movie.rating
-= @users_movie.inspect
-
 - form.fields_for :movie do |movie_form|
   %p.text_field
     = movie_form.label :upc, "UPC"
@@ -31,4 +27,3 @@
     = form.label :rating, {}
     %br
     = select_tag 'users_movie[rating]', options_for_select(Movie::RATINGS, @users_movie.rating), :class => 'text', :tabindex => 4
-
