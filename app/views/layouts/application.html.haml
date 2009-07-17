@@ -6,7 +6,7 @@
     /[if IE]
       = stylesheet_link_merged :ie, :media => 'screen, projection'
     = javascript_include_merged :base
-    %title= "Title"
+    %title= "Movie Collector"
   %body
     = fb_connect_javascript_tag
     #container
@@ -20,7 +20,8 @@
             %li= current_user.email
             %li= link_to 'Admin Movies', movies_path if current_user.admin?
             #li= link_to 'Movies', my_movies_path
-            #li= link_to "Box Office", box_office_path
+          #li= link_to "Box Office", box_office_path
+          - if signed_in?
             %li= link_to 'Logout', logout_path
           - else
             %li= link_to 'Login', login_path
