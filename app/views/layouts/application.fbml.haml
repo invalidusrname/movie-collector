@@ -1,5 +1,9 @@
 = stylesheet_link_merged :facebook, :media => 'screen, projection'
-= javascript_include_merged :facebook
+/ = javascript_include_merged :facebook
+%script{:type => "text/javascript",
+        :src  => "/javascripts/application.js?#{Time.now.to_i}"}
+%script{:type => "text/javascript",
+        :src  => "/javascripts/facebooker.js?#{Time.now.to_i}"}
 
 %br
 %br
