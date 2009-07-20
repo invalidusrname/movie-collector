@@ -27,6 +27,3 @@
     = form.label :rating, {}
     %br
     = select_tag 'users_movie[rating]', options_for_select(Movie::RATINGS, @users_movie.rating), :class => 'text', :tabindex => 4
-
-:javascript
-  focusUPC();
