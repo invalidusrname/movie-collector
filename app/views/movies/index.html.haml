@@ -2,6 +2,7 @@
 
 - if @movies.size > 0
   = render :partial => "search"
+  = link_to 'New movie', new_movie_path
   = will_paginate @movies
   %table
     %thead
@@ -24,9 +25,8 @@
           %td= link_to 'Delete', movie, :confirm => 'Are you sure?', :method => :delete
   %br
   = will_paginate @movies
-  = link_to 'New movie', new_movie_path
+  %b= "#{@movies.total_entries} total movies"
 - else
   %p
     You don't have any movies.
     =link_to 'Add some', new_movie_path
-

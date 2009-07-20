@@ -1,6 +1,6 @@
 %h2 New movie
 
-- form_for(@users_movie) do |form|
+- form_for(@users_movie, :html => {:name => 'users_movie_form'}) do |form|
   = render :partial => "form", :object => form
   %p
     = form.submit 'Create', :onclick => 'submitMovie(this.form);'

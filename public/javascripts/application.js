@@ -1,9 +1,9 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
-// fuck
-
-// ---
+function focusUPC() {
+  $('users_movie_movie_attributes_upc').focus();
+}
 
 function upcResponse(json) {
   if(json && json['asin']) {

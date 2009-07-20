@@ -20,9 +20,10 @@
           %td= link_to 'Edit', edit_movie_path(movie)
           %td= link_to 'Remove', movie, :confirm => 'Are you sure?', :method => :delete
   %br
+  = will_paginate @movies
+  %b= "#{@movies.total_entries} total movies"
   = link_to 'New movie', new_movie_path
 - else
   %p
     You don't have any movies.
     =link_to 'Add some', new_movie_path
-
