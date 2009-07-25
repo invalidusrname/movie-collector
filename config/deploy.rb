@@ -37,13 +37,13 @@ end
 
 after "deploy:update_code", "db:symlink"
 
-namespace :compass do
+namespace :assets do
   desc "Compiles stylesheets via compass"
   task :compile do
     require 'compass'
     Sass::Plugin.update_stylesheets
+    # Rake::Task["asset:packager:build_all"].invoke
   end
 end
 
-after "deploy:update_code", "compass:compile"
-after "compass:compile",  "asset:packager:build_all"
+after "deploy:update_code", "assets:compile"
