@@ -27,7 +27,7 @@ end
 
 
 namespace :db do
-  desc "Make symlink for database yaml" 
+  desc "Make symlink for database yaml"
   task :symlink do
     ['database.yml', 'facebooker.yml', 'newrelic.yml', 'amazonrc.txt', 'config.yml'].each do |name|
       run "ln -nfs #{shared_path}/#{name} #{release_path}/config/#{name}"
@@ -35,4 +35,15 @@ namespace :db do
   end
 end
 
-after "deploy:update_code", "db:symlink" 
+after "deploy:update_code", "db:symlink"
+
+namespace :compass do
+  desc "Compiles stylesheets via compass"
+  task :compile do
+    require 'compass'
+    Sass::Plugin.update_stylesheets
+  end
+end
+
+after "deploy:update_code", "compass:compile"
+after "compass:compile",  "asset:packager:build_all"
