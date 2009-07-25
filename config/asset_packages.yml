@@ -12,7 +12,6 @@ javascripts:
 stylesheets:
 - base:
   - compiled/application
-  - compiled/screen
 - print:
   - compiled/print
 - ie:
