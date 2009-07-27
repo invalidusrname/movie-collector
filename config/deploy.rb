@@ -1,3 +1,5 @@
+require 'hoptoad_notifier/recipes/hoptoad'
+
 set :application, "fb_movie_collector"
 set :repository,  "git@github.com:invalidusrname/movie_collector.git"
 set :scm, :git
