@@ -40,9 +40,8 @@ after "deploy:update_code", "db:symlink"
 namespace :assets do
   desc "Compiles stylesheets via compass"
   task :compile do
-    require 'compass'
-    Sass::Plugin.update_stylesheets
-    # Rake::Task["asset:packager:build_all"].invoke
+    run "cd #{current_path} && compass --force"
+    run "cd #{current_path} && rake asset:packager:build_all"
   end
 end
 
