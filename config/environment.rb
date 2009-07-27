@@ -28,14 +28,18 @@ Rails::Initializer.run do |config|
   config.gem 'json'
   config.gem "newrelic_rpm"
 
-  config.gem "thoughtbot-clearance", 
-    :lib     => 'clearance', 
-    :source  => 'http://gems.github.com', 
+  config.gem "thoughtbot-clearance",
+    :lib     => 'clearance',
+    :source  => 'http://gems.github.com',
     :version => '0.6.9'
 
   config.gem "haml",
     :lib     => 'haml',
     :version => '>= 2.2.1'
+
+  config.gem "thoughtbot-hoptoad_notifier",
+    :lib     => 'hoptoad_notifier',
+    :source  => 'http://gems.github.com'
 
   config.gem 'ruby-aaws',
     :lib     => 'amazon',
@@ -48,8 +52,8 @@ Rails::Initializer.run do |config|
     :source  => 'http://gems.github.com',
     :version => '>= 1.0.43'
 
-  config.gem 'mislav-will_paginate', 
-    :lib => 'will_paginate', 
+  config.gem 'mislav-will_paginate',
+    :lib => 'will_paginate',
     :source => 'http://gems.github.com',
     :version => '~> 2.3.11'
 
