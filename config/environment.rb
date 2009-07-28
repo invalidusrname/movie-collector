@@ -37,10 +37,6 @@ Rails::Initializer.run do |config|
     :lib     => 'haml',
     :version => '>= 2.2.1'
 
-  config.gem "thoughtbot-hoptoad_notifier",
-    :lib     => 'hoptoad_notifier',
-    :source  => 'http://gems.github.com'
-
   config.gem 'ruby-aaws',
     :lib     => 'amazon',
     :version => '= 0.6.0'
