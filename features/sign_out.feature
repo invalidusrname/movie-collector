@@ -8,7 +8,7 @@ Feature: Sign out
       When I sign in as "email@person.com/password"
       Then I should be signed in
       And I sign out
-      Then I should see "Signed out"
+      Then I should see "Logged out"
       And I should be signed out
 
     Scenario: User who was remembered signs out
@@ -16,7 +16,7 @@ Feature: Sign out
       When I sign in with "remember me" as "email@person.com/password"
       Then I should be signed in
       And I sign out
-      Then I should see "Signed out"
+      Then I should see "Logged out"
       And I should be signed out
       When I return next time
       Then I should be signed out
