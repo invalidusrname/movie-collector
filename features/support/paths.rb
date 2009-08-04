@@ -16,7 +16,7 @@ module NavigationHelpers
     when /the password reset request page/i
       new_password_path
     when /the new movie page/i
-      new_movie_path
+      new_users_movie_path
 
     # Add more mappings here.
     # Here is a more fancy example:

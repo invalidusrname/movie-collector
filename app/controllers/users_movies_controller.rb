@@ -57,7 +57,10 @@ class UsersMoviesController < ApplicationController
     movie = Movie.find_by_upc(upc)
 
     if movie.nil? && upc.present?
-      @users_movie.movie = Movie.new(Movie.lookup_on_amazon(upc))
+      movie_attributes = Movie.lookup_on_amazon(upc)
+      if movie_attributes[:title]
+        @users_movie.movie = Movie.new(movie_attributes)
+      end
     end
 
     respond_to do |format|

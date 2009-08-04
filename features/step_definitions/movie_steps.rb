@@ -3,7 +3,7 @@ Given /^the following movies:$/ do |movies|
 end
 
 When /^I delete the (\d+)(?:st|nd|rd|th) movie$/ do |pos|
-  visit movies_url
+  visit user_movies_url
   within("table > tbody tr:nth-child(#{pos.to_i})") do
     click_link "Destroy"
   end

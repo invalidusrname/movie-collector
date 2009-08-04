@@ -4,4 +4,4 @@
   %ul
     - @users_movies.each do |users_movie|
       - movie = users_movie.movie
-      %li= link_to image_tag(movie.thumbnail), users_movie_path(users_movie)
+      %li= link_to image_tag(thumbnail(movie)), users_movie_path(users_movie)
