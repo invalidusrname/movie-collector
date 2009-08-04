@@ -4,3 +4,6 @@ mail:
   user_name: CHANGE ME
   password: CHANGE ME
   port: CHANGE ME
+hoptoad:
+  key: CHANGE ME
+ 
