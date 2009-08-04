@@ -15,19 +15,18 @@ Feature: Manage movies
     And I should see "Sample Title"
     And I should see "DVD"
 
-  # FIXME: failing scenario
-  # Scenario: Delete movie
-  #   Given I am signed up and confirmed as "email@person.com/password"
-  #   When I sign in as "email@person.com/password"
-  #   Given the following movies:
-  #     |title|format|asin|upc|
-  #     |Title 1|DVD|1234|1234|
-  #     |Title 2|DVD|1234|1234|
-  #     |Title 3|DVD|1234|1234|
-  #     |Title 4|DVD|1234|1234|
-  #   When I delete the 3rd movie
-  #   Then I should see the following movies:
-  #     |title|format|asin|upc|
-  #     |Title 1|DVD|1234|1234|
-  #     |Title 2|DVD|1234|1234|
-  #     |Title 4|DVD|1234|1234|
+  Scenario: Delete movie
+    Given I am signed up and confirmed as "email@person.com/password"
+    When I sign in as "email@person.com/password"
+    Given the following movies:
+      |title|format|asin|upc|
+      |Title 1|DVD|1234|1234|
+      |Title 2|DVD|1234|1234|
+      |Title 3|DVD|1234|1234|
+      |Title 4|DVD|1234|1234|
+    When I delete the 3rd movie
+    Then I should see the following movies:
+      |title|format|asin|upc|
+      |Title 1|DVD|1234|1234|
+      |Title 2|DVD|1234|1234|
+      |Title 4|DVD|1234|1234|
