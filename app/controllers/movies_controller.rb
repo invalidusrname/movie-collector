@@ -6,6 +6,7 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.search(params[:search],
                           :page => params[:page],
+                          :include => :genre,
                           :per_page => 10,
                           :order => movie_sort_order(params))
 

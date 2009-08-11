@@ -11,6 +11,8 @@
         %th
           = sortable_link 'Title', :column => 'title'
         %th
+          = sortable_link 'Genre', :column => 'genre'
+        %th
           = sortable_link 'Format', :column => 'format'
         %th 
         %th 
@@ -18,8 +20,9 @@
     %tbody
       - @movies.each do |movie|
         %tr{:class => cycle('odd', 'even')}
-          %td= link_to(image_tag(movie.thumbnail), movie) unless movie.thumbnail.nil?
+          %td.thumbnail= link_to(image_tag(thumbnail(movie), :title => movie.title), movie_path(movie))
           %td= h movie.title
+          %td= h movie.genre.name unless movie.genre.nil?
           %td= h movie.format
           %td= link_to 'Edit', edit_movie_path(movie)
           %td= link_to 'Delete', movie, :confirm => 'Are you sure?', :method => :delete

@@ -33,6 +33,9 @@ namespace :db do
      'amazonrc.txt', 'config.yml'].each do |name|
       run "ln -nfs #{shared_path}/#{name} #{release_path}/config/#{name}"
     end
+    ['googleef5e9facdc286530.html'].each do |seo_file|
+      run "ln -nfs #{shared_path}/#{seo_file} #{release_path}/public/#{seo_file}"
+    end
   end
 end
 

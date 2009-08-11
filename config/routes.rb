@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.resources :movies
-  map.resources :users_movies, :collection => {:recently_added => :get}
+  map.resources :users_movies, :collection => {:recently_added => :get}, :member => {:add_rating => :post}
 
   # The priority is based upon order of creation: first created -> highest priority.
 

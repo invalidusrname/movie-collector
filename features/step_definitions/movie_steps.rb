@@ -1,7 +1,9 @@
 Given /^the following movies:$/ do |movies|
   user = User.find(session[:user_id])
   movies.hashes.each do |hash|
+    rating = hash.delete("rating")
     user.movies << Movie.create!(hash)
+    user.user_movies.last.update_attribute(:rating, rating)
   end
 end
 
@@ -18,4 +20,19 @@ Then /^I should see the following movies:$/ do |movies|
       td.inner_text.should == row[0]
     }
   end
+end
+
+Then /^I rate "([^\"]*)" with a (\d+)$/ do |title, rating|
+  movie = Movie.find_by_title(title)
+  user = User.find(session[:user_id])
+  um = user.users_movie.find_by_movie_id(movie.id)
+  um.rating = rating
+  um.rating
+end
+
+Then /^"([^\"]*)" should have a rating of (\d+)$/ do |title, rating|
+  movie = Movie.find_by_title(title)
+  user = User.find(session[:user_id])
+  um = user.users_movie.find_by_movie_id(movie.id)
+  um.rating.should eql(rating)
 end

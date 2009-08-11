@@ -7,12 +7,17 @@ class ApplicationController < ActionController::Base
 
   before_filter :facebook_login_required, :if => :request_comes_from_facebook?
 
+  rescue_from ActiveRecord::RecordNotFound, ActionView::TemplateError, 
+    ActionController::UnknownAction, ActionController::RoutingError, 
+    :with => :render_404
+  
+
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password
-  
+
   protected
     def require_login
       deny_access("Login Required")
@@ -30,10 +35,21 @@ class ApplicationController < ActionController::Base
       # request.request_uri
       "http://apps.facebook.com/#{Facebooker.facebooker_config['canvas_page_name']}"
     end
-    
+
     def movie_sort_order(params)
-      sort = Movie.column_names.include?(params[:sort]) ? params[:sort] : 'movies.title'
+      if params[:sort] == 'genre'
+        sort = 'genres.name'
+      else
+        sort = Movie.column_names.include?(params[:sort]) ? params[:sort] : 'movies.title'
+      end
       dir = (params[:dir] && params[:dir].downcase == 'desc') ? 'desc' : 'asc'
       "#{sort} #{dir}"
+    end
+
+    # render 404 errors so the layout looks like the rest of the app
+    def render_404(exception)
+      render :file => "#{RAILS_ROOT}/public/404.html",
+             :layout => 'application',
+             :status => 404
     end
 end

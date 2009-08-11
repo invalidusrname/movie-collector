@@ -25,3 +25,4 @@ config.gem 'chriseppstein-compass',
   :source  => 'http://gems.github.com',
   :version => '>= 0.6.13'
 
+# ActionController::Base.asset_host = "dev.moviecollector.org:4008"

@@ -1,0 +1,4 @@
+:javascript
+  rating = "#{users_movie.rating || 0 }";
+  rated  = "#{users_movie.rating? ? 'true': ''}";
+  new Starbox("rating_#{users_movie.id}", rating, {rated: rated, onRate: myOnRate});

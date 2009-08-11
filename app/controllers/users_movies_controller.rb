@@ -7,7 +7,7 @@ class UsersMoviesController < ApplicationController
   def index
     @users_movies = current_user.users_movies.search(params[:search],
                                                      :order => movie_sort_order(params),
-                                                     :include => :movie,
+                                                     :include => [:movie => :genre],
                                                      :page => params[:page],
                                                      :per_page => 10)
     respond_to do |format|
@@ -52,6 +52,7 @@ class UsersMoviesController < ApplicationController
   def create
     @users_movie = UsersMovie.new(params[:users_movie])
     @users_movie.user = current_user
+    @users_movie.rating = params[:rating_rated]
 
     upc = @users_movie.movie.upc
     movie = Movie.find_by_upc(upc)
@@ -99,5 +100,13 @@ class UsersMoviesController < ApplicationController
       format.xml
       format.fbml
     end
+  end
+  
+  def add_rating
+    m = UsersMovie.find(params[:id])
+    if m
+      m.update_attribute(:rating, params[:rated])
+    end
+    render :json => 'ok'
   end
 end

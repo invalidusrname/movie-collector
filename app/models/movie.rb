@@ -1,6 +1,7 @@
 class Movie < ActiveRecord::Base
   has_many :users, :through => :users_movies
   has_many :users_movies, :dependent => :destroy
+  belongs_to :genre
 
   FORMATS = ['Blu-ray', 'DVD', 'HD-DVD', 'LaserDisc', 'VHS Tape']
   RATINGS = [nil, 1, 2, 3, 4, 5]

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090715162532) do
+ActiveRecord::Schema.define(:version => 20090810171003) do
 
   create_table "box_office_films", :force => true do |t|
     t.string   "title"
@@ -23,6 +23,10 @@ ActiveRecord::Schema.define(:version => 20090715162532) do
     t.datetime "updated_at"
   end
 
+  create_table "genres", :force => true do |t|
+    t.string "name"
+  end
+
   create_table "movies", :force => true do |t|
     t.string   "title"
     t.string   "format"
@@ -33,9 +37,11 @@ ActiveRecord::Schema.define(:version => 20090715162532) do
     t.text     "image"
     t.text     "image_link"
     t.date     "release_date"
-    t.string   "genre"
     t.string   "upc"
+    t.integer  "genre_id"
   end
+
+  add_index "movies", ["genre_id"], :name => "index_movies_on_genre_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false

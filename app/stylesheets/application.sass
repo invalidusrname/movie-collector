@@ -3,13 +3,17 @@
 @import compass/reset.sass
 @import compass/utilities.sass
 
+@import blueprint/modules/debug.sass
+
 +blueprint
 // Remove the scaffolding when you're ready to start doing visual design.
 // Or leave it in if you're happy with how blueprint looks out-of-the-box
 +blueprint-scaffolding
 
+body
+
 #header
-  background-color: white
+  height: 70px
 
 #container
   +container
@@ -22,6 +26,11 @@
 
 #header
   position: relative
+  h1
+    a
+      +unstyled-link
+    a:hover
+      text-decoration: none
   #links
     +horizontal-list
     position: absolute
@@ -34,18 +43,12 @@
     +no-bullets
 
 #content
-  +column(17, true)
+  +column(16, true)
+
 
 #header, #footer, #sidebar
   a
     +hover-link
-
-#header
-  h1
-    a
-      +unstyled-link
-    a:hover
-      text-decoration: none
 
 .fieldWithErrors
   +error
@@ -53,10 +56,25 @@
   display: table
 
 table
+  margin-top: 15px
   +table-scaffolding
-  / +outer-table-borders
-  / +inner-table-borders
-  +alternating-rows-and-columns("#CCC", "#GGG", "#FFF")
+  a
+    +unstyled-link
+
+tr.even td, tr.odd td
+  background: white
+
+tr.even td.thumbnail, td.thumbnail
+  width: 75px
+  background: white
+
+=center-image
+  margin-left: auto
+  margin-right: auto
+  display: block
+
+td.thumbnail img
+  +center-image
 
 #img_holder
   max-width: 480px

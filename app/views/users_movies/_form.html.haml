@@ -18,6 +18,10 @@
 
   #img_holder
 
+  = movie_form.label :genre
+  %br
+  = select_tag 'users_movie[movie_attributes][genre_id]', options_for_select([nil] + Genre.all.collect {|g| [g.name, g.id]}, @users_movie.movie.genre_id), :class => 'text'
+
   %p.text_field
     = movie_form.label :format
     %br
@@ -25,5 +29,8 @@
 
   %p.text_field
     = form.label :rating, {}
-    %br
-    = select_tag 'users_movie[rating]', options_for_select(Movie::RATINGS, @users_movie.rating), :class => 'text', :tabindex => 4
+    %div{:id => @users_movie.rating || 'rating'}
+    :javascript
+      rating = "#{@users_movie.rating || 0 }";
+      rated  = "#{@users_movie.rating? ? 'true': ''}";
+      new Starbox("#{@users_movie.id || 'rating'}", rating, {rated: rated});

@@ -17,6 +17,8 @@ module NavigationHelpers
       new_password_path
     when /the new movie page/i
       new_users_movie_path
+    when /the movie listings page/i
+      users_movies_path
 
     # Add more mappings here.
     # Here is a more fancy example:

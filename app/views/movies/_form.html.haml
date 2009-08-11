@@ -18,6 +18,10 @@
   - unless @movie.new_record? || @movie.image.blank?
     = image_tag(@movie.image)
 
+= form.label :genre
+%br
+= select_tag 'movie[genre_id]', options_for_select([nil] + Genre.all.collect {|g| [g.name, g.id]}, @movie.genre_id), :class => 'text'
+
 %p.text_field
   = form.label :format
   %br
