@@ -6,12 +6,14 @@ javascripts:
   - dragdrop
   - controls
   - application
+  - starbox
 - facebook:
   - facebooker
   - application
 stylesheets:
 - base:
   - compiled/application
+  - starbox
 - print:
   - compiled/print
 - ie:

@@ -1,6 +1,16 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
+function myOnRate(element, memo) {
+  memo.id = element.id.split("_", 2)[1];
+  new Ajax.Request('/users_movies/add_rating', {
+    parameters: memo,
+    onComplete: function(xhr) {
+      // optional callback
+    }
+  });
+}
+
 function focusUPC() {
   $('users_movie_movie_attributes_upc').focus();
 }
