@@ -39,6 +39,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.login  '/login',  :controller => 'Sessions', :action => 'new'
   map.logout '/logout', :controller => 'Sessions', :action => 'destroy'
+  map.signup '/signup', :controller => 'Clearance::Users', :action => 'new'
+  map.forgot_password '/forgot_password', :controller => 'Clearance::Passwords', :action => 'new'
 
   map.resource :session, :member => { :facebook_new => :get, :facebook_create => :get }
 
