@@ -1,4 +1,4 @@
-%h2 Sign up
+%h1= @title = 'Sign up'
 
 - form_for @user do |form|
   = render :partial => '/users/form', :object => form
@@ -6,7 +6,7 @@
 
 %br
 
-%h3 Sign in with Facebook
+%h3 Sign up via Facebook
 = fb_connect_javascript_tag
 = init_fb_connect "XFBML","Api"
 = fb_login_and_redirect facebook_new_session_path

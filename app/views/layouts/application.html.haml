@@ -6,8 +6,7 @@
     /[if IE]
       = stylesheet_link_merged :ie, :media => 'screen, projection'
     = javascript_include_merged :base
-
-    %title= "Movie Collector"
+    %title= @title? "#{@title} - Movie Collector" : "Movie Collector"
   %body
     = fb_connect_javascript_tag
     #container

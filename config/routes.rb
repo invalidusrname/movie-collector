@@ -42,7 +42,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session, :member => { :facebook_new => :get, :facebook_create => :get }
 
-  map.box_office '/top_movies', :controller => 'BoxOfficeFilms'
+  map.box_office '/box_office', :controller => 'BoxOfficeFilms'
   map.my_movies '/my_movies', :controller => 'UsersMovies'
   map.friends_movies '/friends_movies', :controller => 'UsersMovies', :action => 'friends'
 

@@ -1,4 +1,4 @@
-%h2 Sign in
+%h1= @title = 'Login'
 
 - form_for :session, :url => session_path do |form|
   %p.text_field
@@ -13,7 +13,7 @@
     = form.check_box :remember_me
     = form.label :remember_me
   %p.submit_field
-    = form.submit "Sign in", :disable_with => "Please wait..."
+    = form.submit "Log in", :disable_with => "Please wait..."
   %p
     =link_to "Forgot password?", new_password_path
 %br
