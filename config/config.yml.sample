@@ -6,4 +6,7 @@ mail:
   port: CHANGE ME
 hoptoad:
   key: CHANGE ME
- 
+twitter:
+  oauth_callback: http://localhost:3000/oauth_callback
+  oauth_consumer_key: CHANGE ME
+  oauth_consumer_secret: CHANGE ME

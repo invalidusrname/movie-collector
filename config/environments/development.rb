@@ -26,3 +26,5 @@ config.gem 'chriseppstein-compass',
   :version => '>= 0.6.13'
 
 # ActionController::Base.asset_host = "dev.moviecollector.org:4008"
+
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE

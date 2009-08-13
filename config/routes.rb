@@ -51,6 +51,8 @@ ActionController::Routing::Routes.draw do |map|
   # See how all your routes lay out with "rake routes"
 
   map.facebook_post_install '/facebook_welcome', :controller => 'Home'
+  map.oauth_callback '/oauth_callback', :controller => 'sessions', :action => 'oauth_callback'
+  map.twitter_oauth '/oauth/twitter/sign_in', :controller => 'sessions', :action => 'twitter_new'
 
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
