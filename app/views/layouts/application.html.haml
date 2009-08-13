@@ -1,12 +1,15 @@
 !!!
 %html{ 'xmlns' => "http://www.w3.org/1999/xhtml", 'xmlns:fb' => "http://www.facebook.com/2008/fbml"}
   %head
+    %meta{'http-equiv' => 'Content-Type', 'content' => 'text/html; charset=utf-8'}
+    %meta{'name' => 'keywords', 'content' => 'dvd catalog, blu-ray catalog, movie organizer, movie database, movie, dvd, collection'}
+    %meta{'name' => 'description', 'content' => 'MovieCollector allows cataloging and rating of your favorite movies'}
     = stylesheet_link_merged :base, :media => 'screen, projection'
     = stylesheet_link_merged :print, :media => 'print'
     /[if IE]
       = stylesheet_link_merged :ie, :media => 'screen, projection'
     = javascript_include_merged :base
-    %title= @title? "#{@title} - Movie Collector" : "Movie Collector"
+    %title= @title? "#{@title} - Movie Collector" : "Movie Collector - Catalog your collection of movies"
   %body
     = fb_connect_javascript_tag
     #container
