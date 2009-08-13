@@ -29,7 +29,6 @@
           %td= h movie.format
           %td{:id => "rating_#{users_movie.id}" }
           = render :partial => 'movies/rating', :locals => {:users_movie => users_movie}
-          %td= link_to 'Edit', edit_users_movie_path(users_movie)
           %td= link_to 'Delete', users_movie, :confirm => 'Are you sure?', :method => :delete
   %br
   = will_paginate @users_movies
