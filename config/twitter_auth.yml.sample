@@ -1,12 +1,12 @@
 development:
   strategy: oauth
-  oauth_consumer_key: <%= APP_CONFIG['twitter']['oauth_consumer_key'] %>
-  oauth_consumer_secret: <%= APP_CONFIG['twitter']['oauth_consumer_key'] %>
+  oauth_consumer_key: devsecret
+  oauth_consumer_secret: devsecret
   base_url: "https://twitter.com"
   authorize_path: "/oauth/authenticate"
   api_timeout: 10
   remember_for: 14 # days
-  oauth_callback: <%= APP_CONFIG['twitter']['oauth_callback'] %>
+  oauth_callback: "http://localhost:3000/oauth_callback"
 test:
   strategy: oauth
   oauth_consumer_key: testkey
@@ -18,8 +18,8 @@ test:
   oauth_callback: "http://localhost:3000/oauth_callback"
 production:
   strategy: oauth
-  oauth_consumer_key: <%= APP_CONFIG['twitter']['oauth_consumer_key'] %>
-  oauth_consumer_secret: <%= APP_CONFIG['twitter']['oauth_consumer_key'] %>
+  oauth_consumer_key: prodsecret
+  oauth_consumer_secret: prodsecret
   authorize_path: "/oauth/authenticate"
   base_url: "https://twitter.com"
   api_timeout: 10
