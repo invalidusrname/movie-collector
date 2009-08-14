@@ -30,7 +30,7 @@ namespace :db do
   desc "Make symlink for database yaml"
   task :symlink do
     ['database.yml', 'facebooker.yml', 'newrelic.yml', 
-     'amazonrc.txt', 'config.yml'].each do |name|
+     'amazonrc.txt', 'config.yml', 'twitter_auth.yml'].each do |name|
       run "ln -nfs #{shared_path}/#{name} #{release_path}/config/#{name}"
     end
     ['googleef5e9facdc286530.html'].each do |seo_file|
