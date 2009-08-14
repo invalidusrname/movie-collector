@@ -48,6 +48,7 @@ class ApplicationController < ActionController::Base
 
     # render 404 errors so the layout looks like the rest of the app
     def render_404(exception)
+      logger.debug(exception)
       render :file => "#{RAILS_ROOT}/public/404.html",
              :layout => 'application',
              :status => 404
