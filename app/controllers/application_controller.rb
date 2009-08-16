@@ -7,10 +7,11 @@ class ApplicationController < ActionController::Base
 
   before_filter :facebook_login_required, :if => :request_comes_from_facebook?
 
-  rescue_from ActiveRecord::RecordNotFound, ActionView::TemplateError, 
-    ActionController::UnknownAction, ActionController::RoutingError, 
-    :with => :render_404
-  
+  unless Rails.env == 'development'
+    rescue_from ActiveRecord::RecordNotFound, ActionView::TemplateError,
+      ActionController::UnknownAction, ActionController::RoutingError,
+      :with => :render_404
+  end
 
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
