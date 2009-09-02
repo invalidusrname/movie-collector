@@ -17,10 +17,10 @@
         %h1= link_to 'Movie Collector', root_path 
         %ul#links
           %li= link_to 'Source Code', 'http://github.com/invalidusrname/movie_collector'
-      = render :partial => 'layouts/sidebar'
+      = render :partial => 'shared/sidebar'
       #content
-        = render :partial => 'layouts/flashes'
-        = render :partial => 'layouts/no_ie'
+        = render :partial => 'shared/flashes'
+        = render :partial => 'shared/no_ie'
         = yield
       #footer
         &copy; 2009 Matt McMahand

@@ -1,0 +1,10 @@
+#flash
+- if flash[:notice]
+  .notice
+    = html_escape(flash[:notice])
+- if flash[:error] || flash[:failure]
+  .error
+    = html_escape(flash[:error] || flash[:failure])
+- if flash[:success]
+  .success
+    = html_escape(flash[:success])
