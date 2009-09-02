@@ -1,6 +1,6 @@
 set :application, "fb_movie_collector"
 set :repository,  "git@github.com:invalidusrname/movie_collector.git"
-# in case github goes down
+# note: use these settings when github goes down
 # set :repository, '/home/deploy/projects/movie_collector'
 # set :local_repository, "."
 set :scm, :git
