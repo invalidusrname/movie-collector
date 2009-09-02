@@ -6,9 +6,9 @@
 
 %br
 
-%h3 Sign up via Facebook or Twitter
+%h3 Sign up via Facebook
 = fb_connect_javascript_tag
 = init_fb_connect "XFBML","Api"
 = fb_login_and_redirect facebook_new_session_path
 &nbsp; 
-=link_to image_tag('connect_twitter.png'), twitter_oauth_path 
+/ = link_to image_tag('connect_twitter.png'), twitter_oauth_path 
