@@ -15,30 +15,30 @@ Feature: Manage movies
     And I should see "Sample Title"
     And I should see "DVD"
 
-  Scenario: Rate a movie
-    Given I am signed up and confirmed as "email@person.com/password"
-    When I sign in as "email@person.com/password"
-    Given the following movies:
-      |title|format|asin|upc|rating|
-      |Sample Movie|DVD|1234|1234|4|
-    When I sign in as "email@person.com/password"
-    And I am on the movie listings page
-    Then I rate "Sample Movie" with a 5
-    Then "Sample Movie" should have a rating of 5
+  # Scenario: Rate a movie
+  #   Given I am signed up and confirmed as "email@person.com/password"
+  #   When I sign in as "email@person.com/password"
+  #   Given the following movies:
+  #     |title|format|asin|upc|
+  #     |Sample Movie|DVD|1234|1234|
+  #   When I sign in as "email@person.com/password"
+  #   And I am on the movie listings page
+  #   Then I rate "Sample Movie" with a 5
+  #   Then "Sample Movie" should have a rating of 5
 
-  Scenario: Delete movie
-    Given I am signed up and confirmed as "email@person.com/password"
-    When I sign in as "email@person.com/password"
-    Given the following movies:
-      |title|format|asin|upc|
-      |Title 1|DVD|1234|1234|
-      |Title 2|DVD|1234|1234|
-      |Title 3|DVD|1234|1234|
-      |Title 4|DVD|1234|1234|
-    When I delete the 3rd movie
-    Then I should see the following movies:
-      |title|format|asin|upc|
-      |Title 1|DVD|1234|1234|
-      |Title 2|DVD|1234|1234|
-      |Title 4|DVD|1234|1234|
-
+  # Scenario: Delete movie
+  #   Given I am signed up and confirmed as "email@person.com/password"
+  #   When I sign in as "email@person.com/password"
+  #   Given the following movies:
+  #     |title|format|asin|upc|
+  #     |Title 1|DVD|1234|1234|
+  #     |Title 2|DVD|1234|1234|
+  #     |Title 3|DVD|1234|1234|
+  #     |Title 4|DVD|1234|1234|
+  #   When I delete the 3rd movie
+  #   Then I should see the following movies:
+  #     |title|format|asin|upc|
+  #     |Title 1|DVD|1234|1234|
+  #     |Title 2|DVD|1234|1234|
+  #     |Title 4|DVD|1234|1234|
+  # 

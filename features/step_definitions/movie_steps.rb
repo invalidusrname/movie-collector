@@ -1,9 +1,6 @@
 Given /^the following movies:$/ do |movies|
-  user = User.find(session[:user_id])
   movies.hashes.each do |hash|
-    rating = hash.delete("rating")
-    user.movies << Movie.create!(hash)
-    user.user_movies.last.update_attribute(:rating, rating)
+    Movie.create!(hash)
   end
 end
 
