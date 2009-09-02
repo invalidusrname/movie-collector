@@ -1,5 +1,8 @@
 set :application, "fb_movie_collector"
 set :repository,  "git@github.com:invalidusrname/movie_collector.git"
+# in case github goes down
+# set :repository, '/home/deploy/projects/movie_collector'
+# set :local_repository, "."
 set :scm, :git
 set :rake, '/opt/ruby-enterprise-1.8.6-20090610/bin/rake'
 set :user, 'inali'
