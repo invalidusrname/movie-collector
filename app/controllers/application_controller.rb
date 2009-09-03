@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :facebook_login_required, :if => :request_comes_from_facebook?
 
-  unless Rails.env == 'development'
+  unless Rails.env.development?
     rescue_from ActiveRecord::RecordNotFound, ActionView::TemplateError,
       ActionController::UnknownAction, ActionController::RoutingError,
       :with => :render_404
@@ -49,6 +49,7 @@ class ApplicationController < ActionController::Base
 
     # render 404 errors so the layout looks like the rest of the app
     def render_404(exception)
+      notify_hoptoad(exception)
       logger.debug(exception)
       render :file => "#{RAILS_ROOT}/public/404.html",
              :layout => 'application',

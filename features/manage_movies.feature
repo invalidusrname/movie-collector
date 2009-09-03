@@ -15,6 +15,8 @@ Feature: Manage movies
     And I should see "Sample Title"
     And I should see "DVD"
 
+  # incomplete
+
   # Scenario: Rate a movie
   #   Given I am signed up and confirmed as "email@person.com/password"
   #   When I sign in as "email@person.com/password"
