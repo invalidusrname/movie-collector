@@ -1,0 +1,24 @@
+%h1= @title = 'Listing Users'
+
+- if @users.size > 0
+  = will_paginate @users
+  %table
+    %thead
+      %tr
+        %th
+          = sortable_link 'ID', :column => 'id'
+        %th
+          = sortable_link 'Email', :column => 'email'
+        %th Total Movies
+    %tbody
+      - @users.each do |user|
+        %tr{:class => cycle('odd', 'even')}
+          %td= h user.id
+          %td= h user.email
+          %td= h user.users_movies.count
+  %br
+  = will_paginate @users
+  %b= "#{@users.total_entries} total users"
+- else
+  %p
+    You don't have any users.

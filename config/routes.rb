@@ -48,6 +48,10 @@ ActionController::Routing::Routes.draw do |map|
   map.my_movies '/my_movies', :controller => 'UsersMovies'
   map.friends_movies '/friends_movies', :controller => 'UsersMovies', :action => 'friends'
 
+  map.namespace :admin do |admin|
+    admin.resources :users
+  end
+
   # See how all your routes lay out with "rake routes"
 
   map.facebook_post_install '/facebook_welcome', :controller => 'Home'
