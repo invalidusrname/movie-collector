@@ -28,11 +28,10 @@ namespace :deploy do
   %w(start restart).each { |name| task name, :roles => :app do mod_rails.restart end }
 end
 
-
 namespace :db do
   desc "Make symlink for database yaml"
   task :symlink do
-    ['database.yml', 'facebooker.yml', 'newrelic.yml', 
+    ['database.yml', 'facebooker.yml', 'newrelic.yml',
      'amazonrc.txt', 'config.yml', 'twitter_auth.yml'].each do |name|
       run "ln -nfs #{shared_path}/#{name} #{release_path}/config/#{name}"
     end
@@ -42,8 +41,6 @@ namespace :db do
   end
 end
 
-after "deploy:update_code", "db:symlink"
-
 namespace :assets do
   desc "Compiles stylesheets via compass"
   task :compile do
@@ -52,4 +49,22 @@ namespace :assets do
   end
 end
 
-after "deploy:update_code", "assets:compile"
+# http://gist.github.com/45318
+namespace :deploy do
+  desc "Make sure there is something to deploy"
+  task :check_revision, :roles => [:web] do
+    unless `git rev-parse HEAD` == `git rev-parse origin/master`
+      puts ""
+      puts "  \033[1;33m**************************************************\033[0m"
+      puts "  \033[1;33m* WARNING: HEAD is not the same as origin/master *\033[0m"
+      puts "  \033[1;33m**************************************************\033[0m"
+      puts ""
+      exit
+    end
+  end
+end
+
+before  'deploy', 'deploy:check_revision'
+
+after   'deploy:update_code', 'db:symlink'
+after   'deploy:update_code', 'assets:compile'
