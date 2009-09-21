@@ -14,7 +14,7 @@
     = fb_connect_javascript_tag
     #container
       #header
-        %h1= link_to 'Movie Collector', root_path 
+        = link_to 'Movie Collector', root_path, :id => 'logo' 
         %ul#links
           %li= link_to 'Source Code', 'http://github.com/invalidusrname/movie_collector'
       = render :partial => 'shared/sidebar'

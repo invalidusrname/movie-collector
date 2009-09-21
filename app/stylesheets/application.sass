@@ -12,9 +12,6 @@
 
 body
 
-#header
-  height: 70px
-
 #container
   +container
 
@@ -25,8 +22,11 @@ body
   +column(24)
 
 #header
+  height: 70px
   position: relative
-  h1
+  #logo
+    font-size: 36px
+    +unstyled-link
     a
       +unstyled-link
     a:hover
