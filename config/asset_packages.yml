@@ -1,10 +1,6 @@
 ---
 javascripts:
 - base:
-  - prototype
-  - effects
-  - dragdrop
-  - controls
   - application
   - starbox
 - facebook:
