@@ -26,3 +26,4 @@
         = yield
       #footer
         &copy; 2009 Matt McMahand
+        = render :partial => 'shared/analytics' if Rails.env == 'production'
