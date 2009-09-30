@@ -2,7 +2,6 @@
 javascripts:
 - base:
   - application
-  - starbox
 - facebook:
   - facebooker
   - application
