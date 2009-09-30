@@ -8,7 +8,6 @@ javascripts:
 stylesheets:
 - base:
   - compiled/application
-  - starbox
 - print:
   - compiled/print
 - ie:
