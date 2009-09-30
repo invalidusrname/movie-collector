@@ -22,4 +22,4 @@ config.action_mailer.smtp_settings = {
   :domain => APP_CONFIG['mail']['domain'],
 }
 
-HOST = "moviecollector.org"
+HOST = APP_CONFIG['mail']['domain']
