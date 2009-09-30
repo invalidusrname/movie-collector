@@ -3,6 +3,27 @@ require 'hpricot'
 
 task :box_office => ['box_office:top_films', 'box_office:this_week']
 
+# todo incomplete
+desc 'updates movies coming out for purchase this week'
+task :retail => :environment do
+  
+  month = ENV['month'] || Date.today.month
+  year = ENV['year']   || Date.today.year
+  
+  doc = Hpricot(open("http://homevideo.about.com/library/blDVDreleases#{year}.htm"))
+
+  release_date_links = []
+
+  (doc/"#articlebody p font a").each do |element|
+    href = element[:href]
+    if href =~ /a\.htm$/
+      link_date = href.match(//)
+      date = Date.today.cweek + 1
+      release_date_links << href
+    end
+  end
+end
+
 namespace :box_office do
 
   desc 'updates top grossing films for the week'
