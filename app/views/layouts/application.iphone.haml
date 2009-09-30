@@ -1,0 +1,27 @@
+!!!
+%html{ 'xmlns' => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{'http-equiv' => 'Content-Type', 'content' => 'text/html; charset=utf-8'}
+    %meta{'name' => "viewport", 'content' => 'width = device-width, user-scalable = no'}
+    = stylesheet_link_merged :iphone, :media => 'screen, projection'
+
+    %script{:type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"}  
+    = javascript_include_merged :iphone
+
+    :javascript
+      $.jQTouch({
+        fullScreen: true,
+        statusBar: 'black-translucent'
+      });
+
+    %title= @title? "#{@title} - Movie Collector" : "Movie Collector - Catalog your collection of movies"
+  %body
+    #container
+      .toolbar
+        = link_to 'Movie Collector', root_path, :id => 'logo' 
+      #content
+        = render :partial => 'shared/flashes.html'
+        = yield
+      #footer.info
+        %b &copy; 2009 Matt McMahand
+        = render :partial => '/shared/analytics' if Rails.env == 'production'

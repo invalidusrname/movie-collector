@@ -6,6 +6,8 @@ javascripts:
 - facebook:
   - facebooker
   - application
+- iphone:
+  - application
 stylesheets:
 - base:
   - compiled/application
@@ -16,3 +18,5 @@ stylesheets:
   - compiled/ie
 - facebook:
   - compiled/facebook
+- iphone:
+  - compiled/iphone
