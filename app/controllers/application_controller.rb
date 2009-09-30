@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   include FacebookerAuthentication::Controller
 
   before_filter :facebook_login_required, :if => :request_comes_from_facebook?
+  before_filter :adjust_format_for_iphone
 
   unless Rails.env.development?
     rescue_from ActiveRecord::RecordNotFound, ActionView::TemplateError,
@@ -54,5 +55,12 @@ class ApplicationController < ActionController::Base
       render :file => "#{RAILS_ROOT}/public/404.html",
              :layout => 'application',
              :status => 404
+    end
+
+  private
+    def adjust_format_for_iphone
+      if request.user_agent.include?("iPhone")
+        request.format = :iphone
+      end
     end
 end
