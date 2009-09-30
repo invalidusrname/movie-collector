@@ -8,8 +8,7 @@
     = stylesheet_link_merged :print, :media => 'print'
     /[if IE]
       = stylesheet_link_merged :ie, :media => 'screen, projection'
-    %script{:type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/prototype/1.6.1.0/prototype.js"}
-    %script{:type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/scriptaculous/1.8.2/scriptaculous.js"}
+    %script{:type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"}  
     = javascript_include_merged :base
     %title= @title? "#{@title} - Movie Collector" : "Movie Collector - Catalog your collection of movies"
   %body

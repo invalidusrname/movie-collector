@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => 'home'
 
-  map.resources :movies
+  map.resources :movies, :collection => {:amazon_search => :get}
   map.resources :users_movies, :collection => {:recently_added => :get}, :member => {:add_rating => :post}
 
   map.login  '/login',  :controller => 'Sessions', :action => 'new'

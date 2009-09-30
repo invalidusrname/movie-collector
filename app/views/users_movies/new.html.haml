@@ -8,4 +8,8 @@
 = link_to 'Back', movies_path
 
 :javascript
-  focusUPC();
+  $(function() {
+    $('#users_movie_movie_attributes_title').focus();
+    $('#users_movie_movie_attributes_title').change(searchTitle);
+    $('#img_holder').click(imageClick);
+  });  

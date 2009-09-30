@@ -11,19 +11,35 @@ function myOnRate(element, memo) {
   });
 }
 
-function focusUPC() {
-  $('users_movie_movie_attributes_upc').focus();
+
+function searchTitle(event) {
+  var title = this.value;
+  
+  if (title.length < 3) {
+    return false;
+  }
+  
+  $.getJSON('/movies/amazon_search', {title: title}, function() {
+    removeImages();
+    $('#img_holder').append('<ul></ul>');
+
+    jQuery.each(json, function(i, data) {
+      var img = "<img src='" + data.thumbnail  + "' title='" + data.title + 
+                  "' upc='" + data.upc + "' format='" + data.format + "' />";
+      $('#img_holder ul').append('<li>' + img + '</li');
+    });
+  });
 }
 
 function upcResponse(json) {
   if(json && json['asin']) {
-    $('movie_asin').value   = json['asin'];
-    $('movie_title').value  = json['title'];
-    $('movie_format').value = json['format'];
-    $('img_holder').appendChild(new Element('img', { 'src': json['image'] }));
-    $('movie_image').value = json['image'];
-    $('movie_image_link').value  = json['image_link'];
-    $('movie_thumbnail').value  = json['thumbnail'];
+    $('#movie_asin').value   = json['asin'];
+    $('#movie_title').value  = json['title'];
+    $('#movie_format').value = json['format'];
+    $('#img_holder').append(new Element('img', { 'src': json['image'] }));
+    $('#movie_image').value = json['image'];
+    $('#movie_image_link').value  = json['image_link'];
+    $('#movie_thumbnail').value  = json['thumbnail'];
   }
 }
 
@@ -34,26 +50,16 @@ function userUpcResponse(json) {
 
     removeImages();
 
-    $('img_holder').appendChild(new Element('img', { 'src': json['image'] }));
+    $('#img_holder').append(new Element('img', { 'src': json['image'] }));
   }
 }
 
-function userTitleResponse(json) {
-  if(json) {
-    elements = $('img_holder').childElements();
-
-    removeImages();
-    
-    $('img_holder').appendChild(new Element('ul', { 'id': 'aaa'}));
-    
-    json.each(function(s) {
-      json = Object.toJSON(s);
-      json = json.evalJSON();
-      _onclick = "updateMovieFields('" + escape(json['title']) + "','" +  json['upc'] + "','" + json['format'] + "');"
-      e = new Element('li', {'onclick':  _onclick});
-      e.appendChild(new Element('img', { 'src': json['thumbnail']}));
-      $('aaa').appendChild(e);
-    });
+function imageClick(event) {
+  if(event.target && event.target.tagName == 'IMG') {
+    var img = event.target;
+    $('#users_movie_movie_attributes_title').attr('value', unescape(img.title));
+    $('#users_movie_movie_attributes_upc').attr('value', img.getAttribute('upc'));
+    $('#users_movie_movie_attributes_format').attr('value', img.getAttribute('format'));
   }
 }
 
@@ -64,12 +70,9 @@ function updateMovieFields(title, upc, format) {
 }
 
 function removeImages() {
-  elements = $('img_holder').childElements();
-
-  if(elements) {
-    elements.each(function(s) {
-      s.remove();
-    });
+  var tmp = $('#img_holder');
+  if (tmp) {
+    tmp.empty();
   }
 }
 

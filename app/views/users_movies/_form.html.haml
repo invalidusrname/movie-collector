@@ -4,15 +4,14 @@
 
 - form.fields_for :movie do |movie_form|
   %p.text_field
-    = movie_form.label :upc, "UPC"
-    %br
-    = movie_form.text_field :upc, :class => 'text', :tabindex => 1
-    = observe_field :users_movie_movie_attributes_upc, :url => { :controller => :movies, :action => :amazon_search }, :complete => "userUpcResponse(request.responseJSON);", :with => 'upc'
-  %p.text_field
     = movie_form.label :title
     %br
     = movie_form.text_field :title, :class => 'text', :tabindex => 2
-    = observe_field :users_movie_movie_attributes_title, :url => { :controller => :movies, :action => :amazon_search }, :complete => "userTitleResponse(request.responseJSON);", :with => 'title'
+
+  %p.text_field
+    = movie_form.label :upc, "UPC"
+    %br
+    = movie_form.text_field :upc, :class => 'text', :tabindex => 1
 
   %h4 Search Results
 
@@ -33,4 +32,4 @@
     :javascript
       rating = "#{@users_movie.rating || 0 }";
       rated  = "#{@users_movie.rating? ? 'true': ''}";
-      new Starbox("#{@users_movie.id || 'rating'}", rating, {rated: rated});
+      //new Starbox("#{@users_movie.id || 'rating'}", rating, {rated: rated});
