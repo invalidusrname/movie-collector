@@ -16,15 +16,14 @@ config.action_controller.allow_forgery_protection    = false
 config.action_mailer.delivery_method = :test
 
 
-config.gem "cucumber",    :lib => false,        :version => ">=0.3.9"
-config.gem "webrat",      :lib => false,        :version => ">=0.4.4"
-config.gem "rspec",       :lib => false,        :version => ">=1.2.6"
-config.gem "rspec-rails", :lib => 'spec/rails', :version => ">=1.2.6"
+config.gem "cucumber",    :lib => false,        :version => ">= 0.3.9"
+config.gem "webrat",      :lib => false,        :version => ">= 0.4.4"
+config.gem "rspec",       :lib => false,        :version => ">= 1.2.6"
+config.gem "rspec-rails", :lib => 'spec/rails', :version => ">= 1.2.6"
 
-config.gem 'thoughtbot-factory_girl',
-  :lib     => 'factory_girl',
-  :source  => "http://gems.github.com", 
-  :version => '1.2.1'
+config.gem 'factory_girl',
+  :source  => "http://gemcutter.org", 
+  :version => '>= 1.2.2'
 
 HOST = "localhost"
   

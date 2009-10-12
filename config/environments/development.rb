@@ -20,10 +20,9 @@ config.action_mailer.raise_delivery_errors = false
 
 HOST = "movie.local"
 
-config.gem 'chriseppstein-compass',
-  :lib     => 'compass',
-  :source  => 'http://gems.github.com',
-  :version => '>= 0.6.13'
+config.gem 'compass',
+  :source  => 'http://gemcutter.org',
+  :version => '>= 0.8.17'
 
 # ActionController::Base.asset_host = "dev.moviecollector.org:4008"
 

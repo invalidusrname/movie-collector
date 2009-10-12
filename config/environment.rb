@@ -19,10 +19,9 @@ Rails::Initializer.run do |config|
   config.gem 'json'
   config.gem "newrelic_rpm"
 
-  config.gem "thoughtbot-clearance",
-    :lib     => 'clearance',
-    :source  => 'http://gems.github.com',
-    :version => '0.6.9'
+  config.gem "clearance",
+    :source  => 'http://gemcutter.org',
+    :version => '>= 0.6.9'
 
   config.gem "haml",
     :lib     => 'haml',
@@ -34,14 +33,12 @@ Rails::Initializer.run do |config|
 
   config.gem 'ruby-debug'
 
-  config.gem "mmangino-facebooker",
-    :lib     => "facebooker",
-    :source  => 'http://gems.github.com',
+  config.gem "facebooker",
+    :source  => 'http://gemcutter.org',
     :version => '>= 1.0.45'
 
-  config.gem 'mislav-will_paginate',
-    :lib => 'will_paginate',
-    :source => 'http://gems.github.com',
+  config.gem 'will_paginate',
+    :source => 'http://gemcutter.org',
     :version => '~> 2.3.11'
 
   # config.gem 'twitter-auth', :lib => 'twitter_auth'
