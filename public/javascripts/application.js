@@ -19,7 +19,7 @@ function searchTitle(event) {
     return false;
   }
   
-  $.getJSON('/movies/amazon_search', {title: title}, function() {
+  $.getJSON('/movies/amazon_search', {title: title}, function(json) {
     removeImages();
     $('#img_holder').append('<ul></ul>');
 
