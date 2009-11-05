@@ -10,14 +10,14 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 DO_NOT_REPLY = APP_CONFIG['mail']['no_reply']
 
-require 'rack/tidy'
+# require 'rack/tidy'
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
 
-  config.middleware.use Rack::Tidy
+  # config.middleware.use Rack::Tidy
 
   config.gem 'hpricot'
   config.gem 'json'
