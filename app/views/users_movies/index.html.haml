@@ -29,7 +29,7 @@
           %td= h movie.title
           %td= h movie.genre.name unless movie.genre.nil?
           %td= h movie.format
-          %td= h users_movie.created_at.to_date
+          %td= h users_movie.created_at.to_date unless users_movie.created_at.nil?
           %td{:id => "rating_#{users_movie.id}" }
           = render :partial => 'movies/rating', :locals => {:users_movie => users_movie}
           %td= link_to 'Delete', users_movie, :confirm => 'Are you sure?', :method => :delete
