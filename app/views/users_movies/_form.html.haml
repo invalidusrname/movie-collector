@@ -6,25 +6,26 @@
   %p.text_field
     = movie_form.label :title
     %br
-    = movie_form.text_field :title, :class => 'text', :tabindex => 2
+    = movie_form.text_field :title, :class => 'text'
 
   %p.text_field
     = movie_form.label :upc, "UPC"
     %br
-    = movie_form.text_field :upc, :class => 'text', :tabindex => 1
+    = movie_form.text_field :upc, :class => 'text'
 
   %h4 Search Results
 
   #img_holder
 
-  = movie_form.label :genre
-  %br
-  = select_tag 'users_movie[movie_attributes][genre_id]', options_for_select([nil] + Genre.all.collect {|g| [g.name, g.id]}, @users_movie.movie.genre_id), :class => 'text'
+  %p.text_field
+    = movie_form.label :genre
+    %br
+    = select_tag 'users_movie[movie_attributes][genre_id]', options_for_select([nil] + Genre.all.collect {|g| [g.name, g.id]}, @users_movie.movie.genre_id), :class => 'text'
 
   %p.text_field
     = movie_form.label :format
     %br
-    = select_tag 'users_movie[movie_attributes][format]', options_for_select(Movie::FORMATS, @users_movie.movie.format), :class => 'text', :tabindex => 3
+    = select_tag 'users_movie[movie_attributes][format]', options_for_select(Movie::FORMATS, @users_movie.movie.format), :class => 'text'
 
   %p.text_field
     = form.label :rating, {}
