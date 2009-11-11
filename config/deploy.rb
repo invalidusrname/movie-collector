@@ -4,7 +4,7 @@ set :repository,  "git@github.com:invalidusrname/movie_collector.git"
 # set :repository, '/home/deploy/projects/movie_collector'
 # set :local_repository, "."
 set :scm, :git
-set :rake, '/opt/ruby-enterprise-1.8.6-20090610/bin/rake'
+set :rake, '/opt/ree/bin/rake'
 set :user, 'inali'
 set :use_sudo, false
 set :user, 'deploy'
