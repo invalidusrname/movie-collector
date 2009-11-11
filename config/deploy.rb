@@ -1,4 +1,4 @@
-set :application, "fb_movie_collector"
+set :application, "movie_collector"
 set :repository,  "git@github.com:invalidusrname/movie_collector.git"
 # note: use these settings when github goes down
 # set :repository, '/home/deploy/projects/movie_collector'
