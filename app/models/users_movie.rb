@@ -5,7 +5,7 @@ class UsersMovie < ActiveRecord::Base
 
   validates_associated :movie
   validates_inclusion_of :rating, :in => Movie::RATINGS
-  
+
   accepts_nested_attributes_for :movie
 
   def loan_movie_to(user)
@@ -15,10 +15,14 @@ class UsersMovie < ActiveRecord::Base
   def return_movie
     self.borrower = nil
   end
-  
-  def self.search(search, options = {})
+
+  def self.search(search, search_options = {}, options = {})
     if search.to_s.length > 0
-      options.merge!(:conditions => ['movies.title LIKE ?', "%#{search}%"])
+      if search_options.has_key? :starts_with
+        options.merge!(:conditions => ['movies.title LIKE ?', "#{search}%"])
+      else
+        options.merge!(:conditions => ['movies.title LIKE ?', "%#{search}%"])
+      end
     end
     paginate(:all, options)
   end

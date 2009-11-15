@@ -5,11 +5,22 @@ class UsersMoviesController < ApplicationController
   # GET /users_movies.xml
   # GET /users_movies.fbml
   def index
-    @users_movies = current_user.users_movies.search(params[:search],
-                                                     :order => movie_sort_order(params),
-                                                     :include => [:movie => :genre],
-                                                     :page => params[:page],
-                                                     :per_page => 10)
+    options = { :order => movie_sort_order(params),
+                :include =>  [:movie => :genre],
+                :page => params[:page],
+                :per_page => 10 }
+
+    search_options = {}
+
+    if params[:letter].present? && params[:letter] != 'All'
+      search_options[:starts_with] = true
+      term = params[:letter]
+    end
+
+    term ||= params[:search]
+
+    @users_movies = current_user.users_movies.search(term, search_options, options)
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @users_movies }
@@ -19,7 +30,7 @@ class UsersMoviesController < ApplicationController
 
   def recently_added
     @users_movies = current_user.users_movies.all(:include => :movie, :limit => 5, :order => 'users_movies.id DESC')
-    
+
     respond_to do |format|
       format.html
       format.fbml
@@ -80,7 +91,7 @@ class UsersMoviesController < ApplicationController
       end
     end
   end
-  
+
   # DELETE /users_movies/1
   # DELETE /users_movies/1.xml
   def destroy
@@ -92,16 +103,16 @@ class UsersMoviesController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   def show
     @users_movie = current_user.users_movies.find(params[:id])
     respond_to do |format|
-      format.html 
+      format.html
       format.xml
       format.fbml
     end
   end
-  
+
   def add_rating
     m = UsersMovie.find(params[:id])
     if m

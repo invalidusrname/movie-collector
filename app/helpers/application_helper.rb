@@ -37,4 +37,19 @@ module ApplicationHelper
     return date.strftime('%A, %B %e') if days.abs < 182
     return date.strftime('%A, %B %e, %Y')
   end
+
+  LETTERS = ('A'..'Z').entries + ['All']
+
+   def navigation_links(current_letter, controller)
+     returning [] do |html|
+       LETTERS.each do |letter|
+         if letter == current_letter
+           html << ' '+ content_tag( :span, letter, :class => 'current' )
+         else
+           html << ' '+ link_to( letter, :controller => controller, :letter => letter )
+         end
+       end
+     end.join
+   end
+
 end
