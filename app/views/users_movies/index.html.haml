@@ -8,6 +8,7 @@
   = navigation_links('a', controller.controller_name)
   %br
   %br
+  = link_to 'All', users_movies_path(:max_pages => 10000)
   = will_paginate @users_movies
   %table
     %thead

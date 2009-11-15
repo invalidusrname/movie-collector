@@ -8,7 +8,7 @@ class UsersMoviesController < ApplicationController
     options = { :order => movie_sort_order(params),
                 :include =>  [:movie => :genre],
                 :page => params[:page],
-                :per_page => 10 }
+                :per_page => params[:max_pages] || 10 }
 
     search_options = {}
 
