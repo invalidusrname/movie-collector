@@ -31,4 +31,4 @@ config.action_mailer.delivery_method = :test
 
 HOST = 'test'
 
-config.gem 'test-unit', :lib => 'test/unit'
+# config.gem 'test-unit', :lib => 'test/unit'
