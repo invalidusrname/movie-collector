@@ -5,7 +5,7 @@
 = error_messages_for :user,  :class => 'error'
 
 - form_for(:user, |
-    :url => user_password_path(@user, :token    => @user.token), |
+    :url => user_password_path(@user, :token => @user.confirmation_token), |
     :html => { :method => :put }) do |form| |
   %p.password_field
     = form.label :password, "Choose password"

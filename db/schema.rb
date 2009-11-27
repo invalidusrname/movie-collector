@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090813193420) do
+ActiveRecord::Schema.define(:version => 20091127171407) do
 
   create_table "box_office_films", :force => true do |t|
     t.string   "title"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20090813193420) do
     t.string   "profile_image_url"
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"
+    t.string   "confirmation_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

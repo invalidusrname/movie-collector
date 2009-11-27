@@ -6,6 +6,7 @@ tmp/**/*
 .DS_Store
 doc/api
 doc/app
+doc/features.html
 config/database.yml
 config/amazonrc.txt
 config/facebooker.yml
