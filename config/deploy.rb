@@ -64,6 +64,23 @@ namespace :deploy do
   end
 end
 
+# http://gist.github.com/237699
+# namespace :deploy do
+#   desc 'Bundle and minify the JS and CSS files'
+#   task :precache_assets, :roles => :app do
+#     root_path    = File.expand_path(File.dirname(__FILE__) + '/..')
+#     jammit_path  = Dir["#{root_path}/vendor/gems/jammit-*/bin/jammit"].first
+#     yui_lib_path = Dir["#{root_path}/vendor/gems/yui-compressor-*/lib"].first
+#     assets_path  = "#{root_path}/public/assets"
+#
+#     # Precaching assets
+#     run_locally "ruby -I#{yui_lib_path} #{jammit_path}"
+#     # Uploading prechached assets
+#     top.upload assets_path, "#{current_release}/public", :via => :scp, :recursive => true
+#   end
+# end
+
+
 before  'deploy', 'deploy:check_revision'
 
 after   'deploy:update_code', 'db:symlink'
