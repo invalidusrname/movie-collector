@@ -19,3 +19,5 @@ public/stylesheets/compiled/*
 public/stylesheets/*packaged*
 public/javascripts/*packaged*
 vendor/gems
+rerun.txt
+mkmf.log
