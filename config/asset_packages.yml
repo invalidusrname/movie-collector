@@ -9,7 +9,7 @@ javascripts:
   - facebooker
   - application
 - dev:
-  - dev/jquery-1.4
+  - dev/jquery-1.4.1
 stylesheets:
 - base:
   - compiled/style
