@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_filter :require_admin, :except => 'amazon_search'
+  before_filter :require_admin, :except => ['amazon_search', 'index']
 
   # GET /movies
   # GET /movies.xml
@@ -91,7 +91,7 @@ class MoviesController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   def amazon_search
     if params[:title].present?
       m = Movie.search_titles_on_amazon(params[:title])

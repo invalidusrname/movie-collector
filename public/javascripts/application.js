@@ -11,20 +11,19 @@ function myOnRate(element, memo) {
   });
 }
 
-
 function searchTitle(event) {
   var title = this.value;
-  
+
   if (title.length < 3) {
     return false;
   }
-  
-  $.getJSON('/movies/amazon_search', {title: title}, function(json) {
+
+  return $.getJSON('/movies/amazon_search', {title: title}, function(json) {
     removeImages();
     $('#img_holder').append('<ul></ul>');
 
     jQuery.each(json, function(i, data) {
-      var img = "<img src='" + data.thumbnail  + "' title='" + data.title + 
+      var img = "<img src='" + data.thumbnail  + "' title='" + data.title +
                   "' upc='" + data.upc + "' format='" + data.format + "' />";
       $('#img_holder ul').append('<li>' + img + '</li');
     });
@@ -77,8 +76,7 @@ function removeImages() {
 }
 
 function fbNotLoggedIn() {
-  $('test').innerHTML =
-     '<fb:login-button></fb:login-button>'
+  $('test').innerHTML = '<fb:login-button></fb:login-button>';
   FB.XFBML.Host.parseDomTree();
 }
 
@@ -89,7 +87,6 @@ function fbLoggedIn() {
   FB.XFBML.Host.parseDomTree();
 }
 
-
 function submitMovie(form){
   if(form.publish_to_facebook.value == 1) {
     templates = { "title": form.movie_title.value, "url": form.amazon_page_url.value,
@@ -98,3 +95,34 @@ function submitMovie(form){
     FB.Connect.showFeedDialog(90781317571, templates);
   }
 }
+
+$(document).ready(function(){
+  jQuery('ul.sf-menu').superfish();
+});
+
+$(document).ready((function () {
+  var tabContainers = $('div.tabs > div');
+  tabContainers.hide().filter(':first').show();
+
+  $('div.tabs ul.tabNavigation a').click(function () {
+    tabContainers.hide();
+    tabContainers.filter(this.hash).show();
+    $('div.tabs ul.tabNavigation a').removeClass('selected');
+    $(this).addClass('selected');
+    return false;
+  }).filter(':first').click();
+}));
+
+
+$(document).ready(function () {
+  var tabContainers = $('div.loginpane > div');
+  tabContainers.hide().filter(':one').show();
+
+  $('div.loginpane ul.loginNavigation a').click(function () {
+    tabContainers.hide();
+    tabContainers.filter(this.hash).show();
+    $('div.loginpane ul.loginNavigation a').removeClass('selected');
+    $(this).addClass('selected');
+    return false;
+    }).filter(':one').click();
+});

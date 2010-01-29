@@ -1,5 +1,5 @@
 set :application, "movie_collector"
-set :repository,  "git@github.com:invalidusrname/movie_collector.git"
+set :repository,  "git@github.com:invalidusrname/movie-collector.git"
 # note: use these settings when github goes down
 # set :repository, '/home/deploy/projects/movie_collector'
 # set :local_repository, "."
@@ -14,6 +14,12 @@ set :deploy_to, "/home/#{user}/www/#{application}"
 role :app, "moviecollector.org"
 role :web, "moviecollector.org"
 role :db,  "moviecollector.org", :primary => true
+
+
+task :ruby_info, :roles => :app do
+  run 'gem env'
+  run 'ruby -v'
+end
 
 namespace :mod_rails do
   desc <<-DESC

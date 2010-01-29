@@ -2,12 +2,17 @@
 javascripts:
 - base:
   - application
+  - jquery.easing.min
+  - superfish
+  - facebooker
 - facebook:
   - facebooker
   - application
+- dev:
+  - dev/jquery-1.4
 stylesheets:
 - base:
-  - compiled/application
+  - compiled/style
 - print:
   - compiled/print
 - ie:

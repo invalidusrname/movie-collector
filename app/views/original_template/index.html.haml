@@ -1,0 +1,464 @@
+%p
+  You are using named yields. Here are examples how to use them:
+
+- content_for :topnav do
+  #topnav
+    %ul.sf-menu
+      %li.cat-item.cat-item-1
+        %a{ :href => "http://phiyaz.turkhitbox.com/category/celebrities", :title => "View all posts filed under Celebrities" }
+          Celebrities
+        %ul.children
+          %li.cat-item.cat-item-17
+            %a{ :href => "http://phiyaz.turkhitbox.com/category/celebrities/audrina-patridge", :title => "View all posts filed under Audrina Patridge" }
+              Audrina Patridge
+          %li.cat-item.cat-item-19
+            %a{ :href => "http://phiyaz.turkhitbox.com/category/celebrities/elisabetta-gregoraci", :title => "View all posts filed under Elisabetta Gregoraci" }
+              Elisabetta Gregoraci
+      %li.cat-item.cat-item-16
+        %a{ :href => "http://phiyaz.turkhitbox.com/category/cool-stuff", :title => "View all posts filed under Cool Stuff" }
+          Cool Stuff
+      %li.cat-item.cat-item-22
+        %a{ :href => "http://phiyaz.turkhitbox.com/category/funny", :title => "View all posts filed under Funny" }
+          Funny
+      %li.cat-item.cat-item-14
+        %a{ :href => "http://phiyaz.turkhitbox.com/category/movies", :title => "View all posts filed under Movies" }
+          Movies
+      %li.cat-item.cat-item-31
+        %a{ :href => "http://phiyaz.turkhitbox.com/category/scary", :title => "View all posts filed under Scary" }
+          Scary
+      %li#searchform
+        %form{ :method => "get", :action => "http://phiyaz.turkhitbox.com" }
+          %input#s.searchword{ :name => "s", :size => "20", :type => "text", :value => "" }
+          %input{ :name => "searchsubmit", :title => "Search", :type => "hidden" }
+
+- content_for :header do
+  #header
+    .headerlink
+      %a{ :href => "http://phiyaz.turkhitbox.com" }
+
+- content_for :footer do
+  #footer
+    %ul
+      %li.subscribe
+        %a{ :href => "http://phiyaz.turkhitbox.com/comments/feed" }
+          Comments RSS
+        \-
+        %a{ :href => "http://phiyaz.turkhitbox.com/feed" }
+          Entries RSS
+      %li.page_item.page-item-820
+        %a{ :href => "http://phiyaz.turkhitbox.com/advertise-with-us", :title => "Advertise with us" }
+          Advertise with us
+      %li.page_item.page-item-819
+        %a{ :href => "http://phiyaz.turkhitbox.com/contact-us", :title => "Contact Us" }
+          Contact Us
+      %li.top
+        %a{ :href => "#header" }
+          Top
+
+  / original body content
+#left
+  .firstpost
+    .firstposttitle
+      %h3
+        %a{ :href => "http://phiyaz.turkhitbox.com/celebrities/january-jones-hotness-from-gq.html", :title => "January Jones Hotness from GQ", :rel => "bookmark" }
+          January Jones Hotness from GQ
+      %small
+      #post-ratings-983.post-ratings
+        %img#rating_983_1{ :title => "1 Star", :src => "http://phiyaz.turkhitbox.com/wp-content/plugins/wp-postratings/images/phiyaz_star/rating_on.gif", :onkeypress => "rate_post();", :onmouseover => "current_rating(983, 1, '1 Star');", :onclick => "rate_post();", :onmouseout => "ratings_off(4.1, 0, 0);", :alt => "1 Star", :style => "cursor: pointer; border: 0px;" }
+        %img#rating_983_2{ :title => "2 Stars", :src => "http://phiyaz.turkhitbox.com/wp-content/plugins/wp-postratings/images/phiyaz_star/rating_on.gif", :onkeypress => "rate_post();", :onmouseover => "current_rating(983, 2, '2 Stars');", :onclick => "rate_post();", :onmouseout => "ratings_off(4.1, 0, 0);", :alt => "2 Stars", :style => "cursor: pointer; border: 0px;" }
+        %img#rating_983_3{ :title => "3 Stars", :src => "http://phiyaz.turkhitbox.com/wp-content/plugins/wp-postratings/images/phiyaz_star/rating_on.gif", :onkeypress => "rate_post();", :onmouseover => "current_rating(983, 3, '3 Stars');", :onclick => "rate_post();", :onmouseout => "ratings_off(4.1, 0, 0);", :alt => "3 Stars", :style => "cursor: pointer; border: 0px;" }
+        %img#rating_983_4{ :title => "4 Stars", :src => "http://phiyaz.turkhitbox.com/wp-content/plugins/wp-postratings/images/phiyaz_star/rating_on.gif", :onkeypress => "rate_post();", :onmouseover => "current_rating(983, 4, '4 Stars');", :onclick => "rate_post();", :onmouseout => "ratings_off(4.1, 0, 0);", :alt => "4 Stars", :style => "cursor: pointer; border: 0px;" }
+        %img#rating_983_5{ :title => "5 Stars", :src => "http://phiyaz.turkhitbox.com/wp-content/plugins/wp-postratings/images/phiyaz_star/rating_off.gif", :onkeypress => "rate_post();", :onmouseover => "current_rating(983, 5, '5 Stars');", :onclick => "rate_post();", :onmouseout => "ratings_off(4.1, 0, 0);", :alt => "5 Stars", :style => "cursor: pointer; border: 0px;" }
+      / #post-ratings-983-loading.post-ratings-loading
+      /   %img.post-ratings-image{ :title => "Loading ...", :src => "http://phiyaz.turkhitbox.com/wp-content/plugins/wp-postratings/images/loading.gif", :height => "16", :alt => "Loading ...", :width => "16" }
+      /   \&nbsp;Loading ...
+    .firstpostcontent
+      .postmeta
+        November 3rd, 2009
+        %span
+          %a{ :href => "http://phiyaz.turkhitbox.com/category/celebrities", :title => "View all posts in Celebrities", :rel => "category tag" }
+            Celebrities
+      %p.first-child
+        %img.alignnone.size-full.wp-image-994{ :src => "http://phiyaz.turkhitbox.com/wp-content/uploads/2009/11/january-jones-gq.jpg", :height => "401", :alt => "january-jones-gq", :width => "580" }
+      %p
+        %span.cap{ :title => "J" }
+          %span
+            J
+        anuary Jones Hotness from GQ. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from “de Finibus Bonorum et Malorum” by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from “de Finibus Bonorum et Malorum” by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+      %p
+        %a.more-link{ :href => "http://phiyaz.turkhitbox.com/celebrities/january-jones-hotness-from-gq.html#more-983" }
+          Read the rest of this entry &raquo;
+  .post
+    %img{ :src => "http://phiyaz.turkhitbox.com/wp-content/themes/phiyaz_v1/timthumb.php?src=http://phiyaz.turkhitbox.com/wp-content/themes/phiyaz_v1/images/nopostimage.gif&h=90&w=130&zc=1", :alt => "Post with No Image" }
+    %h3
+      %a{ :href => "http://phiyaz.turkhitbox.com/celebrities/post-with-no-image.html", :title => "Post with No Image", :rel => "bookmark" }
+        Post with No Image
+    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from “de
+    .indexmeta
+      Comments:
+      %a{ :href => "http://phiyaz.turkhitbox.com/celebrities/post-with-no-image.html#respond", :title => "Comment on Post with No Image" }
+        0
+      %small
+        Rating:
+        %a{ :href => "http://phiyaz.turkhitbox.com/celebrities/post-with-no-image.html" }
+          4
+  .post
+    %img{ :src => "http://phiyaz.turkhitbox.com/wp-content/themes/phiyaz_v1/timthumb.php?src=http://phiyaz.turkhitbox.com/wp-content/uploads/2009/11/the-strangers-kritik-02.jpg&h=90&w=130&zc=1", :alt => "Don\342\200\231t Waste your money for The Strangers" }
+    %h3
+      %a{ :href => "http://phiyaz.turkhitbox.com/movies/dont-waste-your-money-for-the-strangers.html", :title => "Don\342\200\231t Waste your money for The Strangers", :rel => "bookmark" }
+        Don’t Waste your money for The Strangers
+    Don’t Waste your money for The Strangers.
+    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
+    .indexmeta
+      Comments:
+      %a{ :href => "http://phiyaz.turkhitbox.com/movies/dont-waste-your-money-for-the-strangers.html#comments", :title => "Comment on Don\342\200\231t Waste your money for The Strangers" }
+        12
+      %small
+        Rating:
+        %a{ :href => "http://phiyaz.turkhitbox.com/movies/dont-waste-your-money-for-the-strangers.html" }
+          4.27
+  .post
+    %img{ :src => "http://phiyaz.turkhitbox.com/wp-content/themes/phiyaz_v1/timthumb.php?src=http://phiyaz.turkhitbox.com/wp-content/uploads/2009/11/b2-ucak-kaza-05.jpg&h=90&w=130&zc=1", :alt => "When the B2 Bomber crashes" }
+    %h3
+      %a{ :href => "http://phiyaz.turkhitbox.com/cool-stuff/when-the-b2-bomber-crashes.html", :title => "When the B2 Bomber crashes", :rel => "bookmark" }
+        When the B2 Bomber crashes
+    When the B2 Bomber crashes. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections
+    .indexmeta
+      Comments:
+      %a{ :href => "http://phiyaz.turkhitbox.com/cool-stuff/when-the-b2-bomber-crashes.html#comments", :title => "Comment on When the B2 Bomber crashes" }
+        4
+      %small
+        Rating:
+        %a{ :href => "http://phiyaz.turkhitbox.com/cool-stuff/when-the-b2-bomber-crashes.html" }
+          4
+  .post
+    %img{ :src => "http://phiyaz.turkhitbox.com/wp-content/themes/phiyaz_v1/timthumb.php?src=http://phiyaz.turkhitbox.com/wp-content/uploads/2009/11/photoshop-donut-21.jpg&h=90&w=130&zc=1", :alt => "Photoshop and Donuts" }
+    %h3
+      %a{ :href => "http://phiyaz.turkhitbox.com/funny/photoshop-and-donuts.html", :title => "Photoshop and Donuts", :rel => "bookmark" }
+        Photoshop and Donuts
+    Photoshop and Donuts. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and
+    .indexmeta
+      Comments:
+      %a{ :href => "http://phiyaz.turkhitbox.com/funny/photoshop-and-donuts.html#respond", :title => "Comment on Photoshop and Donuts" }
+        0
+      %small
+        Rating:
+        %a{ :href => "http://phiyaz.turkhitbox.com/funny/photoshop-and-donuts.html" }
+          4.29
+  .post
+    %img{ :src => "http://phiyaz.turkhitbox.com/wp-content/themes/phiyaz_v1/timthumb.php?src=http://phiyaz.turkhitbox.com/wp-content/uploads/2009/10/rose-mcgowan-red-sonja-05.jpg&h=90&w=130&zc=1", :alt => "Rose McGowan is Red Sonja" }
+    %h3
+      %a{ :href => "http://phiyaz.turkhitbox.com/movies/rose-mcgowan-is-red-sonja.html", :title => "Rose McGowan is Red Sonja", :rel => "bookmark" }
+        Rose McGowan is Red Sonja
+    Rose McGowan is Red Sonja. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections
+    .indexmeta
+      Comments:
+      %a{ :href => "http://phiyaz.turkhitbox.com/movies/rose-mcgowan-is-red-sonja.html#comments", :title => "Comment on Rose McGowan is Red Sonja" }
+        2
+      %small
+        Rating:
+        %a{ :href => "http://phiyaz.turkhitbox.com/movies/rose-mcgowan-is-red-sonja.html" }
+          4.28
+  .wp-pagenavi
+    %span.pages
+      Page 1 of 3
+    %span.current
+      1
+    %a.page{ :href => "http://phiyaz.turkhitbox.com/page/2", :title => "2" }
+      2
+    %a.page{ :href => "http://phiyaz.turkhitbox.com/page/3", :title => "3" }
+      3
+    %a{ :href => "http://phiyaz.turkhitbox.com/page/2" }
+      \&raquo;
+#right
+  .loginpane
+    %ul.loginNavigation
+      %li
+        %a{ :href => "#one" }
+          Login
+      %li
+        %a{ :href => "#two" }
+          Register
+    #one.tabcontent
+      %form{ :method => "post", :action => "http://phiyaz.turkhitbox.com/wp-login.php" }
+        %label{ :for => "log" }
+          Username:
+        %input#log.registerfield{ :name => "log", :size => "23", :value => "", :type => "text" }
+        %br
+        %label{ :for => "pwd" }
+          Password:
+        %input#pwd.registerfield{ :name => "pwd", :size => "23", :type => "password" }
+        %br
+        %label
+          %input#rememberme{ :checked => "checked", :name => "rememberme", :value => "forever", :type => "checkbox" }
+          \&nbsp;Remember me
+        %input.registerbutton{ :name => "submit", :value => "Login", :type => "submit" }
+        %input{ :name => "redirect_to", :value => "/", :type => "hidden" }
+        %br
+        %a{ :href => "http://phiyaz.turkhitbox.com/wp-login.php?action=lostpassword" }
+          Lost your password?
+    #two.tabcontent
+      %form#registerform{ :name => "registerform", :method => "post", :action => "http://phiyaz.turkhitbox.com/wp-login.php?action=register" }
+        %label{ :for => "signup" }
+          Username:
+        %input#user_login.input{ :name => "user_login", :value => "username", :type => "text" }
+        %br
+        %label{ :for => "email" }
+          Email:
+        %input#user_email.input{ :name => "user_email", :value => "email", :type => "text" }
+        %br
+        %label
+          A password will be e-mailed to you.
+        %input#wp-submit.registerbutton{ :name => "wp-submit", :type => "submit", :value => "Submit", :tabindex => "100" }
+  .tabs
+    %ul.tabNavigation
+      %li
+        %a{ :href => "#first" }
+          Popular
+      %li
+        %a{ :href => "#second" }
+          Recent
+      %li
+        %a{ :href => "#third" }
+          Comments
+    #first.tabcontent
+      %ul
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/movies/dont-waste-your-money-for-the-strangers.html", :title => "Don't Waste your money for The Strangers" }
+            Don't Waste your money for The Strangers
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/cool-stuff/when-the-b2-bomber-crashes.html", :title => "When the B2 Bomber crashes" }
+            When the B2 Bomber crashes
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/celebrities/elisabetta-gregoraci-bikini-photos.html", :title => "Elisabetta Gregoraci Bikini Photos" }
+            Elisabetta Gregoraci Bikini Photos
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/celebrities/charlize-theron-bikini-photos.html", :title => "Charlize Theron Bikini Photos" }
+            Charlize Theron Bikini Photos
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/cool-stuff/really-cleaver-advertisements.html", :title => "Really Cleaver Advertisements" }
+            Really Cleaver Advertisements
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/scary/encierro-carnival-gone-wrong.html", :title => "Encierro Carnival Gone Wrong" }
+            Encierro Carnival Gone Wrong
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/celebrities/audrina-patridge-bikini.html", :title => "Audrina Patridge Bikini" }
+            Audrina Patridge Bikini
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/scary/the-ugliest-bugs.html", :title => "The Ugliest Bugs!" }
+            The Ugliest Bugs!
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/movies/rose-mcgowan-is-red-sonja.html", :title => "Rose McGowan is Red Sonja" }
+            Rose McGowan is Red Sonja
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/cool-stuff/tokyoflash-analog-watches.html", :title => "TokyoFlash Analog Watches" }
+            TokyoFlash Analog Watches
+    #second.tabcontent
+      %ul
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/celebrities/january-jones-hotness-from-gq.html", :title => "January Jones Hotness from GQ" }
+            January Jones Hotness from GQ
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/celebrities/post-with-no-image.html", :title => "Post with No Image" }
+            Post with No Image
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/movies/dont-waste-your-money-for-the-strangers.html", :title => "Don\342\200\231t Waste your money for The Strangers" }
+            Don’t Waste your money for The Strangers
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/cool-stuff/when-the-b2-bomber-crashes.html", :title => "When the B2 Bomber crashes" }
+            When the B2 Bomber crashes
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/funny/photoshop-and-donuts.html", :title => "Photoshop and Donuts" }
+            Photoshop and Donuts
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/movies/rose-mcgowan-is-red-sonja.html", :title => "Rose McGowan is Red Sonja" }
+            Rose McGowan is Red Sonja
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/celebrities/katy-perry-and-her-cleavage.html", :title => "Katy Perry and her Cleavage" }
+            Katy Perry and her Cleavage
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/scary/encierro-carnival-gone-wrong.html", :title => "Encierro Carnival Gone Wrong" }
+            Encierro Carnival Gone Wrong
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/scary/the-ugliest-bugs.html", :title => "The Ugliest Bugs!" }
+            The Ugliest Bugs!
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/celebrities/audrina-patridge-in-maxim.html", :title => "Audrina Patridge in Maxim" }
+            Audrina Patridge in Maxim
+    #third.tabcontent
+      %ul
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/movies/dont-waste-your-money-for-the-strangers.html#comment-104", :title => "on Don't Waste your money for The Strangers" }
+            %strong
+              shawn :
+          This is a very cool servi..
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/funny/what-if-google-takes-over-the-world.html#comment-103", :title => "on What If Google Takes over the World?" }
+            %strong
+              Alex :
+          Test comment..
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/celebrities/january-jones-hotness-from-gq.html#comment-102", :title => "on January Jones Hotness from GQ" }
+            %strong
+              Demo Account :
+          Zcxzcxzcxz..
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/movies/dont-waste-your-money-for-the-strangers.html#comment-101", :title => "on Don't Waste your money for The Strangers" }
+            %strong
+              Demo Account :
+          dsfdsfdsfdsfgrgffs&lt;fsd..
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/cool-stuff/when-the-b2-bomber-crashes.html#comment-100", :title => "on When the B2 Bomber crashes" }
+            %strong
+              Demo Account :
+          lilili..
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/movies/moon-movie-stills.html#comment-47", :title => "on Moon Movie Stills" }
+            %strong
+              Demo Account :
+          awsdfgsadf..
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/movies/dont-waste-your-money-for-the-strangers.html#comment-44", :title => "on Don't Waste your money for The Strangers" }
+            %strong
+              kimberly :
+          testing again...without b..
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/movies/dont-waste-your-money-for-the-strangers.html#comment-43", :title => "on Don't Waste your money for The Strangers" }
+            %strong
+              kimberly :
+          testing..
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/movies/dont-waste-your-money-for-the-strangers.html#comment-41", :title => "on Don't Waste your money for The Strangers" }
+            %strong
+              Ant Eksiler :
+          Hi there
+
+          Yes I will re..
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/movies/dont-waste-your-money-for-the-strangers.html#comment-40", :title => "on Don't Waste your money for The Strangers" }
+            %strong
+              Demo Account :
+          cool theme do you plan to..
+  %ul#widgets
+    %li#ratings-3.widget.widget_ratings
+      %h2
+        Top Posts
+      %ul
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/celebrities/elisabetta-gregoraci-bikini-photos.html", :title => "Elisabetta Gregoraci Bikini Photos" }
+            Elisabetta Gregoraci Bikini Photos
+          (4.83)
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/celebrities/audrina-patridge-in-maxim.html", :title => "Audrina Patridge in Maxim" }
+            Audrina Patridge in Maxim
+          (4.50)
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/celebrities/audrina-patridge-bikini.html", :title => "Audrina Patridge Bikini" }
+            Audrina Patridge Bikini
+          (4.50)
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/funny/what-if-google-takes-over-the-world.html", :title => "What If Google Takes over the World?" }
+            What If Google Takes over the World?
+          (4.33)
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/celebrities/charlize-theron-bikini-photos.html", :title => "Charlize Theron Bikini Photos" }
+            Charlize Theron Bikini Photos
+          (4.29)
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/funny/photoshop-and-donuts.html", :title => "Photoshop and Donuts" }
+            Photoshop and Donuts
+          (4.29)
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/movies/rose-mcgowan-is-red-sonja.html", :title => "Rose McGowan is Red Sonja" }
+            Rose McGowan is Red Sonja
+          (4.28)
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/movies/dont-waste-your-money-for-the-strangers.html", :title => "Don&rsquo;t Waste your money for The Strangers" }
+            Don&rsquo;t Waste your money for The Strangers
+          (4.27)
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/cool-stuff/really-cleaver-advertisements.html", :title => "Really Cleaver Advertisements" }
+            Really Cleaver Advertisements
+          (4.25)
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/scary/encierro-carnival-gone-wrong.html", :title => "Encierro Carnival Gone Wrong" }
+            Encierro Carnival Gone Wrong
+          (4.13)
+    %li#archives-3.widget.widget_archive
+      %h2
+        Archives
+      %ul
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/2009/11", :title => "November 2009" }
+            November 2009
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/2009/10", :title => "October 2009" }
+            October 2009
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/2009/09", :title => "September 2009" }
+            September 2009
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/2009/08", :title => "August 2009" }
+            August 2009
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/2009/07", :title => "July 2009" }
+            July 2009
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/2009/05", :title => "May 2009" }
+            May 2009
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/2009/04", :title => "April 2009" }
+            April 2009
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/2009/03", :title => "March 2009" }
+            March 2009
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/2009/02", :title => "February 2009" }
+            February 2009
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/2009/01", :title => "January 2009" }
+            January 2009
+    %li.widget.latestusers
+      %h2
+        Latest Users
+      %ul
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/?author=54" }
+            %img.avatar.avatar-64.photo{ :src => "http://www.gravatar.com/avatar/3d1bb220f00987a9d20bac22902da5c2?s=64&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D64&amp;r=G", :height => "64", :alt => "", :width => "64" }
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/?author=53" }
+            %img.avatar.avatar-64.photo{ :src => "http://www.gravatar.com/avatar/7ac5ff124fb659db2aa6c06af794972e?s=64&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D64&amp;r=G", :height => "64", :alt => "", :width => "64" }
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/?author=52" }
+            %img.avatar.avatar-64.photo{ :src => "http://www.gravatar.com/avatar/739700edf1b1b2efdc971e721c98c266?s=64&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D64&amp;r=G", :height => "64", :alt => "", :width => "64" }
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/?author=51" }
+            %img.avatar.avatar-64.photo{ :src => "http://www.gravatar.com/avatar/5ce56233166c2d0f65159b2819398846?s=64&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D64&amp;r=G", :height => "64", :alt => "", :width => "64" }
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/?author=50" }
+            %img.avatar.avatar-64.photo{ :src => "http://www.gravatar.com/avatar/cfe2f1f970f62ee3e39e6bc30114b624?s=64&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D64&amp;r=G", :height => "64", :alt => "", :width => "64" }
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/?author=49" }
+            %img.avatar.avatar-64.photo{ :src => "http://www.gravatar.com/avatar/26fcaed7850495bc03dc90fce4f423d9?s=64&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D64&amp;r=G", :height => "64", :alt => "", :width => "64" }
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/?author=48" }
+            %img.avatar.avatar-64.photo{ :src => "http://www.gravatar.com/avatar/ed3945586fa5998efe04c73ef2ebd69e?s=64&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D64&amp;r=G", :height => "64", :alt => "", :width => "64" }
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/?author=47" }
+            %img.avatar.avatar-64.photo{ :src => "http://www.gravatar.com/avatar/3a2304aace5c7735ae4b76d0bae5106f?s=64&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D64&amp;r=G", :height => "64", :alt => "", :width => "64" }
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/?author=46" }
+            %img.avatar.avatar-64.photo{ :src => "http://www.gravatar.com/avatar/232f3872392491f19fa3a15431ecf30e?s=64&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D64&amp;r=G", :height => "64", :alt => "", :width => "64" }
+    %li.widget.top._authors
+      %h2
+        Top Authors
+      %ul
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/author/admin/" }
+            Ant Eksiler
+          (14)
+        %li
+          %a{ :href => "http://phiyaz.turkhitbox.com/author/demo/" }
+            Demo Account
+          (4)
+%div{ :style => "clear:both" }

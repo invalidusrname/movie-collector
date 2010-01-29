@@ -1,5 +1,5 @@
 !!!
-%html{ 'xmlns' => "http://www.w3.org/1999/xhtml", 'xmlns:fb' => "http://www.facebook.com/2008/fbml"}
+%html{ :dir => "ltr", :lang => "en-US", :xmlns => "http://www.w3.org/1999/xhtml" }
   %head
     %meta{'http-equiv' => 'Content-Type', 'content' => 'text/html; charset=utf-8'}
     %meta{'name' => 'keywords', 'content' => 'dvd catalog, blu-ray catalog, movie organizer, movie database, movie, dvd, collection'}
@@ -8,21 +8,43 @@
     = stylesheet_link_merged :print, :media => 'print'
     /[if IE]
       = stylesheet_link_merged :ie, :media => 'screen, projection'
-    %script{:type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"}  
+
+    - if Rails.env == 'development'
+      = javascript_include_merged :dev
+    - else
+      = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"
+
     = javascript_include_merged :base
-    %title= @title? "#{@title} - Movie Collector" : "Movie Collector - Catalog your collection of movies"
+
+    %title
+      = @title ? "#{@title} - Movie Collector" : "Movie Collector - Catalog your collection of movies"
+    = yield(:head)
   %body
-    = fb_connect_javascript_tag
-    #container
-      #header
-        = link_to 'Movie Collector', root_path, :id => 'logo' 
-        %ul#links
-          %li= link_to 'Source Code', 'http://github.com/invalidusrname/movie_collector'
-      = render :partial => 'shared/sidebar'
-      #content
-        = render :partial => 'shared/flashes'
-        = render :partial => 'shared/no_ie'
+    #pages
+    #pagewrapper
+      = yield(:header) || render_or_default('header')
+      = yield(:topnav) || render_or_default('topnav')
+      #main
         = yield
-      #footer
-        &copy; 2009 Matt McMahand
-        = render :partial => 'shared/analytics' if Rails.env == 'production'
+      = yield(:footer) || render_or_default('footer')
+    :javascript
+      var ratingsL10n = {
+      plugin_url: "http://phiyaz.turkhitbox.com/wp-content/plugins/wp-postratings",
+      ajax_url: "http://phiyaz.turkhitbox.com/wp-content/plugins/wp-postratings/wp-postratings.php",
+      text_wait: "Please rate only 1 post at a time.",
+      image: "phiyaz_star",
+      image_ext: "gif",
+      max: "5",
+      show_loading: "1",
+      show_fading: "1",
+      custom: "0"
+      };
+      var ratings_mouseover_image=new Image();ratings_mouseover_image.src=ratingsL10n.plugin_url+"/images/"+ratingsL10n.image+"/rating_over."+ratingsL10n.image_ext;
+    %script{ :src => "http://phiyaz.turkhitbox.com/wp-content/plugins/wp-postratings/postratings-js.js?ver=1.50", :type => "text/javascript" }
+    /
+      [if IE 6]>
+      <script type="text/javascript" src="http://phiyaz.turkhitbox.com/wp-content/themes/phiyaz_v1/js/DD_belatedPNG_0.0.8a-min.js"></script>
+      <script> DD_belatedPNG.fix('#header'); </script>
+      <![endif]
+
+    = render :partial => 'shared/analytics'

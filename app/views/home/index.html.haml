@@ -1,6 +1,7 @@
-%h1= @title = 'Welcome to Movie Collector'
+- @title = 'Welcome to Movie Collector'
 
-%p Have family members who love to borrow movies? Movie Collector gives people the ability to store, loan, and borrow from other user’s movies. When adding a movie, a person can either enter all the info known about a movie (i.e. title, format, cover), or simply enter the UPC code on the back of the movie. By entering only the UPC code, all relevant information will be filled out using Amazon’s web services.
-
-%p
-  = @first_name
+.firstpost
+  .firstposttitle
+    %h3= @title
+  .firstpostcontent
+    %p Have family members who love to borrow movies? Movie Collector gives people the ability to store, loan, and borrow from other user’s movies. When adding a movie, a person can either enter all the info known about a movie (i.e. title, format, cover), or simply enter the UPC code on the back of the movie. By entering only the UPC code, all relevant information will be filled out using Amazon’s web services.

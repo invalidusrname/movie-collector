@@ -1,0 +1,2 @@
+class OriginalTemplateController < ApplicationController
+end

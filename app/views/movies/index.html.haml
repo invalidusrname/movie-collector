@@ -3,8 +3,16 @@
 - if @movies.size > 0
   = render :partial => "search"
   = link_to 'New movie', new_movie_path
-  = will_paginate @movies
+
   %table
+    %colgroup
+      %col.oce-first
+    %tfoot
+      %tr
+        %td
+          = "#{@movies.total_entries} total movies"
+        %td{:colspan => 6}
+          = will_paginate @movies
     %thead
       %tr
         %th
@@ -14,9 +22,9 @@
           = sortable_link 'Genre', :column => 'genre'
         %th
           = sortable_link 'Format', :column => 'format'
-        %th 
-        %th 
-        %th 
+        %th
+        %th
+        %th
     %tbody
       - @movies.each do |movie|
         %tr{:class => cycle('odd', 'even')}
@@ -24,12 +32,10 @@
           %td= h movie.title
           %td= h movie.genre.name unless movie.genre.nil?
           %td= h movie.format
-          %td= link_to 'Edit', edit_movie_path(movie)
-          %td= link_to 'Delete', movie, :confirm => 'Are you sure?', :method => :delete
-  %br
-  = will_paginate @movies
-  %b= "#{@movies.total_entries} total movies"
+          - if current_user && current_user.admin?
+            %td= link_to 'Edit', edit_movie_path(movie)
+            %td= link_to 'Delete', movie, :confirm => 'Are you sure?', :method => :delete
 - else
   %p
-    You don't have any movies.
+    There are no movies. Please
     =link_to 'Add some', new_movie_path
