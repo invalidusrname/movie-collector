@@ -8,3 +8,6 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 require 'tasks/rails'
+
+desc 'Default: run cucumber tests.'
+task :default => [:cucumber, :test]
