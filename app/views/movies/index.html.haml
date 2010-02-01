@@ -21,8 +21,6 @@
           = sortable_link 'Genre', :column => 'genre'
         %th.text
           = sortable_link 'Format', :column => 'format'
-        %th.text
-        %th.text
     %tbody
       - @movies.each do |movie|
         %tr{:class => cycle('odd', 'even')}
