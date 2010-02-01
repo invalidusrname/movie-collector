@@ -1,34 +1,36 @@
-%h1= @title = 'Login'
-
-- form_for :session, :url => session_path do |form|
-  %p.text_field
-    = form.label :email
+.firstpost
+  .firstposttitle
+    %h3= @title = 'Login'
+  .firstpostcontent
+    - form_for :session, :url => session_path do |form|
+      %p.text_field
+        = form.label :email
+        %br
+        = form.text_field :email, :class => 'text'
+      %p.text_field
+        = form.label :password
+        %br
+        = form.password_field :password, :class => 'text'
+      %p.text_field
+        = form.check_box :remember_me
+        = form.label :remember_me
+      %p.submit_field
+        = form.submit "Log in", :disable_with => "Please wait..."
+      %p
+        =link_to "Forgot password?", forgot_password_path
     %br
-    = form.text_field :email, :class => 'text'
-  %p.text_field
-    = form.label :password
-    %br
-    = form.password_field :password, :class => 'text'
-  %p.text_field
-    = form.check_box :remember_me
-    = form.label :remember_me
-  %p.submit_field
-    = form.submit "Log in", :disable_with => "Please wait..."
-  %p
-    =link_to "Forgot password?", forgot_password_path
-%br
 
-%h3 Login via Facebook
+    / %h3 Login via Facebook
 
-= fb_connect_javascript_tag
-= init_fb_connect "XFBML","Api"
-= fb_login_and_redirect facebook_new_session_path
-&nbsp; 
-/ = link_to image_tag('connect_twitter.png'), twitter_oauth_path
+    / = fb_connect_javascript_tag
+    / = init_fb_connect "XFBML","Api"
+    / = fb_login_and_redirect facebook_new_session_path
+    / &nbsp;
+    / = link_to image_tag('connect_twitter.png'), twitter_oauth_path
 
-%br
-%br
+    / %br
+    / %br
 
-%p 
-  Not a member?
-  = link_to "Sign up", signup_path
+    %p
+      Not a member?
+      = link_to "Sign up", signup_path

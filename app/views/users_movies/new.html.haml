@@ -1,15 +1,17 @@
-%h2 New movie
+.firstpost
+  .firstposttitle
+    %h3 New movie
+  .firstpostcontent
+    - form_for(@users_movie, :html => {:name => 'users_movie_form'}) do |form|
+      = render :partial => "form", :object => form
+      %p
+        = form.submit 'Create', :onclick => 'submitMovie(this.form);'
 
-- form_for(@users_movie, :html => {:name => 'users_movie_form'}) do |form|
-  = render :partial => "form", :object => form
-  %p
-    = form.submit 'Create', :onclick => 'submitMovie(this.form);'
-
-= link_to 'Back', movies_path
+    = link_to 'Back', movies_path
 
 :javascript
   $(function() {
     $('#users_movie_movie_attributes_title').focus();
     $('#users_movie_movie_attributes_title').change(searchTitle);
     $('#img_holder').click(imageClick);
-  });  
+  });

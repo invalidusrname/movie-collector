@@ -44,9 +44,9 @@ module ApplicationHelper
      returning [] do |html|
        LETTERS.each do |letter|
          if letter == current_letter
-           html << ' '+ content_tag( :span, letter, :class => 'current' )
+           html << ' '+ content_tag(:span, letter, :class => 'current')
          else
-           html << ' '+ link_to( letter, :controller => controller, :letter => letter )
+           html << ' '+ link_to(letter, :controller => controller, :letter => letter)
          end
        end
      end.join

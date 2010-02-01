@@ -96,25 +96,24 @@ function submitMovie(form){
   }
 }
 
-$(document).ready(function(){
-  jQuery('ul.sf-menu').superfish();
+$(function(){
+  $('ul.sf-menu').superfish();
+
+  var tabContainers = $('div.tabs > div');
+
+  // if(tabContainers) {
+    // tabContainers.hide().filter(':first').show();
+    // $('#topnav a').click(function () {
+    //   tabContainers.hide();
+    //   tabContainers.filter(this.hash).show();
+    //   $('div.tabs ul.tabNavigation a').removeClass('selected');
+    //   $(this).addClass('selected');
+    //   return false;
+    // }).filter(':first').click();
+  // }
 });
 
-$(document).ready((function () {
-  var tabContainers = $('div.tabs > div');
-  tabContainers.hide().filter(':first').show();
-
-  $('div.tabs ul.tabNavigation a').click(function () {
-    tabContainers.hide();
-    tabContainers.filter(this.hash).show();
-    $('div.tabs ul.tabNavigation a').removeClass('selected');
-    $(this).addClass('selected');
-    return false;
-  }).filter(':first').click();
-}));
-
-
-$(document).ready(function () {
+$(function () {
   var tabContainers = $('div.loginpane > div');
   tabContainers.hide().filter(':one').show();
 

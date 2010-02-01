@@ -4,44 +4,42 @@
   = render :partial => "search"
   = link_to 'New movie', new_users_movie_path
   %br
-  %br
-  = navigation_links('a', controller.controller_name)
-  %br
-  %br
-  = link_to 'All', users_movies_path(:max_pages => 10000)
-  = will_paginate @users_movies
-  %table
+  .wp-pagenavi
+    =navigation_links('a', controller.controller_name)
+  %table{:style => "width: 100%"}
+    %tfoot
+      %tr.wp-pagenavi
+        %td
+          = "#{@users_movies.total_entries} total movies"
+        %td{:colspan => 6}
+          = will_paginate @users_movies
     %thead
       %tr
-        %th
-        %th
+        %th.text
+        %th.text
           = sortable_link 'Title', :column => 'movies.title'
-        %th
+        %th.text
           = sortable_link 'Genre', :column => 'genre'
-        %th
+        %th.text
           = sortable_link 'Format', :column => 'movies.format'
-        %th
+        %th.text
           = sortable_link 'Added', :column => 'created_at'
-        %th
+        %th.text
           Rating
-        %th
-        %th
-        %th
+        %th.text
     %tbody
       - @users_movies.each do |users_movie|
         - movie = users_movie.movie
         %tr{:class => cycle('odd', 'even')}
           %td.thumbnail= link_to(image_tag(thumbnail(movie), :title => movie.title), users_movie_path(users_movie))
-          %td= h movie.title
-          %td= h movie.genre.name unless movie.genre.nil?
-          %td= h movie.format
+          %td.title= h movie.title
+          %td.genre= h movie.genre.name unless movie.genre.nil?
+          %td.format= h movie.format
           %td= h users_movie.created_at.to_date unless users_movie.created_at.nil?
           %td{:id => "rating_#{users_movie.id}" }
           = render :partial => 'movies/rating', :locals => {:users_movie => users_movie}
           %td= link_to 'Delete', users_movie, :confirm => 'Are you sure?', :method => :delete
   %br
-  = will_paginate @users_movies
-  %b= "#{@users_movies.total_entries} total movies"
 - else
   %p
     You don't have any movies.
