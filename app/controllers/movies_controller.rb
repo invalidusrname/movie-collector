@@ -4,11 +4,21 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.xml
   def index
-    @movies = Movie.search(params[:search],
-                          :page => params[:page],
-                          :include => :genre,
-                          :per_page => 10,
-                          :order => movie_sort_order(params))
+    options = { :order => movie_sort_order(params),
+                :include =>  :genre,
+                :page => params[:page],
+                :per_page => params[:max_pages] || 10 }
+
+    search_options = {}
+
+    if params[:letter].present? && params[:letter] != 'All'
+      search_options[:starts_with] = true
+      term = params[:letter]
+    end
+
+    term ||= params[:search]
+
+    @movies = Movie.search(term, search_options, options)
 
     respond_to do |format|
       format.html # index.html.erb

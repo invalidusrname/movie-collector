@@ -5,12 +5,6 @@ class UsersMoviesController < ApplicationController
   # GET /users_movies.xml
   # GET /users_movies.fbml
   def index
-    HoptoadNotifier.notify(
-      :error_class   => "Special Error",
-      :error_message => "Special Error: msg",
-      :parameters => params
-    )
-
     options = { :order => movie_sort_order(params),
                 :include =>  [:movie => :genre],
                 :page => params[:page],

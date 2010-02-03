@@ -14,7 +14,7 @@ class Movie < ActiveRecord::Base
     if title.to_s.length < 4
       return Hash.new
     end
-    
+
     is = Amazon::AWS::ItemSearch.new('Video', { 'Title' => title })
     rg = Amazon::AWS::ResponseGroup.new('Medium')
 
@@ -95,9 +95,13 @@ class Movie < ActiveRecord::Base
     Hash.new
   end
 
-  def self.search(search, options = {})
+  def self.search(search, search_options = {}, options = {})
     if search.to_s.length > 0
-      options.merge!(:conditions => ['title LIKE ?', "%#{search}%"])
+      if search_options.has_key? :starts_with
+        options.merge!(:conditions => ['title LIKE ?', "#{search}%"])
+      else
+        options.merge!(:conditions => ['title LIKE ?', "%#{search}%"])
+      end
     end
     paginate(:all, options)
   end
