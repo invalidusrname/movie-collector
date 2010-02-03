@@ -32,7 +32,7 @@
           %td.format= h movie.format
           - if current_user && current_user.admin?
             %td= link_to 'Edit', edit_movie_path(movie)
-            %td= link_to 'Delete', movie, :confirm => 'Are you sure?', :method => :delete
+            %td=# link_to 'Delete', movie, :confirm => 'Are you sure?', :method => :delete
 - else
   %p
     There are no movies. Please
