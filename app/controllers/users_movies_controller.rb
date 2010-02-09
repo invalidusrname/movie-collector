@@ -52,31 +52,9 @@ class UsersMoviesController < ApplicationController
     @users_movie.user = current_user
     @users_movie.rating = params[:rating_rated]
 
-    upc = @users_movie.movie.upc
-    movie = Movie.find_by_upc(upc)
+    flash[:notice] = 'Movie was successfully created.' if @users_movie.save
 
-    if movie.nil? && upc.present?
-      movie_attributes = Movie.lookup_on_amazon(upc)
-      if movie_attributes[:title]
-        @users_movie.movie = Movie.new(movie_attributes)
-      end
-    end
-
-    respond_to do |format|
-      if @users_movie.valid?
-
-        unless current_user.movies.find_by_upc(@users_movie.movie.upc)
-          @users_movie.save
-        end
-
-        flash[:notice] = 'Movie was successfully created.'
-        format.html { redirect_to(users_movies_path) }
-        # format.fbml { redirect_to(users_movies_path) }
-      else
-        format.html { render :action => "new" }
-        # format.fbml { render :action => "new" }
-      end
-    end
+    respond_with(@users_movie)
   end
 
   # DELETE /users_movies/1

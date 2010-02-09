@@ -6,6 +6,8 @@ class UsersMovie < ActiveRecord::Base
   validates_associated :movie
   validates_inclusion_of :rating, :in => Movie::RATINGS
 
+  before_validation :check_for_movie
+
   accepts_nested_attributes_for :movie
 
   def loan_movie_to(user)
@@ -14,6 +16,22 @@ class UsersMovie < ActiveRecord::Base
 
   def return_movie
     self.borrower = nil
+  end
+
+  def check_for_movie
+    if self.new_record? && self.movie && self.movie.upc.present?
+      upc = self.movie.upc
+      existing_movie = Movie.find_by_upc(upc)
+
+      if existing_movie
+        self.movie = existing_movie
+      else
+        movie_attributes = Movie.lookup_on_amazon(upc)
+        if movie_attributes[:title]
+          self.movie = Movie.new(movie_attributes)
+        end
+      end
+    end
   end
 
   def self.search(search, search_options = {}, options = {})

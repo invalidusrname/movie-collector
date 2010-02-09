@@ -15,6 +15,9 @@ gem "sqlite3-ruby", :require => "sqlite3"
 # gem "aws-s3", :require => "aws/s3"
 
 ## Bundle gems used only in certain environments:
+
+git "git://github.com/cavalle/polyglot.git"
+
 group :test do
   gem "cucumber-rails"
   gem 'rspec'
@@ -23,7 +26,8 @@ group :test do
   gem 'webrat'
   gem 'shoulda'
   gem 'factory_girl'
-  git "git://github.com/kristianmandrup/cucumber-rails.git"
+  gem 'mocha'
+  git "git://github.com/ashleymoran/cucumber-rails.git"
 end
 
 gem 'ruby-debug', :group => [:development, :test]
