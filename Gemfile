@@ -20,7 +20,7 @@ gem "sqlite3-ruby", :require => "sqlite3"
 #   gem "cucumber-rails"
 # end
 
-gem 'ruby-debug', :except => :production
+gem 'ruby-debug', :group => [:development, :test]
 
 gem 'hpricot'
 gem 'json'
