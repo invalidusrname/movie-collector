@@ -1,6 +1,8 @@
 class UsersMoviesController < ApplicationController
   before_filter :require_login, :unless => :signed_in?
 
+  respond_to :html, :xml
+
   # GET /users_movies
   # GET /users_movies.xml
   # GET /users_movies.fbml
@@ -21,28 +23,17 @@ class UsersMoviesController < ApplicationController
 
     @users_movies = current_user.users_movies.search(term, search_options, options)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @users_movies }
-      # format.fbml
-    end
+    respond_with(@users_movies)
   end
 
   def recently_added
     @users_movies = current_user.users_movies.all(:include => :movie, :limit => 5, :order => 'users_movies.id DESC')
 
-    respond_to do |format|
-      format.html
-      # format.fbml
-    end
+    respond_with(@users_movies)
   end
 
   def friends
-    respond_to do |format|
-      format.html # friends.html.erb
-      format.xml  { render :xml => @users_movies }
-      # format.fbml
-    end
+    respond_with(@users_movies)
   end
 
   # GET /users_movies/new
@@ -51,11 +42,7 @@ class UsersMoviesController < ApplicationController
     @users_movie = UsersMovie.new
     @users_movie.build_movie
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @users_movie }
-      # format.fbml
-    end
+    respond_with(@users_movie)
   end
 
   # POST /users_movies
@@ -98,19 +85,12 @@ class UsersMoviesController < ApplicationController
     @users_movie = UsersMovie.find(params[:id])
     @users_movie.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(users_movies_url) }
-      format.xml  { head :ok }
-    end
+    respond_with(@users_movie)
   end
 
   def show
     @users_movie = current_user.users_movies.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.xml
-      # format.fbml
-    end
+    respond_with(@users_movie)
   end
 
   def add_rating

@@ -1,6 +1,8 @@
 class MoviesController < ApplicationController
   before_filter :require_admin, :except => ['amazon_search', 'index']
 
+  respond_to :html, :xml
+
   # GET /movies
   # GET /movies.xml
   def index
@@ -20,11 +22,7 @@ class MoviesController < ApplicationController
 
     @movies = Movie.search(term, search_options, options)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @movies }
-      # format.fbml
-    end
+    respond_with(@movies)
   end
 
   # GET /movies/1
@@ -32,11 +30,7 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      # format.fbml
-      format.xml  { render :xml => @movie }
-    end
+    respond_with(@movie)
   end
 
   # GET /movies/new
@@ -44,11 +38,7 @@ class MoviesController < ApplicationController
   def new
     @movie = Movie.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @movie }
-      # format.fbml
-    end
+    respond_with(@movie)
   end
 
   # GET /movies/1/edit
@@ -61,16 +51,8 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new(params[:movie])
 
-    respond_to do |format|
-      if @movie.save
-        flash[:notice] = 'Movie was successfully created.'
-        format.html { redirect_to(@movie) }
-        format.xml  { render :xml => @movie, :status => :created, :location => @movie }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @movie.errors, :status => :unprocessable_entity }
-      end
-    end
+    flash[:notice] = 'Movie was successfully created.' if @movie.save
+    respond_with(@movie)
   end
 
   # PUT /movies/1
@@ -78,16 +60,8 @@ class MoviesController < ApplicationController
   def update
     @movie = Movie.find(params[:id])
 
-    respond_to do |format|
-      if @movie.update_attributes(params[:movie])
-        flash[:notice] = 'Movie was successfully updated.'
-        format.html { redirect_to(@movie) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @movie.errors, :status => :unprocessable_entity }
-      end
-    end
+    flash[:notice] = 'Movie was successfully updated.' if @movie.update_attributes(params[:movie])
+    respond_with(@movie)
   end
 
   # DELETE /movies/1

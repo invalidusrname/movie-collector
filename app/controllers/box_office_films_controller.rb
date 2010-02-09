@@ -1,11 +1,9 @@
 class BoxOfficeFilmsController < ApplicationController
+  respond_to :html, :xml
+
   def index
     @films = BoxOfficeFilm.top_films
     @this_weeks_films = BoxOfficeFilm.this_week
-    respond_to do |format|
-      format.html # index.html.haml
-      format.xml  { render :xml => @films }
-      # format.fbml
-    end
+    respond_with(@films)
   end
 end
