@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
 
     # render 404 errors so the layout looks like the rest of the app
     def render_404(exception)
-      notify_hoptoad(exception)
+      # notify_hoptoad(exception)
       logger.debug(exception)
       render :file => "#{Rails.root}/public/404.html",
              :layout => 'application',
