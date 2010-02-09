@@ -1,11 +1,9 @@
 class HomeController < ApplicationController
   before_filter :redirect, :if => :signed_in?
 
+  respond_to :html
+
   def index
-    respond_to do |format|
-      format.html
-      # format.fbml
-    end
   end
 
   protected

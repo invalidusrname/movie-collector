@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class BoxOfficeFilmsControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  test "should get index" do
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:films)
+    assert_not_nil assigns(:this_weeks_films)
   end
 end
