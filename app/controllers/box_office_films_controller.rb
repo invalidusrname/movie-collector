@@ -5,7 +5,7 @@ class BoxOfficeFilmsController < ApplicationController
     respond_to do |format|
       format.html # index.html.haml
       format.xml  { render :xml => @films }
-      format.fbml
+      # format.fbml
     end
   end
 end
