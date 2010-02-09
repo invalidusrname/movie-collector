@@ -4,17 +4,17 @@
     %meta{'http-equiv' => 'Content-Type', 'content' => 'text/html; charset=utf-8'}
     %meta{'name' => 'keywords', 'content' => 'dvd catalog, blu-ray catalog, movie organizer, movie database, movie, dvd, collection'}
     %meta{'name' => 'description', 'content' => 'MovieCollector allows you to collect, catalogue and rate your favorite movies'}
-    = stylesheet_link_merged :base, :media => 'screen, projection'
-    = stylesheet_link_merged :print, :media => 'print'
+    = raw stylesheet_link_merged :base, :media => 'screen, projection'
+    = raw stylesheet_link_merged :print, :media => 'print'
     /[if IE]
-      = stylesheet_link_merged :ie, :media => 'screen, projection'
+      = raw stylesheet_link_merged :ie, :media => 'screen, projection'
 
     - if Rails.env == 'development'
-      = javascript_include_merged :dev
+      = raw javascript_include_merged :dev
     - else
-      = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"
+      = raw javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"
 
-    = javascript_include_merged :base
+    = raw javascript_include_merged :base
 
     %title
       = @title ? "#{@title} - Movie Collector" : "Movie Collector - Catalog your collection of movies"
