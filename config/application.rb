@@ -5,12 +5,12 @@ require 'rails/all'
 # Auto-require default libraries and those for the current Rails environment.
 Bundler.require :default, Rails.env
 
+require 'yaml'
+
 module MovieCollector
   class Application < Rails::Application
 
     # load config.yml
-    require 'yaml'
-
     APP_CONFIG = YAML.load_file("#{Rails.root}/config/config.yml")
     DO_NOT_REPLY = APP_CONFIG['mail']['no_reply']
 
@@ -50,8 +50,3 @@ module MovieCollector
     config.filter_parameters << :password
   end
 end
-
-# load config.yml
-require 'yaml'
-
-# APP_CONFIG = YAML.load_file(__FILE__"/config/config.yml")

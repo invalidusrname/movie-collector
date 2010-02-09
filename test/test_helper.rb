@@ -10,6 +10,31 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def sign_in_as(user)
+    @controller.current_user = user
+    return user
+  end
+
+  def sign_in
+    u = User.new(:email => 'test@domain.org', :email_confirmed => true)
+    u.password              = 'pass'
+    u.password_confirmation = 'pass'
+    u.admin = false
+    u.save
+    u
+    sign_in_as(u)
+  end
+
+  def sign_in_admin
+    u = User.new(:email => 'test@domain.org', :email_confirmed => true)
+    u.password              = 'pass'
+    u.password_confirmation = 'pass'
+    u.admin = true
+    u.save
+    u
+    sign_in_as(u)
+  end
 end
 
 require 'mocha'

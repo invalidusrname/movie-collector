@@ -1,11 +1,12 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  title: MyString
-  format: MyString
+  title: Movie 1
+  format: DVD
   asin: MyString
+  upc: 1111
 
 two:
-  title: MyString
-  format: MyString
-  asin: MyString
+  title: Movie 2
+  format: DVD
+  upc: 2222
