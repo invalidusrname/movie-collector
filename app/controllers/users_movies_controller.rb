@@ -24,7 +24,7 @@ class UsersMoviesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @users_movies }
-      format.fbml
+      # format.fbml
     end
   end
 
@@ -33,7 +33,7 @@ class UsersMoviesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.fbml
+      # format.fbml
     end
   end
 
@@ -41,7 +41,7 @@ class UsersMoviesController < ApplicationController
     respond_to do |format|
       format.html # friends.html.erb
       format.xml  { render :xml => @users_movies }
-      format.fbml
+      # format.fbml
     end
   end
 
@@ -54,7 +54,7 @@ class UsersMoviesController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @users_movie }
-      format.fbml
+      # format.fbml
     end
   end
 
@@ -84,10 +84,10 @@ class UsersMoviesController < ApplicationController
 
         flash[:notice] = 'Movie was successfully created.'
         format.html { redirect_to(users_movies_path) }
-        format.fbml { redirect_to(users_movies_path) }
+        # format.fbml { redirect_to(users_movies_path) }
       else
         format.html { render :action => "new" }
-        format.fbml { render :action => "new" }
+        # format.fbml { render :action => "new" }
       end
     end
   end
@@ -109,7 +109,7 @@ class UsersMoviesController < ApplicationController
     respond_to do |format|
       format.html
       format.xml
-      format.fbml
+      # format.fbml
     end
   end
 

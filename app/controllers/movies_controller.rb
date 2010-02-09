@@ -23,7 +23,7 @@ class MoviesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @movies }
-      format.fbml
+      # format.fbml
     end
   end
 
@@ -34,7 +34,7 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.fbml
+      # format.fbml
       format.xml  { render :xml => @movie }
     end
   end
@@ -47,7 +47,7 @@ class MoviesController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @movie }
-      format.fbml
+      # format.fbml
     end
   end
 
