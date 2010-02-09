@@ -8,3 +8,10 @@
         = form.submit 'Create', :onclick => 'submitMovie(this.form);'
 
     = link_to 'Back', movies_path
+
+:javascript
+  $(function() {
+    $('#movie_title').focus();
+    $('#movie_title').change(searchTitle);
+    $('#img_holder').click(imageClick);
+  });

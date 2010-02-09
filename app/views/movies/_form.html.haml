@@ -4,13 +4,11 @@
   = form.label :title
   %br
   = text_field_tag 'movie[title]', @movie.title, :class => 'text'
-  = observe_field :movie_title, :url => { :controller => :movies, :action => :amazon_search }, :complete => "userTitleResponse(request.responseJSON);", :with => 'title'
 
 %p.text_field
   = form.label :upc, 'UPC'
   %br
   = text_field_tag 'movie[upc]', @movie.upc, :class => 'text'
-  = observe_field :movie_upc, :url => { :controller => :movies, :action => :amazon_search }, :complete => "userUpcResponse(request.responseJSON);", :with => 'upc'
 
 %h4 Search Results
 
