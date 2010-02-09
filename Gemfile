@@ -36,6 +36,6 @@ gem 'ruby-aaws',
   :version => '= 0.6.0'
 
 gem 'compass'
-gem 'will_paginate', '~> 2.3.11'
+gem 'will_paginate', '3.0.pre'
 
 

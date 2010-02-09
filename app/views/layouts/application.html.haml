@@ -22,11 +22,11 @@
   %body
     #pages
     #pagewrapper
-      = yield(:header) || render_or_default('header')
-      = yield(:topnav) || render_or_default('topnav')
+      = render_or_default('header')
+      = render_or_default('topnav')
       #main
         = yield
-      = yield(:footer) || render_or_default('footer')
+      = render_or_default('footer')
     :javascript
       var ratingsL10n = {
       plugin_url: "http://phiyaz.turkhitbox.com/wp-content/plugins/wp-postratings",
