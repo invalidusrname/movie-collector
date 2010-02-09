@@ -2,10 +2,10 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  include Clearance::Authentication
-  include FacebookerAuthentication::Controller
+  # include Clearance::Authentication
+  # include FacebookerAuthentication::Controller
 
-  before_filter :facebook_login_required, :if => :request_comes_from_facebook?
+  # before_filter :facebook_login_required, :if => :request_comes_from_facebook?
 
   unless Rails.env.development?
     rescue_from ActiveRecord::RecordNotFound, ActionView::TemplateError,
@@ -16,10 +16,12 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
-  # Scrub sensitive parameters from your log
-  filter_parameter_logging :password
-
   protected
+
+    def signed_in?
+      false
+    end
+
     def require_login
       deny_access("Login Required")
     end
@@ -51,7 +53,7 @@ class ApplicationController < ActionController::Base
     def render_404(exception)
       notify_hoptoad(exception)
       logger.debug(exception)
-      render :file => "#{RAILS_ROOT}/public/404.html",
+      render :file => "#{Rails.root}/public/404.html",
              :layout => 'application',
              :status => 404
     end
