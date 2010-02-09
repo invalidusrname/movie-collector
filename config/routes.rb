@@ -1,8 +1,5 @@
 # TODO: fix clearance and facebook routes
 MovieCollector::Application.routes.draw do |map|
-
-  # Clearance::Routes.draw(map)
-
   resource :session do
     # get :facebook_new
     # get :facebook_create
@@ -33,6 +30,7 @@ MovieCollector::Application.routes.draw do |map|
 
   # authentication
   match '/login'  => 'sessions#new',     :as => :login
+  match '/login'  => 'sessions#new',     :as => :sign_in
   match '/logout' => 'sessions#destroy', :as => :logout
   match '/signup' => 'Clearance::Users#new', :as => :signup
   match '/forgot_password' => 'Clearance::Passwords#new', :as => :forgot_password

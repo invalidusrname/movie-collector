@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  # include Clearance::Authentication
+  include Clearance::Authentication
   # include FacebookerAuthentication::Controller
 
   # before_filter :facebook_login_required, :if => :request_comes_from_facebook?
@@ -17,10 +17,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   protected
-
-    def signed_in?
-      false
-    end
 
     def require_login
       deny_access("Login Required")
