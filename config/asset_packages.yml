@@ -4,6 +4,7 @@ javascripts:
   - application
   - jquery.easing.min
   - superfish
+  - rails
   # - facebooker
 - facebook:
   - facebooker
