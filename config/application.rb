@@ -7,6 +7,13 @@ Bundler.require :default, Rails.env
 
 module MovieCollector
   class Application < Rails::Application
+
+    # load config.yml
+    require 'yaml'
+
+    APP_CONFIG = YAML.load_file("#{Rails.root}/config/config.yml")
+    DO_NOT_REPLY = APP_CONFIG['mail']['no_reply']
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -32,13 +39,19 @@ module MovieCollector
     # config.i18n.default_locale = :de
 
     # Configure generators values. Many other options are available, be sure to check the documentation.
-    # config.generators do |g|
+    config.generators do |g|
     #   g.orm             :active_record
     #   g.template_engine :erb
     #   g.test_framework  :test_unit, :fixture => true
-    # end
+      g.template_engine :haml
+    end
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters << :password
   end
 end
+
+# load config.yml
+require 'yaml'
+
+# APP_CONFIG = YAML.load_file(__FILE__"/config/config.yml")
