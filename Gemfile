@@ -15,10 +15,16 @@ gem "sqlite3-ruby", :require => "sqlite3"
 # gem "aws-s3", :require => "aws/s3"
 
 ## Bundle gems used only in certain environments:
-# gem "rspec", :group => :test
-# group :test do
-#   gem "cucumber-rails"
-# end
+group :test do
+  gem "cucumber-rails"
+  gem 'rspec'
+  gem "rspec-rails"
+  gem 'database_cleaner'
+  gem 'webrat'
+  gem 'shoulda'
+  gem 'factory_girl'
+  git "git://github.com/kristianmandrup/cucumber-rails.git"
+end
 
 gem 'ruby-debug', :group => [:development, :test]
 
