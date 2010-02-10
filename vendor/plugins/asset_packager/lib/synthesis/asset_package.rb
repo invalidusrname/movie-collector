@@ -2,20 +2,20 @@ module Synthesis
   class AssetPackage
 
     # class variables
-    @@asset_packages_yml = $asset_packages_yml || 
-      (File.exists?("#{RAILS_ROOT}/config/asset_packages.yml") ? YAML.load_file("#{RAILS_ROOT}/config/asset_packages.yml") : nil)
-  
+    @@asset_packages_yml = $asset_packages_yml ||
+      (File.exists?("#{Rails.root}/config/asset_packages.yml") ? YAML.load_file("#{Rails.root}/config/asset_packages.yml") : nil)
+
     # singleton methods
     class << self
-      
+
       def merge_environments=(environments)
         @@merge_environments = environments
       end
-      
+
       def merge_environments
         @@merge_environments ||= ["production"]
       end
-      
+
       def parse_path(path)
         /^(?:(.*)\/)?([^\/]+)$/.match(path).to_a
       end
@@ -71,13 +71,13 @@ module Synthesis
       end
 
       def create_yml
-        unless File.exists?("#{RAILS_ROOT}/config/asset_packages.yml")
+        unless File.exists?("#{Rails.root}/config/asset_packages.yml")
           asset_yml = Hash.new
 
-          asset_yml['javascripts'] = [{"base" => build_file_list("#{RAILS_ROOT}/public/javascripts", "js")}]
-          asset_yml['stylesheets'] = [{"base" => build_file_list("#{RAILS_ROOT}/public/stylesheets", "css")}]
+          asset_yml['javascripts'] = [{"base" => build_file_list("#{Rails.root}/public/javascripts", "js")}]
+          asset_yml['stylesheets'] = [{"base" => build_file_list("#{Rails.root}/public/stylesheets", "css")}]
 
-          File.open("#{RAILS_ROOT}/config/asset_packages.yml", "w") do |out|
+          File.open("#{Rails.root}/config/asset_packages.yml", "w") do |out|
             YAML.dump(asset_yml, out)
           end
 
@@ -89,23 +89,23 @@ module Synthesis
       end
 
     end
-    
+
     # instance methods
     attr_accessor :asset_type, :target, :target_dir, :sources
-  
+
     def initialize(asset_type, package_hash)
       target_parts = self.class.parse_path(package_hash.keys.first)
       @target_dir = target_parts[1].to_s
       @target = target_parts[2].to_s
       @sources = package_hash[package_hash.keys.first]
       @asset_type = asset_type
-      @asset_path = ($asset_base_path ? "#{$asset_base_path}/" : "#{RAILS_ROOT}/public/") +
+      @asset_path = ($asset_base_path ? "#{$asset_base_path}/" : "#{Rails.root}/public/") +
           "#{@asset_type}#{@target_dir.gsub(/^(.+)$/, '/\1')}"
       @extension = get_extension
       @file_name = "#{@target}_packaged.#{@extension}"
       @full_path = File.join(@asset_path, @file_name)
     end
-  
+
     def package_exists?
       File.exists?(@full_path)
     end
@@ -139,14 +139,14 @@ module Synthesis
 
       def merged_file
         merged_file = ""
-        @sources.each {|s| 
-          File.open("#{@asset_path}/#{s}.#{@extension}", "r") { |f| 
-            merged_file += f.read + "\n" 
+        @sources.each {|s|
+          File.open("#{@asset_path}/#{s}.#{@extension}", "r") { |f|
+            merged_file += f.read + "\n"
           }
         }
         merged_file
       end
-    
+
       def compressed_file
         case @asset_type
           when "javascripts" then compress_js(merged_file)
@@ -155,26 +155,26 @@ module Synthesis
       end
 
       def compress_js(source)
-        jsmin_path = "#{RAILS_ROOT}/vendor/plugins/asset_packager/lib"
-        tmp_path = "#{RAILS_ROOT}/tmp/#{@target}_packaged"
-      
+        jsmin_path = "#{Rails.root}/vendor/plugins/asset_packager/lib"
+        tmp_path = "#{Rails.root}/tmp/#{@target}_packaged"
+
         # write out to a temp file
         File.open("#{tmp_path}_uncompressed.js", "w") {|f| f.write(source) }
-      
+
         # compress file with JSMin library
         `ruby #{jsmin_path}/jsmin.rb <#{tmp_path}_uncompressed.js >#{tmp_path}_compressed.js \n`
 
         # read it back in and trim it
         result = ""
         File.open("#{tmp_path}_compressed.js", "r") { |f| result += f.read.strip }
-  
+
         # delete temp files if they exist
         File.delete("#{tmp_path}_uncompressed.js") if File.exists?("#{tmp_path}_uncompressed.js")
         File.delete("#{tmp_path}_compressed.js") if File.exists?("#{tmp_path}_compressed.js")
 
         result
       end
-  
+
       def compress_css(source)
         source.gsub!(/\s+/, " ")           # collapse space
         source.gsub!(/\/\*(.*?)\*\//, "")  # remove comments - caution, might want to remove this if using css hacks
@@ -191,11 +191,11 @@ module Synthesis
           when "stylesheets" then "css"
         end
       end
-      
+
       def log(message)
         self.class.log(message)
       end
-      
+
       def self.log(message)
         puts message
       end
@@ -207,6 +207,6 @@ module Synthesis
         file_list.reverse! if extension == "js"
         file_list
       end
-   
+
   end
 end
