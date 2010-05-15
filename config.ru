@@ -2,7 +2,7 @@
 require "config/environment"
 # require 'rack/tidy'
 
-RAILS_ENV = ENV['RACK_ENV'] || 'development'
+ENV['RAILS_ENV'] = ENV['RACK_ENV'] || 'development'
 
 # use Rack::Tidy
 use Rails::Rack::LogTailer
