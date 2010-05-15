@@ -16,7 +16,7 @@ gem "sqlite3-ruby", :require => "sqlite3"
 
 ## Bundle gems used only in certain environments:
 
-git "git://github.com/cavalle/polyglot.git"
+# git "git://github.com/cavalle/polyglot.git"
 
 group :test do
   gem "cucumber-rails"
