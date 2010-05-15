@@ -18,12 +18,12 @@ config.action_controller.perform_caching             = false
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
 
-HOST = "movie.local"
+MY_HOST = "movie.local"
 
 config.gem 'compass',
   :source  => 'http://gemcutter.org',
   :version => '>= 0.8.17'
 
-# ActionController::Base.asset_host = "dev.moviecollector.org:4008"
+# ActionController::Base.asset_MY_HOST = "dev.moviecollector.org:4008"
 
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE

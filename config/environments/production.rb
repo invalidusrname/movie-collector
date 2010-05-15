@@ -9,7 +9,7 @@ config.action_controller.consider_all_requests_local = false
 config.action_controller.perform_caching             = true
 config.action_view.cache_template_loading            = true
 
-config.action_controller.asset_host = "http://moviecollector.org"
+config.action_controller.asset_MY_HOST = "http://moviecollector.org"
 
 # MAIL SETTINGS
 config.action_mailer.raise_delivery_errors = true
@@ -22,4 +22,4 @@ config.action_mailer.smtp_settings = {
   :domain => APP_CONFIG['mail']['domain'],
 }
 
-HOST = APP_CONFIG['mail']['domain']
+MY_HOST = APP_CONFIG['mail']['domain']
