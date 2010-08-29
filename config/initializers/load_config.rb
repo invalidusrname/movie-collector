@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
-ENV['AMAZONRCDIR'] = "#{RAILS_ROOT}/config"
+ENV['AMAZONRCDIR'] = "#{Rails.root}/config"
 ENV['AMAZONRCFILE'] = 'amazonrc.txt'

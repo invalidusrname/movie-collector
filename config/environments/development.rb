@@ -18,4 +18,10 @@ MovieCollector::Application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   HOST = 'movie.local'
+
+  # Print deprecation notices to the Rails logger
+  config.active_support.deprecation = :log
+
+  # Only use best-standards-support built into browsers
+  config.action_dispatch.best_standards_support = :builtin
 end

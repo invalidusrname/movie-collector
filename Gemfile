@@ -1,7 +1,11 @@
 # Edit this Gemfile to bundle your application's dependencies.
-source 'http://gemcutter.org'
+source 'http://rubygems.org'
 
-gem "rails", "3.0.0.beta"
+gem "rails", "3.0.0.rc2"
+
+# git 'git://github.com/rails/rails_upgrade.git' do
+  # gem ''
+# end
 
 ## Bundle edge rails:
 # gem "rails", :git => "git://github.com/rails/rails.git"
@@ -18,19 +22,16 @@ gem "sqlite3-ruby", :require => "sqlite3"
 
 # git "git://github.com/cavalle/polyglot.git"
 
-group :test do
+group :test, :development do
   gem "cucumber-rails"
-  gem 'rspec'
-  gem "rspec-rails"
+  gem "rspec-rails", ">= 2.0.0.beta.20"
   gem 'database_cleaner'
   gem 'webrat'
   gem 'shoulda'
   gem 'factory_girl'
   gem 'mocha'
-  git "git://github.com/ashleymoran/cucumber-rails.git"
+  gem 'cucumber-rails'
 end
-
-gem 'ruby-debug', :group => [:development, :test]
 
 gem 'hpricot'
 gem 'json'
@@ -41,11 +42,7 @@ gem 'json'
 
 gem "haml", '>= 2.2.1'
 
-gem 'ruby-aaws',
-  :require => 'amazon',
-  :version => '= 0.6.0'
+gem 'ruby-aaws', :require => 'amazon'# :version => '= 0.6.0'
 
 gem 'compass'
-gem 'will_paginate', '3.0.pre'
-
-
+gem 'will_paginate', :git => "http://github.com/mislav/will_paginate.git", :branch => "rails3"

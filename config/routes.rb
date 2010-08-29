@@ -1,5 +1,5 @@
 # TODO: fix clearance and facebook routes
-MovieCollector::Application.routes.draw do |map|
+MovieCollector::Application.routes.draw do
   resource :session do
     # get :facebook_new
     # get :facebook_create
