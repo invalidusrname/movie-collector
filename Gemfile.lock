@@ -5,6 +5,13 @@ GIT
   specs:
     will_paginate (3.0.pre2)
 
+GIT
+  remote: http://github.com/thoughtbot/clearance.git
+  revision: 4b6b171
+  specs:
+    clearance (0.9.0.rc7)
+      rails (~> 3.0.0.beta4)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -116,6 +123,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  clearance!
   compass
   cucumber-rails
   database_cleaner

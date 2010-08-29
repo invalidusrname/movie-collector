@@ -38,7 +38,7 @@ gem 'json'
 
 # don't work out of the box. uncommenting for now
 # gem "facebooker", '>= 1.0.45'
-# git "http://github.com/thoughtbot/clearance.git", :branch => 'rails3'
+gem 'clearance', :git => "http://github.com/thoughtbot/clearance.git"
 
 gem "haml", '>= 2.2.1'
 
