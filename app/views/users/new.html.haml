@@ -1,14 +1,10 @@
-%h1= @title = 'Sign up'
+.firstpost
+  .firstposttitle
+    %h3= @title = 'Sign up'
+  .firstpostcontent
 
-- form_for @user do |form|
-  = render :partial => '/users/form', :object => form
-  = form.submit 'Sign up', :disable_with => 'Please wait...'
+    = form_for @user do |form|
+      = render :partial => '/users/form', :object => form
+      = form.submit 'Sign up', :disable_with => 'Please wait...'
 
-%br
-
-%h3 Sign up via Facebook
-= fb_connect_javascript_tag
-= init_fb_connect "XFBML","Api"
-= fb_login_and_redirect facebook_new_session_path
-&nbsp; 
-/ = link_to image_tag('connect_twitter.png'), twitter_oauth_path 
+    %br

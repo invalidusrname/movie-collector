@@ -1,4 +1,12 @@
-= form.error_messages :object_name => 'movie', :class => 'error'
+- if @users_movies.errors.any?
+  .fieldWithErrors
+    %h2
+      =pluralize(@users_movies.errors.count, "error") 
+      prohibited this movie from being added to your collection:
+    %ul
+    - @users_movies.errors.full_messages.each do |msg|
+      %li.error 
+        = msg
 
 %p Add a new movie by either adding the UPC code, or searching by title
 

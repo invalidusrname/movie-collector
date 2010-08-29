@@ -1,4 +1,12 @@
-= form.error_messages :class => 'error'
+- if @movie.errors.any?
+  .fieldWithErrors
+    %h2
+      =pluralize(@movie.errors.count, "error") 
+      prohibited this movie from being saved:
+    %ul
+    - @movie.errors.full_messages.each do |msg|
+      %li.error 
+        = msg
 
 %p.text_field
   = form.label :title

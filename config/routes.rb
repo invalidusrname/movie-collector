@@ -33,6 +33,7 @@ MovieCollector::Application.routes.draw do
   match '/login'  => 'sessions#new',     :as => :sign_in
   match '/logout' => 'sessions#destroy', :as => :logout
   match '/signup' => 'Clearance::Users#new', :as => :signup
+  match '/create_user' => 'Clearance::Users#create', :as => :create_user
   match '/forgot_password' => 'Clearance::Passwords#new', :as => :forgot_password
 
   root :to => "home#index"

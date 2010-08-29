@@ -2,7 +2,7 @@
   .firstposttitle
     %h3= @title = 'Login'
   .firstpostcontent
-    - form_for :session, :url => session_path do |form|
+    = form_for :session, :url => session_path do |form|
       %p.text_field
         = form.label :email
         %br

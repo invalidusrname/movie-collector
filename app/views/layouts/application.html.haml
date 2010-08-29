@@ -26,6 +26,7 @@
       = render_or_default('header')
       = render_or_default('topnav')
       #main
+        = render :partial => 'shared/flashes'
         = yield
       = render_or_default('footer')
     :javascript

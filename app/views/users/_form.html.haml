@@ -1,4 +1,13 @@
-= form.error_messages :class => 'error'
+- if @user.errors.any?
+  .fieldWithErrors
+    %h2
+      =pluralize(@user.errors.count, "error") 
+      prohibited this user from being saved:
+    %ul
+    - @user.errors.full_messages.each do |msg|
+      %li.error 
+        = msg
+
 %p.text_field
   = form.label :email
   %br
