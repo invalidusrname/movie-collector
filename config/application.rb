@@ -11,10 +11,6 @@ require 'yaml'
 module MovieCollector
   class Application < Rails::Application
 
-    # load config.yml
-    APP_CONFIG = YAML.load_file("#{Rails.root}/config/config.yml")
-    DO_NOT_REPLY = APP_CONFIG['mail']['no_reply']
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
