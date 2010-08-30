@@ -1,7 +1,7 @@
 # Edit this Gemfile to bundle your application's dependencies.
 source 'http://rubygems.org'
 
-gem "rails", "3.0.0.rc2"
+gem "rails", "3.0.0"
 
 # git 'git://github.com/rails/rails_upgrade.git' do
   # gem ''
