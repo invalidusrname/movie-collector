@@ -12,6 +12,10 @@ gem "rails", "3.0.0.rc2"
 
 gem "sqlite3-ruby", :require => "sqlite3"
 
+group :production do
+  gem 'mysql'
+end
+
 ## Bundle the gems you use:
 # gem "bj"
 # gem "hpricot", "0.6"
