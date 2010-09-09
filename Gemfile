@@ -44,7 +44,7 @@ gem 'json'
 # gem "facebooker", '>= 1.0.45'
 gem 'clearance', :git => "http://github.com/thoughtbot/clearance.git"
 
-gem "haml", '>= 2.2.1'
+gem "haml", '>= 3.0.18'
 
 gem 'ruby-aaws', :require => 'amazon'# :version => '= 0.6.0'
 
