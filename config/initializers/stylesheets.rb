@@ -12,4 +12,4 @@ end
 
 Rails.configuration.middleware.insert_before('Rack::Sendfile', 'Rack::Static',
                                              :urls => ['/stylesheets/compiled'],
-                                             :root => "/tmp")
+                                             :root => "#{Rails.root}/tmp")
