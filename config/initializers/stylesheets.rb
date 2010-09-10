@@ -4,7 +4,7 @@
 
 # Create the dir
 require 'fileutils'
-FileUtils.mkdir_p(Pathname.new("tmp").join("stylesheets", "compiled"))
+FileUtils.mkdir_p(Rails.root.join("tmp", "stylesheets", "compiled"))
 
 Sass::Plugin.on_updating_stylesheet do |template, css|
   puts "Compiling #{template} to #{css}"
@@ -12,4 +12,4 @@ end
 
 Rails.configuration.middleware.insert_before('Rack::Sendfile', 'Rack::Static',
                                              :urls => ['/stylesheets/compiled'],
-                                             :root => "#{Pathname.new('tmp')}")
+                                             :root => "#{Rails.root}/tmp/")
