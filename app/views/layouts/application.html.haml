@@ -5,13 +5,13 @@
     %meta{'name' => 'keywords', 'content' => 'dvd catalog, blu-ray catalog, movie organizer, movie database, movie, dvd, collection'}
     %meta{'name' => 'description', 'content' => 'MovieCollector allows you to collect, catalogue and rate your favorite movies'}
     = csrf_meta_tag
-
-    = stylesheet_link_tag("compiled/style.css")
+ 
+    = stylesheet_link_tag("compiled/style.css", :cache => false)
     = javascript_include_tag("http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js").html_safe
-    = javascript_include_tag("jquery.easing.min")
-    = javascript_include_tag("superfish")
-    = javascript_include_tag("rails")
-    = javascript_include_tag("application")
+    = javascript_include_tag("jquery.easing.min", :cache => false)
+    = javascript_include_tag("superfish", :cache => false)
+    = javascript_include_tag("rails", :cache => false)
+    = javascript_include_tag("application", :cache => false)
 
     %title
       = @title ? "#{@title} - Movie Collector" : "Movie Collector - Catalog your collection of movies"
