@@ -20,7 +20,7 @@ class Movie < ActiveRecord::Base
     is = Amazon::AWS::ItemSearch.new('Video', { 'Title' => title })
     rg = Amazon::AWS::ResponseGroup.new('Medium')
 
-    req = Amazon::AWS::Search::Request.new
+    req = Amazon::AWS::Search::Request.new(ENV['AWS_KEY'], ENV['AWS_SECRET'], 'us', false)
 
     results = []
 
@@ -69,7 +69,7 @@ class Movie < ActiveRecord::Base
 
     il = Amazon::AWS::ItemLookup.new('UPC', lookup_attributes)
     rg = Amazon::AWS::ResponseGroup.new('Medium')
-    req = Amazon::AWS::Search::Request.new
+    req = Amazon::AWS::Search::Request.new(ENV['AWS_KEY'], ENV['AWS_SECRET'], 'us', false)
 
     begin
       resp = req.search(il, rg)
