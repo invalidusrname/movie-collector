@@ -10,12 +10,6 @@ gem "rails", "3.0.0"
 ## Bundle edge rails:
 # gem "rails", :git => "git://github.com/rails/rails.git"
 
-gem "sqlite3-ruby", :require => "sqlite3"
-
-group :production do
-  gem 'mysql'
-end
-
 ## Bundle the gems you use:
 # gem "bj"
 # gem "hpricot", "0.6"
@@ -27,6 +21,8 @@ end
 # git "git://github.com/cavalle/polyglot.git"
 
 group :test, :development do
+  gem 'mysql'
+  gem "sqlite3-ruby", :require => "sqlite3"
   gem "cucumber-rails"
   gem "rspec-rails", ">= 2.0.0.beta.20"
   gem 'database_cleaner'
