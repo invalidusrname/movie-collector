@@ -33,7 +33,7 @@ group :test, :development do
   gem 'cucumber-rails'
 end
 
-gem 'hpricot'
+gem 'nokogiri'
 gem 'json'
 
 # don't work out of the box. uncommenting for now

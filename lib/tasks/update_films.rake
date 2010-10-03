@@ -1,5 +1,5 @@
 require 'open-uri'
-require 'hpricot'
+require 'nokogiri'
 
 task :box_office => ['box_office:top_films', 'box_office:this_week']
 
@@ -10,7 +10,7 @@ task :retail => :environment do
   month = ENV['month'] || Date.today.month
   year = ENV['year']   || Date.today.year
   
-  doc = Hpricot(open("http://homevideo.about.com/library/blDVDreleases#{year}.htm"))
+  doc = Nokogiri::HTML(open("http://homevideo.about.com/library/blDVDreleases#{year}.htm"))
 
   release_date_links = []
 
@@ -28,7 +28,7 @@ namespace :box_office do
 
   desc 'updates top grossing films for the week'
   task :top_films => :environment do
-    doc = Hpricot(open("http://fandango.com/"))
+    doc = Nokogiri::HTML(open("http://fandango.com/"))
 
     BoxOfficeFilm.update_all('position = null AND amount = null', 'position is not NULL OR amount is not null')
 
@@ -53,7 +53,7 @@ namespace :box_office do
 
   desc 'updates movies coming out this week'
   task :this_week => :environment do
-    doc = Hpricot(open("http://fandango.com/"))
+    doc = Nokogiri::HTML(open("http://fandango.com/"))
 
     list = doc.at("#movieDropDownContents ul.clearfix")
 
@@ -76,8 +76,10 @@ namespace :box_office do
   
   def check_release_info(f, url)
     attributes = {}
+    
     if (f.release_date.blank? || f.duration.blank?) && url
-      doc = Hpricot(open(url))
+      doc = Nokogiri::HTML(open(url))
+
       line = doc.at("#info ul li[2]")
       if line
         date, duration = line.inner_text.split("|")
