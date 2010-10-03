@@ -20,15 +20,18 @@ class Movie < ActiveRecord::Base
     is = Amazon::AWS::ItemSearch.new('Video', { 'Title' => title })
     rg = Amazon::AWS::ResponseGroup.new('Medium')
 
-    req = Amazon::AWS::Search::Request.new(ENV['AWS_KEY'], ENV['AWS_SECRET'], 'us', false)
+    req = Amazon::AWS::Search::Request.new(nil, nil, 'us')
 
     results = []
 
     begin
       resp = req.search(is, rg, 1)
-    rescue Amazon::AmazonError => e
+    rescue Exception => e
+      logger.debug e
       return results
     end
+
+    logger.debug "#{results.size} found results"
 
     items =  resp.item_search_response.items.item
 
@@ -74,6 +77,7 @@ class Movie < ActiveRecord::Base
     begin
       resp = req.search(il, rg)
     rescue Amazon::AmazonError => e
+      logger.debug e
       return Hash.new
     end
 
