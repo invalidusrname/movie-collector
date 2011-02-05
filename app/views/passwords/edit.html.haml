@@ -1,20 +1,21 @@
-%h2 Change your password
+.firstpost
+  .firstposttitle
+    %h3= @title = 'Change your password'
+  .firstpostcontent
+    %p Your password has been reset. Choose a new password below.
 
-%p Your password has been reset. Choose a new password below.
+    = error_messages_for :user,  :class => 'error'
 
-= error_messages_for :user,  :class => 'error'
-
-- form_for(:user, |
-    :url => user_password_path(@user, :token => @user.confirmation_token), |
-    :html => { :method => :put }) do |form| |
-  %p.password_field
-    = form.label :password, "Choose password"
-    %br
-    = form.password_field :password, :class => 'text'
-  %p.password_field
-    = form.label :password_confirmation, "Confirm password"
-    %br
-    = form.password_field :password_confirmation, :class => 'text'
-  %p.submit_field
-    = form.submit "Save this password", :disable_with => "Please wait..."
-
+    - form_for(:user, |
+        :url => user_password_path(@user, :token => @user.confirmation_token), |
+        :html => { :method => :put }) do |form| |
+      %p.password_field
+        = form.label :password, "Choose password"
+        %br
+        = form.password_field :password, :class => 'text'
+      %p.password_field
+        = form.label :password_confirmation, "Confirm password"
+        %br
+        = form.password_field :password_confirmation, :class => 'text'
+      %p.submit_field
+        = form.submit "Save this password", :disable_with => "Please wait..."
