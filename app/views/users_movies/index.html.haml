@@ -15,7 +15,8 @@
           = will_paginate @users_movies
     %thead
       %tr
-        %th.text
+      - unless params[:hide_thumbnail]
+            %th.text
         %th.text
           = sortable_link 'Title', :column => 'movies.title'
         %th.text
@@ -31,7 +32,8 @@
       - @users_movies.each do |users_movie|
         - movie = users_movie.movie
         %tr{:class => cycle('odd', 'even')}
-          %td.thumbnail= link_to(image_tag(thumbnail(movie), :title => movie.title), users_movie_path(users_movie))
+          - unless params[:hide_thumbnail]
+            %td.thumbnail= link_to(image_tag(thumbnail(movie), :title => movie.title), users_movie_path(users_movie))
           %td.title= h movie.title
           %td.genre= h movie.genre.name unless movie.genre.nil?
           %td.format= h movie.format
