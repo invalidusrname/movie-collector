@@ -15,8 +15,8 @@
           = will_paginate @users_movies
     %thead
       %tr
-      - unless params[:hide_thumbnail]
-            %th.text
+        - unless params[:hide_thumbnail]
+          %th.text
         %th.text
           = sortable_link 'Title', :column => 'movies.title'
         %th.text
