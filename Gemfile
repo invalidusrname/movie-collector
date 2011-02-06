@@ -44,5 +44,5 @@ gem "haml", '>= 3.0.18'
 
 gem 'ruby-aaws', :require => 'amazon'# :version => '= 0.6.0'
 
-gem 'compass'
+gem "compass", ">= 0.10.6"
 gem 'will_paginate', :git => "http://github.com/mislav/will_paginate.git", :branch => "rails3"

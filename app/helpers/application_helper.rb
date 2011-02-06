@@ -41,15 +41,15 @@ module ApplicationHelper
   LETTERS = ('A'..'Z').entries + ['All']
 
    def navigation_links(current_letter, controller)
-     returning [] do |html|
-       LETTERS.each do |letter|
-         if letter == current_letter
-           html << ' '+ content_tag(:span, letter, :class => 'current')
-         else
-           html << ' '+ link_to(letter, :controller => controller, :letter => letter)
-         end
+     html = ''
+     LETTERS.each do |letter|
+       if letter == current_letter
+         html << ' '+ content_tag(:span, letter, :class => 'current')
+       else
+         html << ' '+ link_to(letter, :controller => controller, :letter => letter)
        end
-     end.join
+     end
+     html
    end
 
 end

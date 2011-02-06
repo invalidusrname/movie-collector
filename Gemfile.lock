@@ -45,7 +45,7 @@ GEM
     arel (1.0.1)
       activesupport (~> 3.0.0)
     builder (2.1.2)
-    compass (0.10.4)
+    compass (0.10.6)
       haml (>= 3.0.4)
     cucumber (0.8.5)
       builder (~> 2.1.2)
@@ -124,7 +124,7 @@ PLATFORMS
 
 DEPENDENCIES
   clearance!
-  compass
+  compass (>= 0.10.6)
   cucumber-rails
   database_cleaner
   factory_girl

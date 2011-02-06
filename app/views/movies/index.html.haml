@@ -1,13 +1,16 @@
 %h1= @title = 'Listing Movies'
 
+
+
 - if @movies.size > 0
-  = render :partial => "search"
-  = link_to 'New movie', new_movie_path
+  .actions
+    = render :partial => "search"
+    = link_to 'New movie', new_movie_path
   %br
   %br
   .wp-pagenavi
     = raw navigation_links('a', controller.controller_name)
-  %table{:style => "width: 100%"}
+  %table#movies{:style => "width: 100%"}
     %tfoot
       %tr.wp-pagenavi
         %td{:style => ""}
@@ -34,6 +37,7 @@
             %td= link_to 'Edit', edit_movie_path(movie)
             %td=# link_to 'Delete', movie, :confirm => 'Are you sure?', :method => :delete
 - else
-  %p
-    There are no movies. Please
-    =link_to 'Add some', new_movie_path
+  .actions
+    %p
+      There are no movies. Please
+      =link_to 'Add some', new_movie_path
