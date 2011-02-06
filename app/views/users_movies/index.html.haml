@@ -24,7 +24,7 @@
           = sortable_link 'Genre', :column => 'genre'
         %th.text
           = sortable_link 'Format', :column => 'movies.format'
-        %th.text
+        %th.text{:style => "min-width: 90px"}
           = sortable_link 'Added', :column => 'created_at'
         %th.text
           Rating
