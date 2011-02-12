@@ -4,59 +4,44 @@
 @import "compass/utilities";
 @import "blueprint/debug";
 
-+blueprint
 // Remove the scaffolding when you're ready to start doing visual design.
 // Or leave it in if you're happy with how blueprint looks out-of-the-box
-+blueprint-scaffolding
 
 #container
-  +container
 
 #footer
   text-align: center
 
 #header, #footer
-  +column(24)
 
 #header
   height: 70px
   position: relative
   #logo
     font-size: 36px
-    +unstyled-link
     a
-      +unstyled-link
     a:hover
       text-decoration: none
   #links
-    +horizontal-list
     position: absolute
     top: 1em
     right: 0px
 
 #sidebar
-  +column(7)
-  ul
-    +no-bullets
 
 #content
-  +column(16, true)
 
 
 #header, #footer, #sidebar
   a
-    +hover-link
 
 .fieldWithErrors
-  +error
   padding: 2px
   display: table
 
 table
   margin-top: 15px
-  +table-scaffolding
   a
-    +unstyled-link
 
 tr.even td, tr.odd td
   background: white
@@ -71,20 +56,17 @@ tr.even td.thumbnail, td.thumbnail
   display: block
 
 td.thumbnail img
-  +center-image
 
 #img_holder
   max-width: 480px
   min-height: 130px
   max-height: 230px
-  +horizontal-list
   li
     margin: 5px
 
 #recently_added
   margin-top: 50px
   ul
-    +inline-list
 
 #flash
   width: 400px

@@ -1070,3 +1070,23 @@ table th.text a {
 .clear {
   clear: both;
 }
+
+/* line 921, ../../../app/stylesheets/style.sass */
+#outnow {
+  float: left;
+  margin: 0 70px 0 0;
+}
+/* line 924, ../../../app/stylesheets/style.sass */
+#outnow h2 {
+  text-align: center;
+}
+
+/* line 927, ../../../app/stylesheets/style.sass */
+#thisweek {
+  float: left;
+  margin: 0 0px 0 0;
+}
+/* line 930, ../../../app/stylesheets/style.sass */
+#thisweek h2 {
+  text-align: center;
+}

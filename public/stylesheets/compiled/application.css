@@ -1,79 +1,79 @@
-/*
-Syntax error: Undefined mixin 'blueprint'.
-        on line 7 of /Users/mmcmahand/projects/movie-collector/app/stylesheets/application.sass, in `blueprint'
-        from line 7 of /Users/mmcmahand/projects/movie-collector/app/stylesheets/application.sass
+@import "blueprint" ;;
+@import "blueprint/scaffolding" ;;
+@import "compass/reset" ;;
+@import "compass/utilities" ;;
+@import "blueprint/debug" ;;
+/* line 12, ../../../app/stylesheets/application.sass */
+#footer {
+  text-align: center;
+}
 
-2: @import "blueprint/scaffolding";
-3: @import "compass/reset";
-4: @import "compass/utilities";
-5: @import "blueprint/debug";
-6: 
-7: +blueprint
-8: // Remove the scaffolding when you're ready to start doing visual design.
-9: // Or leave it in if you're happy with how blueprint looks out-of-the-box
-10: +blueprint-scaffolding
-11: 
-12: #container
+/* line 17, ../../../app/stylesheets/application.sass */
+#header {
+  height: 70px;
+  position: relative;
+}
+/* line 20, ../../../app/stylesheets/application.sass */
+#header #logo {
+  font-size: 36px;
+}
+/* line 23, ../../../app/stylesheets/application.sass */
+#header #logo a:hover {
+  text-decoration: none;
+}
+/* line 25, ../../../app/stylesheets/application.sass */
+#header #links {
+  position: absolute;
+  top: 1em;
+  right: 0px;
+}
 
-Backtrace:
-/Users/mmcmahand/projects/movie-collector/app/stylesheets/application.sass:7:in `blueprint'
-/Users/mmcmahand/projects/movie-collector/app/stylesheets/application.sass:7
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/tree/mixin_node.rb:74:in `perform!'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/tree/node.rb:305:in `_perform'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/tree/node.rb:213:in `perform'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/tree/node.rb:326:in `block in perform_children'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/tree/node.rb:326:in `map'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/tree/node.rb:326:in `perform_children'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/tree/node.rb:317:in `perform!'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/tree/root_node.rb:59:in `perform!'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/tree/node.rb:305:in `_perform'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/tree/node.rb:213:in `perform'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/tree/root_node.rb:37:in `perform'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/tree/root_node.rb:29:in `render'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/plugin.rb:220:in `update_stylesheet'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/plugin.rb:85:in `block (2 levels) in update_stylesheets'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/plugin.rb:78:in `each'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/plugin.rb:78:in `block in update_stylesheets'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/plugin.rb:76:in `each'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/plugin.rb:76:in `update_stylesheets'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/plugin.rb:50:in `check_for_updates'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/haml-3.0.18/lib/sass/plugin/rack.rb:40:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.0/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.0/lib/action_dispatch/middleware/head.rb:14:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.0/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.0/lib/action_dispatch/middleware/flash.rb:182:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.0/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.0/lib/action_dispatch/middleware/cookies.rb:287:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/activerecord-3.0.0/lib/active_record/query_cache.rb:32:in `block in call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/activerecord-3.0.0/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/activerecord-3.0.0/lib/active_record/query_cache.rb:12:in `cache'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/activerecord-3.0.0/lib/active_record/query_cache.rb:31:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/activerecord-3.0.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.0/lib/action_dispatch/middleware/callbacks.rb:46:in `block in call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/activesupport-3.0.0/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.0/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/rack-1.2.1/lib/rack/static.rb:33:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.0/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.0/lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/railties-3.0.0/lib/rails/rack/logger.rb:13:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/activesupport-3.0.0/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/rack-1.2.1/lib/rack/lock.rb:11:in `block in call'
-<internal:prelude>:10:in `synchronize'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.0/lib/action_dispatch/middleware/static.rb:30:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/railties-3.0.0/lib/rails/application.rb:168:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/railties-3.0.0/lib/rails/application.rb:77:in `method_missing'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/railties-3.0.0/lib/rails/rack/log_tailer.rb:14:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/rack-1.2.1/lib/rack/content_length.rb:13:in `call'
-/Users/mmcmahand/.rvm/gems/ruby-1.9.2-p136/gems/rack-1.2.1/lib/rack/handler/webrick.rb:52:in `service'
-/Users/mmcmahand/.rvm/rubies/ruby-1.9.2-p136/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
-/Users/mmcmahand/.rvm/rubies/ruby-1.9.2-p136/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
-/Users/mmcmahand/.rvm/rubies/ruby-1.9.2-p136/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Undefined mixin 'blueprint'.\A         on line 7 of /Users/mmcmahand/projects/movie-collector/app/stylesheets/application.sass, in `blueprint'\A         from line 7 of /Users/mmcmahand/projects/movie-collector/app/stylesheets/application.sass\A \A 2: @import \"blueprint/scaffolding\";\A 3: @import \"compass/reset\";\A 4: @import \"compass/utilities\";\A 5: @import \"blueprint/debug\";\A 6: \A 7: +blueprint\A 8: // Remove the scaffolding when you're ready to start doing visual design.\A 9: // Or leave it in if you're happy with how blueprint looks out-of-the-box\A 10: +blueprint-scaffolding\A 11: \A 12: #container"; }
+/* line 38, ../../../app/stylesheets/application.sass */
+.fieldWithErrors {
+  padding: 2px;
+  display: table;
+}
+
+/* line 42, ../../../app/stylesheets/application.sass */
+table {
+  margin-top: 15px;
+}
+
+/* line 46, ../../../app/stylesheets/application.sass */
+tr.even td, tr.odd td {
+  background: white;
+}
+
+/* line 49, ../../../app/stylesheets/application.sass */
+tr.even td.thumbnail, td.thumbnail {
+  width: 75px;
+  background: white;
+}
+
+/* line 60, ../../../app/stylesheets/application.sass */
+#img_holder {
+  max-width: 480px;
+  min-height: 130px;
+  max-height: 230px;
+}
+/* line 64, ../../../app/stylesheets/application.sass */
+#img_holder li {
+  margin: 5px;
+}
+
+/* line 67, ../../../app/stylesheets/application.sass */
+#recently_added {
+  margin-top: 50px;
+}
+
+/* line 71, ../../../app/stylesheets/application.sass */
+#flash {
+  width: 400px;
+  height: 200px;
+  background: red;
+}
+
+/* line 76, ../../../app/stylesheets/application.sass */
+#movies tbody tr td {
+  background-color: blue;
+}

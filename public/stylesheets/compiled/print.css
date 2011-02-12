@@ -1,5 +1,9 @@
+/* line 1, ../../../app/stylesheets/print.sass */
 .wp-pagenavi, #header, #footer, #sidebar, #topnav, form, .actions {
-  display: none; }
+  display: none;
+}
 
+/* line 4, ../../../app/stylesheets/print.sass */
 tfoot tr.wp-pagenavi {
-  display: inline; }
+  display: inline;
+}
