@@ -6,8 +6,8 @@
     %meta{'name' => 'description', 'content' => 'MovieCollector allows you to collect, catalogue and rate your favorite movies'}
     = csrf_meta_tag
  
-    = stylesheet_link_tag("compiled/print.css", :media => "print")
-    = stylesheet_link_tag("compiled/style.css")
+    = stylesheet_link_tag("print.css", :media => "print")
+    = stylesheet_link_tag("style.css")
     = javascript_include_tag("http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js").html_safe
     = javascript_include_tag("jquery.easing.min", :cache => false)
     = javascript_include_tag("superfish", :cache => false)
