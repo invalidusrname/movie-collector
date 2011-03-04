@@ -10,12 +10,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110304012706) do
+ActiveRecord::Schema.define(:version => 20091127171407) do
 
   create_table "box_office_films", :force => true do |t|
     t.string   "title"
     t.text     "url"
-    t.float    "amount",       :limit => 255
+    t.float    "amount"
     t.text     "ticket_url"
     t.integer  "position"
     t.date     "release_date"
@@ -29,49 +29,49 @@ ActiveRecord::Schema.define(:version => 20110304012706) do
   end
 
   create_table "movies", :force => true do |t|
-    t.string    "title"
-    t.string    "format"
-    t.string    "asin"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.text      "thumbnail"
-    t.text      "image"
-    t.text      "image_link"
-    t.date      "release_date"
-    t.string    "upc"
-    t.integer   "genre_id"
+    t.string   "title"
+    t.string   "format"
+    t.string   "asin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "image"
+    t.text     "image_link"
+    t.text     "thumbnail"
+    t.date     "release_date"
+    t.string   "upc"
+    t.integer  "genre_id"
   end
 
   add_index "movies", ["genre_id"], :name => "index_movies_on_genre_id"
 
   create_table "sessions", :force => true do |t|
-    t.string    "session_id", :null => false
-    t.text      "data"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
-    t.string    "email"
-    t.string    "encrypted_password",        :limit => 128
-    t.string    "salt",                      :limit => 128
-    t.string    "token",                     :limit => 128
-    t.timestamp "token_expires_at"
-    t.boolean   "email_confirmed",                          :default => false, :null => false
-    t.integer   "facebook_id"
-    t.string    "session_key"
-    t.boolean   "admin"
-    t.string    "twitter_id"
-    t.string    "login"
-    t.string    "access_token"
-    t.string    "access_secret"
-    t.string    "profile_image_url"
-    t.string    "remember_token"
-    t.timestamp "remember_token_expires_at"
-    t.string    "confirmation_token"
+    t.string   "email"
+    t.string   "encrypted_password",        :limit => 128
+    t.string   "salt",                      :limit => 128
+    t.string   "token",                     :limit => 128
+    t.datetime "token_expires_at"
+    t.boolean  "email_confirmed",                          :default => false, :null => false
+    t.integer  "facebook_id"
+    t.string   "session_key"
+    t.boolean  "admin"
+    t.string   "twitter_id"
+    t.string   "login"
+    t.string   "access_token"
+    t.string   "access_secret"
+    t.string   "profile_image_url"
+    t.string   "remember_token"
+    t.datetime "remember_token_expires_at"
+    t.string   "confirmation_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
@@ -80,13 +80,13 @@ ActiveRecord::Schema.define(:version => 20110304012706) do
   add_index "users", ["token"], :name => "index_users_on_token"
 
   create_table "users_movies", :force => true do |t|
-    t.integer   "user_id"
-    t.integer   "movie_id"
-    t.integer   "rating"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.boolean   "private"
-    t.integer   "borrower_id"
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.integer  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "private"
+    t.integer  "borrower_id"
   end
 
   add_index "users_movies", ["borrower_id"], :name => "index_users_movies_on_borrower_id"

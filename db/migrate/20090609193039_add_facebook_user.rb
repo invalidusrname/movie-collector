@@ -1,6 +1,6 @@
 class AddFacebookUser < ActiveRecord::Migration
   def self.up
-    add_column :users, :facebook_id, :integer, :limit => 20
+    add_column :users, :facebook_id, :integer
     add_column :users, :session_key, :string
 
     add_index :users, :facebook_id, :unique => true

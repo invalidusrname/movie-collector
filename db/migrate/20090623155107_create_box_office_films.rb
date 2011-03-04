@@ -3,7 +3,7 @@ class CreateBoxOfficeFilms < ActiveRecord::Migration
     create_table :box_office_films do |t|
       t.string :title
       t.text :url
-      t.string :amount
+      t.float :amount
       t.text :ticket_url
       t.integer :position
       t.date :release_date

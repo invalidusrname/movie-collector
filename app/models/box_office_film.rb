@@ -36,12 +36,12 @@ class BoxOfficeFilm < ActiveRecord::Base
       tds = film/('td')
       if tds && tds.size == 3
         title = tds[0].inner_text.strip
-
+        
         f = self.find_or_create_by_title(title)
 
         attributes              = {}
         attributes[:url]        = tds[0].at('a')[:href].strip
-        attributes[:amount]     = tds[1].inner_text.strip
+        attributes[:amount]     = tds[1].inner_text.strip.gsub("$", '').gsub("M", '')
         attributes[:ticket_url] = tds[2].at('a')[:href].strip
         attributes[:position]   = index + 1
         attributes.merge!(self.check_release_info(f, attributes[:url]))
@@ -60,6 +60,7 @@ class BoxOfficeFilm < ActiveRecord::Base
       if film && film.at('a')
         a     = film.at('a')
         title = a.inner_text.strip
+        
         f = self.find_or_create_by_title(title)
 
         attributes       = {}
