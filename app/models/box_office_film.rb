@@ -30,7 +30,7 @@ class BoxOfficeFilm < ActiveRecord::Base
   def self.update
     doc = Nokogiri::HTML(open("http://fandango.com/"))
 
-    BoxOfficeFilm.update_all('`position` = null AND amount = null', '`position` is not NULL OR amount is not null')
+    BoxOfficeFilm.update_all('position = null, amount = null', 'position is not NULL OR amount is not null')
 
     (doc/"#box_office tr").each_with_index do |film, index|
       tds = film/('td')
