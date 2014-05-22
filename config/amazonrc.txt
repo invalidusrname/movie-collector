@@ -1,3 +1,0 @@
-key_id = '0B4F73E8K1QHPF5FC4G2'
-secret_key_id = 'Jtb9dveRqyDu8xcorDluMasFJIrF9KvFqCkr/rUS'
-locale = 'us'
