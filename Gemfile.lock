@@ -77,11 +77,11 @@ GEM
     mocha (0.9.8)
       rake
     mysql (2.8.1)
-    nokogiri (1.13.9)
+    nokogiri (1.13.10)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     polyglot (0.3.5)
-    racc (1.6.0)
+    racc (1.6.1)
     rack (1.2.8)
     rack-mount (0.6.14)
       rack (>= 1.0.0)
