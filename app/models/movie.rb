@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'amazon/aws/search'
+require "amazon/aws/search"
 
 class Movie < ApplicationRecord
   has_many :users, through: :users_movies
   has_many :users_movies, dependent: :destroy
   belongs_to :genre
 
-  FORMATS = ['Blu-ray', 'DVD', 'HD-DVD', 'LaserDisc', 'VHS Tape'].freeze
+  FORMATS = ["Blu-ray", "DVD", "HD-DVD", "LaserDisc", "VHS Tape"].freeze
   RATINGS = [nil, 1, 2, 3, 4, 5].freeze
 
   validates :title, presence: true
@@ -17,10 +17,10 @@ class Movie < ApplicationRecord
   def self.search_titles_on_amazon(title, limit = 5)
     return {} if title.to_s.length < 4
 
-    is = Amazon::AWS::ItemSearch.new('Video', { 'Title' => title })
-    rg = Amazon::AWS::ResponseGroup.new('Medium')
+    is = Amazon::AWS::ItemSearch.new("Video", { "Title" => title })
+    rg = Amazon::AWS::ResponseGroup.new("Medium")
 
-    req = Amazon::AWS::Search::Request.new(nil, nil, 'us')
+    req = Amazon::AWS::Search::Request.new(nil, nil, "us")
 
     results = []
 
@@ -41,9 +41,9 @@ class Movie < ApplicationRecord
 
       attributes = {}
 
-      thumbnail = if item.image_sets.image_set.respond_to?('thumbnail_image')
+      thumbnail = if item.image_sets.image_set.respond_to?("thumbnail_image")
                     item.image_sets.image_set.thumbnail_image.url.to_s
-                  elsif item.image_sets.image_set.respond_to?('tiny_image')
+                  elsif item.image_sets.image_set.respond_to?("tiny_image")
                     item.image_sets.image_set.tiny_image.url.to_s
                   else
                     item.small_image.url.to_s
@@ -65,11 +65,11 @@ class Movie < ApplicationRecord
   def self.lookup_on_amazon(upc)
     return {} if upc.to_s.length < 4
 
-    lookup_attributes = { 'ItemId' => upc, 'SearchIndex' => 'Video' }
+    lookup_attributes = { "ItemId" => upc, "SearchIndex" => "Video" }
 
-    il = Amazon::AWS::ItemLookup.new('UPC', lookup_attributes)
-    rg = Amazon::AWS::ResponseGroup.new('Medium')
-    req = Amazon::AWS::Search::Request.new(ENV['AWS_KEY'], ENV['AWS_SECRET'], 'us', false)
+    il = Amazon::AWS::ItemLookup.new("UPC", lookup_attributes)
+    rg = Amazon::AWS::ResponseGroup.new("Medium")
+    req = Amazon::AWS::Search::Request.new(ENV["AWS_KEY"], ENV["AWS_SECRET"], "us", false)
 
     begin
       resp = req.search(il, rg)
@@ -101,9 +101,9 @@ class Movie < ApplicationRecord
   def self.search(search, search_options = {}, options = {})
     if search.to_s.length.positive?
       if search_options.key? :starts_with
-        options.merge!(conditions: ['title LIKE ?', "#{search}%"])
+        options.merge!(conditions: ["title LIKE ?", "#{search}%"])
       else
-        options.merge!(conditions: ['title LIKE ?', "%#{search}%"])
+        options.merge!(conditions: ["title LIKE ?", "%#{search}%"])
       end
     end
     paginate(:all, options)

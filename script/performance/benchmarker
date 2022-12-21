@@ -2,4 +2,4 @@
 # frozen_string_literal: true
 
 require "#{File.dirname(__FILE__)}/../../config/boot"
-require 'commands/performance/benchmarker'
+require "commands/performance/benchmarker"

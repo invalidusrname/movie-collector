@@ -3,7 +3,7 @@
 class UsersMovie < ApplicationRecord
   belongs_to :movie
   belongs_to :user
-  belongs_to :borrower, class_name: 'User'
+  belongs_to :borrower, class_name: "User"
 
   validates_associated :movie
   validates :rating, inclusion: { in: Movie::RATINGS }
@@ -37,9 +37,9 @@ class UsersMovie < ApplicationRecord
   def self.search(search, search_options = {}, options = {})
     if search.to_s.length.positive?
       if search_options.key? :starts_with
-        options.merge!(conditions: ['movies.title LIKE ?', "#{search}%"])
+        options.merge!(conditions: ["movies.title LIKE ?", "#{search}%"])
       else
-        options.merge!(conditions: ['movies.title LIKE ?', "%#{search}%"])
+        options.merge!(conditions: ["movies.title LIKE ?", "%#{search}%"])
       end
     end
     paginate(:all, options)

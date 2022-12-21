@@ -21,29 +21,29 @@ class ApplicationController < ActionController::Base
   protected
 
   def require_login
-    deny_access('Login Required')
+    deny_access("Login Required")
   end
 
   def require_admin
     return if signed_in? && current_user.admin?
 
-    deny_access('Restricted Area')
+    deny_access("Restricted Area")
   end
 
   # redirect users once they've authorized the application
   # intended to work with facebook canvas pages, not facebook connect
   def after_facebook_login_url
     # request.request_uri
-    "http://apps.facebook.com/#{Facebooker.facebooker_config['canvas_page_name']}"
+    "http://apps.facebook.com/#{Facebooker.facebooker_config["canvas_page_name"]}"
   end
 
   def movie_sort_order(params)
-    sort = if params[:sort] == 'genre'
-             'genres.name'
+    sort = if params[:sort] == "genre"
+             "genres.name"
            else
-             Movie.column_names.include?(params[:sort]) ? params[:sort] : 'movies.title'
+             Movie.column_names.include?(params[:sort]) ? params[:sort] : "movies.title"
            end
-    dir = params[:dir] && params[:dir].downcase == 'desc' ? 'desc' : 'asc'
+    dir = params[:dir] && params[:dir].downcase == "desc" ? "desc" : "asc"
     "#{sort} #{dir}"
   end
 
@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
     # notify_hoptoad(exception)
     logger.debug(exception)
     render file: "#{Rails.root}/public/404.html",
-           layout: 'application',
+           layout: "application",
            status: :not_found
   end
 end

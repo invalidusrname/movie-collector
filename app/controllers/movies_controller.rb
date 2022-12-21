@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
 
     search_options = {}
 
-    if params[:letter].present? && params[:letter] != 'All'
+    if params[:letter].present? && params[:letter] != "All"
       search_options[:starts_with] = true
       term = params[:letter]
     end
@@ -53,7 +53,7 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new(params[:movie])
 
-    flash[:notice] = 'Movie was successfully created.' if @movie.save
+    flash[:notice] = "Movie was successfully created." if @movie.save
     respond_with(@movie)
   end
 
@@ -62,7 +62,7 @@ class MoviesController < ApplicationController
   def update
     @movie = Movie.find(params[:id])
 
-    flash[:notice] = 'Movie was successfully updated.' if @movie.update(params[:movie])
+    flash[:notice] = "Movie was successfully updated." if @movie.update(params[:movie])
     respond_with(@movie)
   end
 

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-ENV['RAILS_ENV'] = 'test'
-require File.expand_path('../config/environment', __dir__)
-require 'rails/test_help'
+ENV["RAILS_ENV"] = "test"
+require File.expand_path("../config/environment", __dir__)
+require "rails/test_help"
 
 module ActiveSupport
   class TestCase
@@ -20,9 +20,9 @@ module ActiveSupport
     end
 
     def sign_in
-      u = User.new(email: 'test@domain.org', email_confirmed: true)
-      u.password              = 'pass'
-      u.password_confirmation = 'pass'
+      u = User.new(email: "test@domain.org", email_confirmed: true)
+      u.password              = "pass"
+      u.password_confirmation = "pass"
       u.admin = false
       u.save
 
@@ -30,9 +30,9 @@ module ActiveSupport
     end
 
     def sign_in_admin
-      u = User.new(email: 'test@domain.org', email_confirmed: true)
-      u.password              = 'pass'
-      u.password_confirmation = 'pass'
+      u = User.new(email: "test@domain.org", email_confirmed: true)
+      u.password              = "pass"
+      u.password_confirmation = "pass"
       u.admin = true
       u.save
 
@@ -41,4 +41,4 @@ module ActiveSupport
   end
 end
 
-require 'mocha'
+require "mocha"

@@ -9,18 +9,18 @@
 # ENV["RAILS_ENV"] = 'cucumber'
 
 require File.expand_path("#{File.dirname(__FILE__)}/../../config/environment")
-require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
-require 'cucumber/rails/rspec'
-require 'cucumber/rails/world'
+require "cucumber/formatter/unicode" # Remove this line if you don't want Cucumber Unicode support
+require "cucumber/rails/rspec"
+require "cucumber/rails/world"
 
 # FIX: In Rails 3 we shouldn't HAVE TO use active_record!!!
-require 'cucumber/rails/active_record'
-require 'cucumber/web/tableish'
+require "cucumber/rails/active_record"
+require "cucumber/web/tableish"
 
-require 'webrat'
-require 'webrat/core/matchers'
+require "webrat"
+require "webrat/core/matchers"
 
-require 'factory_girl'
+require "factory_girl"
 
 Webrat.configure do |config|
   config.mode = :rails
@@ -54,5 +54,5 @@ Cucumber::Rails::World.use_transactional_fixtures = true
 
 # How to clean your database when transactions are turned off. See
 # http://github.com/bmabey/database_cleaner for more info.
-require 'database_cleaner'
+require "database_cleaner"
 DatabaseCleaner.strategy = :truncation

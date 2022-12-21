@@ -16,7 +16,7 @@ class UsersMoviesController < ApplicationController
 
     search_options = {}
 
-    if params[:letter].present? && params[:letter] != 'All'
+    if params[:letter].present? && params[:letter] != "All"
       search_options[:starts_with] = true
       term = params[:letter]
     end
@@ -29,7 +29,7 @@ class UsersMoviesController < ApplicationController
   end
 
   def recently_added
-    @users_movies = current_user.users_movies.all(include: :movie, limit: 5, order: 'users_movies.id DESC')
+    @users_movies = current_user.users_movies.all(include: :movie, limit: 5, order: "users_movies.id DESC")
 
     respond_with(@users_movies)
   end
@@ -54,7 +54,7 @@ class UsersMoviesController < ApplicationController
     @users_movie.user = current_user
     @users_movie.rating = params[:rating_rated]
 
-    flash[:notice] = 'Movie was successfully created.' if @users_movie.save
+    flash[:notice] = "Movie was successfully created." if @users_movie.save
 
     respond_with(@users_movie)
   end
@@ -76,6 +76,6 @@ class UsersMoviesController < ApplicationController
   def add_rating
     m = UsersMovie.find(params[:id])
     m&.update_attribute(:rating, params[:rated])
-    render json: 'ok'
+    render json: "ok"
   end
 end

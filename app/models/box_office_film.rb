@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'open-uri'
+require "open-uri"
 
 class BoxOfficeFilm < ApplicationRecord
-  scope :top_films, conditions: ['position is not null'], order: :position
+  scope :top_films, conditions: ["position is not null"], order: :position
   scope :this_week, lambda {
-                      { conditions: ['release_date >= ? AND release_date <= ?', Date.today.beginning_of_week, Date.today.end_of_week], order: 'release_date DESC' }
+                      { conditions: ["release_date >= ? AND release_date <= ?", Date.today.beginning_of_week, Date.today.end_of_week], order: "release_date DESC" }
                     }
 
   def self.check_release_info(f, url)
@@ -14,10 +14,10 @@ class BoxOfficeFilm < ApplicationRecord
     if (f.release_date.blank? || f.duration.blank?) && url
       doc = Nokogiri::HTML(open(url))
 
-      line = doc.at('#info ul li[2]')
+      line = doc.at("#info ul li[2]")
       if line
-        date, duration = line.inner_text.split('|')
-        date = date.gsub('Opened|Opens', '').strip
+        date, duration = line.inner_text.split("|")
+        date = date.gsub("Opened|Opens", "").strip
         attributes[:release_date] = Date.parse(date)
 
         if duration =~ /(\d+)\s+hr\.\s(\d+)\smin\./
@@ -31,12 +31,12 @@ class BoxOfficeFilm < ApplicationRecord
   end
 
   def self.update
-    doc = Nokogiri::HTML(open('http://fandango.com/'))
+    doc = Nokogiri::HTML(open("http://fandango.com/"))
 
-    BoxOfficeFilm.update_all('position = null, amount = null', 'position is not NULL OR amount is not null')
+    BoxOfficeFilm.update_all("position = null, amount = null", "position is not NULL OR amount is not null")
 
-    (doc / '#box_office tr').each_with_index do |film, index|
-      tds = film / 'td'
+    (doc / "#box_office tr").each_with_index do |film, index|
+      tds = film / "td"
       next unless tds && tds.size == 3
 
       title = tds[0].inner_text.strip
@@ -44,9 +44,9 @@ class BoxOfficeFilm < ApplicationRecord
       f = find_or_create_by_title(title)
 
       attributes              = {}
-      attributes[:url]        = tds[0].at('a')[:href].strip
-      attributes[:amount]     = tds[1].inner_text.strip.gsub('$', '').gsub('M', '')
-      attributes[:ticket_url] = tds[2].at('a')[:href].strip
+      attributes[:url]        = tds[0].at("a")[:href].strip
+      attributes[:amount]     = tds[1].inner_text.strip.gsub("$", "").gsub("M", "")
+      attributes[:ticket_url] = tds[2].at("a")[:href].strip
       attributes[:position]   = index + 1
       attributes.merge!(check_release_info(f, attributes[:url]))
 
@@ -55,21 +55,21 @@ class BoxOfficeFilm < ApplicationRecord
   end
 
   def self.update_retail
-    doc = Nokogiri::HTML(open('http://fandango.com/'))
+    doc = Nokogiri::HTML(open("http://fandango.com/"))
 
-    list = doc.at('#movieDropDownContents ul.clearfix')
+    list = doc.at("#movieDropDownContents ul.clearfix")
 
-    (list / 'li').each do |film|
-      next unless film&.at('a')
+    (list / "li").each do |film|
+      next unless film&.at("a")
 
-      a     = film.at('a')
+      a     = film.at("a")
       title = a.inner_text.strip
 
       f = find_or_create_by_title(title)
 
       attributes       = {}
       attributes[:url] = a[:href].strip
-      attributes[:ticket_url] = attributes[:url].gsub('movieoverview', 'movietimes')
+      attributes[:ticket_url] = attributes[:url].gsub("movieoverview", "movietimes")
       attributes.merge!(check_release_info(f, attributes[:url]))
 
       f.update(attributes)

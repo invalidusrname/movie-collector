@@ -9,7 +9,7 @@ class SessionsController < Clearance::SessionsController
   before_action :facebook_login_required, only: %w[facebook_new facebook_create]
 
   def new
-    render template: '/sessions/new'
+    render template: "/sessions/new"
   end
 
   # TODO: commenting out until feature is complete
@@ -92,6 +92,6 @@ class SessionsController < Clearance::SessionsController
   private
 
   def flash_success_after_destroy
-    flash[:success] = translate(:signed_out, default: 'Logged out.')
+    flash[:success] = translate(:signed_out, default: "Logged out.")
   end
 end

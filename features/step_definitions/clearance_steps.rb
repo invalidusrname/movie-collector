@@ -94,7 +94,7 @@ When(%r{^I sign in( with "remember me")? as "(.*)/(.*)"$}) do |remember, email, 
 end
 
 When(/^I sign out$/) do
-  visit '/session', :delete
+  visit "/session", :delete
 end
 
 When(/^I request password reset link to be sent to "(.*)"$/) do |email|

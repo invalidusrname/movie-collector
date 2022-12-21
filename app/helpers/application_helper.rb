@@ -6,13 +6,13 @@ module ApplicationHelper
     column  = options[:column]
     prefix  = options[:prefix].to_s
 
-    sort_key = prefix.length.positive? ? "#{prefix}_sort" : 'sort'
-    dir_key  = prefix.length.positive? ? "#{prefix}_dir" : 'dir'
+    sort_key = prefix.length.positive? ? "#{prefix}_sort" : "sort"
+    dir_key  = prefix.length.positive? ? "#{prefix}_dir" : "dir"
 
     dir = if params[sort_key] == column
-            params[dir_key] && params[dir_key].downcase == 'asc' ? 'desc' : 'asc'
+            params[dir_key] && params[dir_key].downcase == "asc" ? "desc" : "asc"
           else
-            'asc'
+            "asc"
           end
 
     options.delete(:column)
@@ -29,25 +29,25 @@ module ApplicationHelper
     date = Date.parse(date, true) unless /Date.*/ =~ date.class.to_s
     days = (date - Date.today).to_i
 
-    return 'today'     if (days >= 0) && (days < 1)
-    return 'tomorrow'  if (days >= 1) && (days < 2)
-    return 'yesterday' if (days >= -1) && days.negative?
+    return "today"     if (days >= 0) && (days < 1)
+    return "tomorrow"  if (days >= 1) && (days < 2)
+    return "yesterday" if (days >= -1) && days.negative?
 
     return "in #{days} days"      if (days.abs < 60) && days.positive?
     return "#{days.abs} days ago" if (days.abs < 60) && days.negative?
 
-    return date.strftime('%A, %B %e') if days.abs < 182
+    return date.strftime("%A, %B %e") if days.abs < 182
 
-    date.strftime('%A, %B %e, %Y')
+    date.strftime("%A, %B %e, %Y")
   end
 
-  LETTERS = ('A'..'Z').entries + ['All']
+  LETTERS = ("A".."Z").entries + ["All"]
 
   def navigation_links(current_letter, controller)
-    html = ''
+    html = ""
     LETTERS.each do |letter|
       html << if letter == current_letter
-                " #{content_tag(:span, letter, class: 'current')}"
+                " #{content_tag(:span, letter, class: "current")}"
               else
                 " #{link_to(letter, controller:, letter:)}"
               end

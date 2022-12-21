@@ -9,7 +9,7 @@ end
 When(/^I delete the (\d+)(?:st|nd|rd|th) movie$/) do |pos|
   visit users_movies_url
   within("table > tbody tr:nth-child(#{pos.to_i})") do
-    click_link 'Delete'
+    click_link "Delete"
   end
 end
 

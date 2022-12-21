@@ -22,5 +22,5 @@ def add_movies(upcs)
 
   return unless failed.size.positive?
 
-  Rails.logger.debug "The following UPCs weren't added: #{failed.join(',')}"
+  Rails.logger.debug "The following UPCs weren't added: #{failed.join(",")}"
 end

@@ -24,5 +24,5 @@ MovieCollector::Application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
-  HOST = 'test'
+  HOST = "test"
 end
