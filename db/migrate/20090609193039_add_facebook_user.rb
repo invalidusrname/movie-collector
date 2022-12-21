@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
-class AddFacebookUser < ActiveRecord::Migration
+class AddFacebookUser < ActiveRecord::Migration[4.2]
   def self.up
-    add_column :users, :facebook_id, :integer
-    add_column :users, :session_key, :string
+    # add_column :users, :facebook_id, :integer
+    # add_column :users, :session_key, :string
 
-    add_index :users, :facebook_id, unique: true
+    # add_index :users, :facebook_id, unique: true
   end
 
   def self.down
-    remove_index :users, :facebook_id
-    remove_column :users, :facebook_id
-    remove_column :users, :session_key
+    # remove_index :users, :facebook_id
+    # remove_column :users, :facebook_id
+    # remove_column :users, :session_key
 
-    drop_table :facebook_templates
+    # drop_table :facebook_templates
   end
 end

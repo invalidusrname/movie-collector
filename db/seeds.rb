@@ -6,3 +6,26 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+["Action",
+  "Adult",
+  "Adventure",
+  "Animation",
+  "Biography",
+  "Children's",
+  "Comedy",
+  "Crime",
+  "Disaster",
+  "Drama",
+  "Fantasy",
+  "Horror",
+  "Musical",
+  "Mystery",
+  "Romance",
+  "Sci-Fi",
+  "Short",
+  "Sport",
+  "Thriller",
+  "War",
+  "Western"].each { |name| Genre.create(name:) }
+end

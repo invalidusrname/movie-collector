@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AddImageToMovie < ActiveRecord::Migration
+class AddImageToMovie < ActiveRecord::Migration[4.2]
   def self.up
     add_column :movies, :image, :text
     add_column :movies, :image_link, :text

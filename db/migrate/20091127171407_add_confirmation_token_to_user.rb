@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AddConfirmationTokenToUser < ActiveRecord::Migration
+class AddConfirmationTokenToUser < ActiveRecord::Migration[4.2]
   def self.up
     add_column :users, :confirmation_token, :string
   end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateBoxOfficeFilms < ActiveRecord::Migration
+class CreateBoxOfficeFilms < ActiveRecord::Migration[4.2]
   def self.up
     create_table :box_office_films do |t|
       t.string :title

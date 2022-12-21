@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UpdateExisitingGenre < ActiveRecord::Migration
+class UpdateExisitingGenre < ActiveRecord::Migration[4.2]
   def self.up
     remove_column :movies, :genre
     add_column :movies, :genre_id, :integer
