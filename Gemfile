@@ -17,7 +17,7 @@ group :test, :development do
   gem "webrat"
 end
 
-gem "clearance", git: "http://github.com/thoughtbot/clearance.git"
+gem "clearance", "~> 2.6"
 gem "haml", ">= 3.0.18"
 gem "json"
 gem "nokogiri"
