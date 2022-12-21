@@ -1,6 +1,6 @@
 set :application, "movie_collector"
 set :repository,  "git@github.com:invalidusrname/movie-collector.git"
-# note: use these settings when github goes down
+# NOTE: use these settings when github goes down
 # set :repository, '/home/deploy/projects/movie_collector'
 # set :local_repository, "."
 set :scm, :git
@@ -13,10 +13,9 @@ set :deploy_to, "/home/#{user}/www/#{application}"
 
 role :app, "moviecollector.org"
 role :web, "moviecollector.org"
-role :db,  "moviecollector.org", :primary => true
+role :db,  "moviecollector.org", primary: true
 
-
-task :ruby_info, :roles => :app do
+task :ruby_info, roles: :app do
   run 'gem env'
   run 'ruby -v'
 end
@@ -25,13 +24,13 @@ namespace :mod_rails do
   desc <<-DESC
   Restart the application altering tmp/restart.txt for mod_rails.
   DESC
-  task :restart, :roles => :app do
+  task :restart, roles: :app do
     run "touch  #{release_path}/tmp/restart.txt"
   end
 end
 
 namespace :deploy do
-  %w(start restart).each { |name| task name, :roles => :app do mod_rails.restart end }
+  %w[start restart].each { |name| task name, roles: :app do mod_rails.restart end }
 end
 
 namespace :db do
@@ -47,18 +46,10 @@ namespace :db do
   end
 end
 
-namespace :assets do
-  desc "Compiles stylesheets via compass"
-  task :compile do
-    run "cd #{current_path} && compass --force"
-    run "cd #{current_path} && rake asset:packager:build_all"
-  end
-end
-
 # http://gist.github.com/45318
 namespace :deploy do
   desc "Make sure there is something to deploy"
-  task :check_revision, :roles => [:web] do
+  task :check_revision, roles: [:web] do
     unless `git rev-parse HEAD` == `git rev-parse origin/master`
       puts ""
       puts "  \033[1;33m**************************************************\033[0m"
@@ -85,7 +76,6 @@ end
 #     top.upload assets_path, "#{current_release}/public", :via => :scp, :recursive => true
 #   end
 # end
-
 
 before  'deploy', 'deploy:check_revision'
 

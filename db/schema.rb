@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091127171407) do
+ActiveRecord::Schema[6.1].define(:version => 20091127171407) do
 
   create_table "box_office_films", :force => true do |t|
     t.string   "title"
