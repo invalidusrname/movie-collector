@@ -9,6 +9,7 @@ group :test, :development do
   gem 'factory_girl'
   gem 'mocha'
   gem 'rspec-rails', '~> 6.0.0'
+  gem 'rubocop-rails', require: false
   gem 'shoulda'
   gem 'webrat'
 end
