@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class UsersMoviesController < ApplicationController
-  before_filter :require_login, :unless => :signed_in?
+  before_action :require_login, unless: :signed_in?
 
   respond_to :html, :xml
 
@@ -7,10 +9,10 @@ class UsersMoviesController < ApplicationController
   # GET /users_movies.xml
   # GET /users_movies.fbml
   def index
-    options = { :order => movie_sort_order(params),
-                :include =>  [:movie => :genre],
-                :page => params[:page],
-                :per_page => params[:max_pages] || 10 }
+    options = { order: movie_sort_order(params),
+                include: [movie: :genre],
+                page: params[:page],
+                per_page: params[:max_pages] || 10 }
 
     search_options = {}
 
@@ -27,7 +29,7 @@ class UsersMoviesController < ApplicationController
   end
 
   def recently_added
-    @users_movies = current_user.users_movies.all(:include => :movie, :limit => 5, :order => 'users_movies.id DESC')
+    @users_movies = current_user.users_movies.all(include: :movie, limit: 5, order: 'users_movies.id DESC')
 
     respond_with(@users_movies)
   end
@@ -73,9 +75,7 @@ class UsersMoviesController < ApplicationController
 
   def add_rating
     m = UsersMovie.find(params[:id])
-    if m
-      m.update_attribute(:rating, params[:rated])
-    end
-    render :json => 'ok'
+    m&.update_attribute(:rating, params[:rated])
+    render json: 'ok'
   end
 end

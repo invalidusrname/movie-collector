@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Clearance
   module App
     module Models
@@ -7,11 +9,11 @@ module Clearance
             include InstanceMethods
           end
         end
-    
+
         module InstanceMethods
           def facebook_welcome(user)
             subject "[#{PROJECT_NAME.humanize}]  Welcome!"
-            body :user => user
+            body user:
           end
         end
       end

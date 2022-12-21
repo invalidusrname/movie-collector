@@ -1,5 +1,7 @@
-set :application, "movie_collector"
-set :repository,  "git@github.com:invalidusrname/movie-collector.git"
+# frozen_string_literal: true
+
+set :application, 'movie_collector'
+set :repository,  'git@github.com:invalidusrname/movie-collector.git'
 # NOTE: use these settings when github goes down
 # set :repository, '/home/deploy/projects/movie_collector'
 # set :local_repository, "."
@@ -11,9 +13,9 @@ set :user, 'deploy'
 
 set :deploy_to, "/home/#{user}/www/#{application}"
 
-role :app, "moviecollector.org"
-role :web, "moviecollector.org"
-role :db,  "moviecollector.org", primary: true
+role :app, 'moviecollector.org'
+role :web, 'moviecollector.org'
+role :db,  'moviecollector.org', primary: true
 
 task :ruby_info, roles: :app do
   run 'gem env'
@@ -34,7 +36,7 @@ namespace :deploy do
 end
 
 namespace :db do
-  desc "Make symlink for database yaml"
+  desc 'Make symlink for database yaml'
   task :symlink do
     ['database.yml', 'facebooker.yml', 'newrelic.yml',
      'amazonrc.txt', 'config.yml', 'twitter_auth.yml'].each do |name|
@@ -48,14 +50,14 @@ end
 
 # http://gist.github.com/45318
 namespace :deploy do
-  desc "Make sure there is something to deploy"
+  desc 'Make sure there is something to deploy'
   task :check_revision, roles: [:web] do
     unless `git rev-parse HEAD` == `git rev-parse origin/master`
-      puts ""
-      puts "  \033[1;33m**************************************************\033[0m"
-      puts "  \033[1;33m* WARNING: HEAD is not the same as origin/master *\033[0m"
-      puts "  \033[1;33m**************************************************\033[0m"
-      puts ""
+      Rails.logger.debug ''
+      Rails.logger.debug "  \033[1;33m**************************************************\033[0m"
+      Rails.logger.debug "  \033[1;33m* WARNING: HEAD is not the same as origin/master *\033[0m"
+      Rails.logger.debug "  \033[1;33m**************************************************\033[0m"
+      Rails.logger.debug ''
       exit
     end
   end

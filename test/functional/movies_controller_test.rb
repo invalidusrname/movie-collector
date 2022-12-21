@@ -1,43 +1,45 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class MoviesControllerTest < ActionController::TestCase
-  test "should get index" do
+  test 'should get index' do
     get :index
     assert_response :success
     assert_not_nil assigns(:movies)
   end
 
-  test "should get new" do
+  test 'should get new' do
     sign_in_admin
 
     get :new
     assert_response :success
   end
 
-  test "should create movie" do
+  test 'should create movie' do
     sign_in_admin
 
     assert_difference('Movie.count') do
-      post :create, :movie => { :title => 'New Movie', :upc => '1234', :format => 'DVD' }
+      post :create, params: { movie: { title: 'New Movie', upc: '1234', format: 'DVD' } }
     end
 
     assert_redirected_to movie_path(assigns(:movie))
   end
 
-  test "should show movie" do
-    get :show, :id => movies(:one).to_param
+  test 'should show movie' do
+    get :show, params: { id: movies(:one).to_param }
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     sign_in_admin
-    get :edit, :id => movies(:one).to_param
+    get :edit, params: { id: movies(:one).to_param }
     assert_response :success
   end
 
-  test "should update movie" do
+  test 'should update movie' do
     sign_in_admin
-    put :update, :id => movies(:one).to_param, :movie => { }
+    put :update, params: { id: movies(:one).to_param, movie: {} }
     assert_redirected_to movie_path(assigns(:movie))
   end
 

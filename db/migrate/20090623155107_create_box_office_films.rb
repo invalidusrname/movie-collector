@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateBoxOfficeFilms < ActiveRecord::Migration
   def self.up
     create_table :box_office_films do |t|

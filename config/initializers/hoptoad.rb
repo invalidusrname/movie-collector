@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # HoptoadNotifier.configure do |config|
 #   config.api_key = {:project => 'movie-collector',  # the identifier you specified for your project in Redmine
 #                     :tracker => 'Bug',                            # the name of your Tracker of choice in Redmine

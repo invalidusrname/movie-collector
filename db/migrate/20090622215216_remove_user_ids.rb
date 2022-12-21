@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveUserIds < ActiveRecord::Migration
   def self.up
     remove_column :movies, :user_id

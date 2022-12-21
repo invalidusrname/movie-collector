@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 class MoviesController < ApplicationController
-  before_filter :require_admin, :except => ['amazon_search', 'index', 'show']
+  before_action :require_admin, except: %w[amazon_search index show]
 
   respond_to :html, :xml
 
   # GET /movies
   # GET /movies.xml
   def index
-    options = { :order => movie_sort_order(params),
-                :include =>  :genre,
-                :page => params[:page],
-                :per_page => params[:max_pages] || 10 }
+    options = { order: movie_sort_order(params),
+                include: :genre,
+                page: params[:page],
+                per_page: params[:max_pages] || 10 }
 
     search_options = {}
 
@@ -60,7 +62,7 @@ class MoviesController < ApplicationController
   def update
     @movie = Movie.find(params[:id])
 
-    flash[:notice] = 'Movie was successfully updated.' if @movie.update_attributes(params[:movie])
+    flash[:notice] = 'Movie was successfully updated.' if @movie.update(params[:movie])
     respond_with(@movie)
   end
 
@@ -77,18 +79,18 @@ class MoviesController < ApplicationController
   # end
 
   def amazon_search
-    if params[:title].present?
-      m = Movie.search_titles_on_amazon(params[:title])
-    elsif params[:upc].present?
-      m = Movie.lookup_on_amazon(params[:upc])
-    else
-      m = Hash.new
-    end
+    m = if params[:title].present?
+          Movie.search_titles_on_amazon(params[:title])
+        elsif params[:upc].present?
+          Movie.lookup_on_amazon(params[:upc])
+        else
+          {}
+        end
 
     respond_to do |format|
-      format.json {
-        render :json => m
-      }
+      format.json do
+        render json: m
+      end
     end
   end
 end

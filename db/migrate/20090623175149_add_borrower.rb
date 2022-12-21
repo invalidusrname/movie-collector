@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddBorrower < ActiveRecord::Migration
   def self.up
     add_column :users_movies, :borrower_id, :integer

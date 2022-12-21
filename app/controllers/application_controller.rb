@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
 
@@ -9,8 +11,8 @@ class ApplicationController < ActionController::Base
 
   unless Rails.env.development?
     rescue_from ActiveRecord::RecordNotFound, ActionView::TemplateError,
-      ActionController::UnknownAction, ActionController::RoutingError,
-      :with => :render_404
+                ActionController::UnknownAction, ActionController::RoutingError,
+                with: :render_404
   end
 
   helper :all # include all helpers, all the time
@@ -18,39 +20,39 @@ class ApplicationController < ActionController::Base
 
   protected
 
-    def require_login
-      deny_access("Login Required")
-    end
+  def require_login
+    deny_access('Login Required')
+  end
 
-    def require_admin
-      unless signed_in? && current_user.admin?
-        deny_access("Restricted Area")
-      end
-    end
+  def require_admin
+    return if signed_in? && current_user.admin?
 
-    # redirect users once they've authorized the application
-    # intended to work with facebook canvas pages, not facebook connect
-    def after_facebook_login_url
-      # request.request_uri
-      "http://apps.facebook.com/#{Facebooker.facebooker_config['canvas_page_name']}"
-    end
+    deny_access('Restricted Area')
+  end
 
-    def movie_sort_order(params)
-      if params[:sort] == 'genre'
-        sort = 'genres.name'
-      else
-        sort = Movie.column_names.include?(params[:sort]) ? params[:sort] : 'movies.title'
-      end
-      dir = (params[:dir] && params[:dir].downcase == 'desc') ? 'desc' : 'asc'
-      "#{sort} #{dir}"
-    end
+  # redirect users once they've authorized the application
+  # intended to work with facebook canvas pages, not facebook connect
+  def after_facebook_login_url
+    # request.request_uri
+    "http://apps.facebook.com/#{Facebooker.facebooker_config['canvas_page_name']}"
+  end
 
-    # render 404 errors so the layout looks like the rest of the app
-    def render_404(exception)
-      # notify_hoptoad(exception)
-      logger.debug(exception)
-      render :file => "#{Rails.root}/public/404.html",
-             :layout => 'application',
-             :status => 404
-    end
+  def movie_sort_order(params)
+    sort = if params[:sort] == 'genre'
+             'genres.name'
+           else
+             Movie.column_names.include?(params[:sort]) ? params[:sort] : 'movies.title'
+           end
+    dir = params[:dir] && params[:dir].downcase == 'desc' ? 'desc' : 'asc'
+    "#{sort} #{dir}"
+  end
+
+  # render 404 errors so the layout looks like the rest of the app
+  def render_404(exception)
+    # notify_hoptoad(exception)
+    logger.debug(exception)
+    render file: "#{Rails.root}/public/404.html",
+           layout: 'application',
+           status: :not_found
+  end
 end

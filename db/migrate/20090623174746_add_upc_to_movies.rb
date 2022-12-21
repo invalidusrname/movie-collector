@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddUpcToMovies < ActiveRecord::Migration
   def self.up
     add_column :movies, :upc, :string

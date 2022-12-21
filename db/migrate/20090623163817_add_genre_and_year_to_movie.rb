@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddGenreAndYearToMovie < ActiveRecord::Migration
   def self.up
     add_column :movies, :release_date, :date
