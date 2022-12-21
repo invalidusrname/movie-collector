@@ -17,10 +17,8 @@ Don't forget to adjust the RAILS_ENV variable to install gems for each environme
 There's a few settings files that will have to be adjusted. These files are not included, but there are ones with an associated 'sample' extension you can use as a starting point. Adjust the following files as necessary:
 
 - amazonrc.txt     (amazon configuration settings used to lookup and movies)
-- config.yml       (application-wide settings. Currently used to for mail and hoptoad settings)
+- config.yml       (application-wide settings. Currently used to for mail settings)
 - database.yml     (the same familiar database settings present in most rails apps)
-- facebooker.yml   (facebook application settings)
-- twitter_auth.yml (twitter application settings)
 
 ## Deploying
 
