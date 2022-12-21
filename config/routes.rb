@@ -24,12 +24,11 @@ MovieCollector::Application.routes.draw do
   get "/friends_movies", to: "users_movies#friends", as: "friends_movies"
 
   # authentication
-  get "/login", to: "sessions#new",     as: "login"
-  get "/login", to: "sessions#new",     as: "sign_in"
+  get "/login", to: "sessions#new", as: "login"
   get "/logout", to: "sessions#destroy", as: "logout"
-  get "/signup", to: "Clearance::Users#new", as: "signup"
-  get "/create_user", to: "Clearance::Users#create", as: "create_user"
-  get "/forgot_password", to: "Clearance::Passwords#new", as: "forgot_password"
+  # get "/signup", to: "Clearance::Users#new", as: "signup"
+  # get "/create_user", to: "Clearance::Users#create", as: "create_user"
+  # get "/forgot_password", to: "Clearance::Passwords#new", as: "forgot_password"
 
   root "home#index"
 end
