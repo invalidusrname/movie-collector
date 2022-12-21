@@ -8,7 +8,7 @@ gem "rails", "~> 7.0"
 group :test, :development do
   gem "cucumber-rails"
   gem "database_cleaner"
-  gem "factory_girl"
+  gem "factory_bot_rails"
   gem "mocha"
   gem "rspec-rails", "~> 6.0.0"
   gem "rubocop-rails", require: false

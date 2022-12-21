@@ -142,8 +142,11 @@ GEM
     email_validator (2.2.4)
       activemodel
     erubi (1.11.0)
-    factory_girl (4.9.0)
-      activesupport (>= 3.0.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     ffi (1.15.5)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
@@ -304,7 +307,7 @@ DEPENDENCIES
   clearance (~> 2.6)
   cucumber-rails
   database_cleaner
-  factory_girl
+  factory_bot_rails
   haml (>= 3.0.18)
   json
   mocha

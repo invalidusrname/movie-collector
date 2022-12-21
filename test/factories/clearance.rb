@@ -1,15 +1,17 @@
 # frozen_string_literal: true
 
-Factory.sequence :email do |n|
-  "user#{n}@example.com"
-end
+FactoryBot.define do
+  sequence :email do |n|
+    "user#{n}@example.com"
+  end
 
-Factory.define :user do |user|
-  user.email                 { Factory.next :email }
-  user.password              { "password" }
-  user.password_confirmation { "password" }
-end
+  factory :user do
+    email                { FactoryBot.next :email }
+    password             { "password" }
+    password_confirmation { "password" }
+  end
 
-Factory.define :email_confirmed_user, parent: :user do |user|
-  user.email_confirmed { true }
+  factory :email_confirmed_user, parent: :user do
+    email_confirmed { true }
+  end
 end
