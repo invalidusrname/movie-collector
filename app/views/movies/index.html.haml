@@ -3,7 +3,7 @@
 - if @movies.size > 0
   .actions
     = render :partial => "search"
-    - if current_user.admin?
+    - if current_user&.admin?
       = link_to('New movie', new_movie_path)
   %br
   %br
@@ -32,13 +32,13 @@
           %td.title= h movie.title
           %td.genre= h movie.genre.name unless movie.genre.nil?
           %td.format= h movie.format
-          - if current_user && current_user.admin?
+          - if current_user&.admin?
             %td= link_to 'Edit', edit_movie_path(movie)
             %td=# link_to 'Delete', movie, :confirm => 'Are you sure?', :method => :delete
 - else
   .actions
     %p
       There are no movies.
-    - if current_user.admin?
+    - if current_user&.admin?
       %p Please
       =link_to 'Add some', new_movie_path

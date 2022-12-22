@@ -2,7 +2,7 @@
   %ul#links
     - if signed_in?
       %li= current_user.email
-      %li= link_to 'Admin Movies', movies_path if current_user.admin?
+      %li= link_to 'Admin Movies', movies_path if current_user&.admin?
       #li= link_to 'Movies', my_movies_path
     #li= link_to "Box Office", box_office_path
     - if signed_in?
