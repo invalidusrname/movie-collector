@@ -1,5 +1,7 @@
 # Movie Collector
 
+[![ruby](https://github.com/invalidusrname/movie-collector/actions/workflows/main.yml/badge.svg)](https://github.com/invalidusrname/movie-collector/actions/workflows/main.yml)
+
 Movie Collector gives people the ability to catalog their movies. You can enter film information manually, or simply enter a UPC code and let the app fill out the formation for you. Along with cataloging, you can loan your films out or borrow from another user’s collection. Future enhancements I'd like to include listing movies currently out in the theater and their showtimes, as well as release dates for dvd/blu-ray movies.
 
 That's pretty much it. Make a note, send me an email, or issue a ticket if I've missed anything. Suggestions and improvements are always welcome.
