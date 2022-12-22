@@ -17,7 +17,7 @@ jobs:
       - name: Lint
         run: bundle exec rubocop
       - name: Run Rails tests
-        run: bundle exec rails tests
+        run: bundle exec rails test
       - name: Run specs
         run: bundle exec rspec
       - name: Run features
