@@ -1,11 +1,10 @@
 %h1= @title = 'Listing Movies'
 
-
-
 - if @movies.size > 0
   .actions
     = render :partial => "search"
-    = link_to 'New movie', new_movie_path
+    - if current_user.admin?
+      = link_to('New movie', new_movie_path)
   %br
   %br
   .wp-pagenavi
@@ -39,5 +38,7 @@
 - else
   .actions
     %p
-      There are no movies. Please
+      There are no movies.
+    - if current_user.admin?
+      %p Please
       =link_to 'Add some', new_movie_path

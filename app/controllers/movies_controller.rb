@@ -20,7 +20,11 @@ class MoviesController < ApplicationController
 
     term ||= params[:search]
 
-    @movies = Movie.search(term, search_options, options) || []
+    @movies = if term
+                Movie.search(term, search_options, options) || []
+              else
+                Movie.all.paginate(page: params[:page])
+              end
   end
 
   # GET /movies/1
