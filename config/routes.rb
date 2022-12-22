@@ -1,9 +1,7 @@
-# TODO: fix clearance and facebook routes
-MovieCollector::Application.routes.draw do
-  resource :session do
-    # get :facebook_new
-    # get :facebook_create
-  end
+# frozen_string_literal: true
+
+Rails.application.routes.draw do
+  resource :session
 
   resources :movies do
     collection do
@@ -15,28 +13,32 @@ MovieCollector::Application.routes.draw do
     collection do
       get :recently_added
     end
+
     member do
       post :add_rating
     end
   end
 
-  match '/box_office'=> 'box_office_films#index', :as => :box_office
-  match '/my_movies'=> 'users_movies#index', :as => :my_movies
-  match '/friends_movies'=> 'users_movies#friends', :as => :friends_movies
-
-  match '/facebook_welcome'=> 'home#index', :as => :facebook_post_install
-  match '/oauth_callback'=> 'sessions#oauth_callback', :as => :oauth_callback
-  match '/oauth/twitter/sign_in'=> 'sessions#twitter_new', :as => :twitter_oauth
+  get "/box_office", to: "box_office_films#index", as: "box_office"
+  get "/my_movies", to: "users_movies#index", as: "my_movies"
+  get "/friends_movies", to: "users_movies#friends", as: "friends_movies"
 
   # authentication
-  match '/login'  => 'sessions#new',     :as => :login
-  match '/login'  => 'sessions#new',     :as => :sign_in
-  match '/logout' => 'sessions#destroy', :as => :logout
-  match '/signup' => 'Clearance::Users#new', :as => :signup
-  match '/create_user' => 'Clearance::Users#create', :as => :create_user
-  match '/forgot_password' => 'Clearance::Passwords#new', :as => :forgot_password
+  get "/login", to: "sessions#new", as: "login"
+  get "/logout", to: "sessions#destroy", as: "logout"
+  # get "/signup", to: "Clearance::Users#new", as: "signup"
+  # get "/create_user", to: "Clearance::Users#create", as: "create_user"
 
-  root :to => "home#index"
+  # get "/forgot_password" => "clearance/passwords/new", as: "forgot_password"
 
-  match ':controller(/:action(/:id(.:format)))'
+  resources :passwords, controller: "clearance/passwords", only: %i[create new]
+  resource :session, controller: "clearance/sessions", only: [:create]
+
+  resources :users, controller: "clearance/users", only: [:create] do
+    resource :password,
+             controller: "clearance/passwords",
+             only: %i[edit update]
+  end
+
+  root "home#index"
 end

@@ -1,4 +1,6 @@
-class RemovePrivateAddToJoinTable < ActiveRecord::Migration
+# frozen_string_literal: true
+
+class RemovePrivateAddToJoinTable < ActiveRecord::Migration[4.2]
   def self.up
     remove_column :movies, :private
     add_column :users_movies, :private, :boolean

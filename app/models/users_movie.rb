@@ -1,10 +1,12 @@
-class UsersMovie < ActiveRecord::Base
+# frozen_string_literal: true
+
+class UsersMovie < ApplicationRecord
   belongs_to :movie
   belongs_to :user
-  belongs_to :borrower, :class_name => "User", :foreign_key => "borrower_id"
+  belongs_to :borrower, class_name: "User", optional: true
 
   validates_associated :movie
-  validates_inclusion_of :rating, :in => Movie::RATINGS
+  validates :rating, inclusion: { in: Movie::RATINGS }
 
   before_validation :check_for_movie
 
@@ -19,29 +21,31 @@ class UsersMovie < ActiveRecord::Base
   end
 
   def check_for_movie
-    if self.new_record? && self.movie && self.movie.upc.present?
-      upc = self.movie.upc
-      existing_movie = Movie.find_by_upc(upc)
+    return unless new_record? && movie && movie.upc.present?
 
-      if existing_movie
-        self.movie = existing_movie
-      else
-        movie_attributes = Movie.lookup_on_amazon(upc)
-        if movie_attributes[:title]
-          self.movie = Movie.new(movie_attributes)
-        end
-      end
+    upc = movie.upc
+    existing_movie = Movie.find_by(upc:)
+
+    if existing_movie
+      self.movie = existing_movie
+    else
+      movie_attributes = Movie.lookup_on_amazon(upc)
+      self.movie = Movie.new(movie_attributes) if movie_attributes[:title]
     end
   end
 
   def self.search(search, search_options = {}, options = {})
-    if search.to_s.length > 0
-      if search_options.has_key? :starts_with
-        options.merge!(:conditions => ['movies.title LIKE ?', "#{search}%"])
+    if search.to_s.length.positive?
+      if search_options.key? :starts_with
+        options.merge!(conditions: ["movies.title LIKE ?", "#{search}%"])
       else
-        options.merge!(:conditions => ['movies.title LIKE ?', "%#{search}%"])
+        options.merge!(conditions: ["movies.title LIKE ?", "%#{search}%"])
       end
     end
-    paginate(:all, options)
+
+    options.delete(:order) if options.key? :order
+    options.delete(:include) if options.key? :include
+
+    paginate(options)
   end
 end

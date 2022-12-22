@@ -1,44 +1,38 @@
-class MoviesController < ApplicationController
-  before_filter :require_admin, :except => ['amazon_search', 'index', 'show']
+# frozen_string_literal: true
 
-  respond_to :html, :xml
+class MoviesController < ApplicationController
+  before_action :require_admin, except: %w[amazon_search index show]
 
   # GET /movies
   # GET /movies.xml
   def index
-    options = { :order => movie_sort_order(params),
-                :include =>  :genre,
-                :page => params[:page],
-                :per_page => params[:max_pages] || 10 }
+    options = { order: movie_sort_order(params),
+                include: :genre,
+                page: params[:page],
+                per_page: params[:max_pages] || 10 }
 
     search_options = {}
 
-    if params[:letter].present? && params[:letter] != 'All'
+    if params[:letter].present? && params[:letter] != "All"
       search_options[:starts_with] = true
       term = params[:letter]
     end
 
     term ||= params[:search]
 
-    @movies = Movie.search(term, search_options, options)
-
-    respond_with(@movies)
+    @movies = Movie.search(term, search_options, options) || []
   end
 
   # GET /movies/1
   # GET /movies/1.xml
   def show
     @movie = Movie.find(params[:id])
-
-    respond_with(@movie)
   end
 
   # GET /movies/new
   # GET /movies/new.xml
   def new
     @movie = Movie.new
-
-    respond_with(@movie)
   end
 
   # GET /movies/1/edit
@@ -49,10 +43,15 @@ class MoviesController < ApplicationController
   # POST /movies
   # POST /movies.xml
   def create
-    @movie = Movie.new(params[:movie])
+    @movie = Movie.new(movie_params)
 
-    flash[:notice] = 'Movie was successfully created.' if @movie.save
-    respond_with(@movie)
+    respond_to do |format|
+      if @movie.save
+        format.html { redirect_to movie_url(@movie), notice: "Movie was successfully created." }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PUT /movies/1
@@ -60,8 +59,13 @@ class MoviesController < ApplicationController
   def update
     @movie = Movie.find(params[:id])
 
-    flash[:notice] = 'Movie was successfully updated.' if @movie.update_attributes(params[:movie])
-    respond_with(@movie)
+    respond_to do |format|
+      if @movie.update(movie_params)
+        format.html { redirect_to movie_url(@movie), notice: "Movie was successfully updated." }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
   end
 
   # DELETE /movies/1
@@ -77,18 +81,22 @@ class MoviesController < ApplicationController
   # end
 
   def amazon_search
-    if params[:title].present?
-      m = Movie.search_titles_on_amazon(params[:title])
-    elsif params[:upc].present?
-      m = Movie.lookup_on_amazon(params[:upc])
-    else
-      m = Hash.new
-    end
+    m = if params[:title].present?
+          Movie.search_titles_on_amazon(params[:title])
+        elsif params[:upc].present?
+          Movie.lookup_on_amazon(params[:upc])
+        else
+          {}
+        end
 
     respond_to do |format|
-      format.json {
-        render :json => m
-      }
+      format.json do
+        render json: m
+      end
     end
+  end
+
+  def movie_params
+    params.require(:movie).permit(:upc, :title, :format, :genre)
   end
 end

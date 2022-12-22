@@ -1,8 +1,11 @@
-require 'test_helper'
+# frozen_string_literal: true
 
-class HomeControllerTest < ActionController::TestCase
+require "test_helper"
+
+class HomeControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get :index
+    get "/"
+
     assert_response :success
   end
 end

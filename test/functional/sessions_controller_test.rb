@@ -1,6 +1,8 @@
-require 'test_helper'
+# frozen_string_literal: true
 
-class SessionsControllerTest < ActionController::TestCase
+require "test_helper"
+
+class SessionsControllerTest < ActionDispatch::IntegrationTest
   # Replace this with your real tests.
   test "the truth" do
     assert true

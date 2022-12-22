@@ -1,11 +1,11 @@
 - if @user.errors.any?
   .fieldWithErrors
     %h2
-      =pluralize(@user.errors.count, "error") 
+      =pluralize(@user.errors.count, "error")
       prohibited this user from being saved:
     %ul
     - @user.errors.full_messages.each do |msg|
-      %li.error 
+      %li.error
         = msg
 
 %p.text_field
@@ -16,7 +16,3 @@
   = form.label :password
   %br
   = form.password_field :password, :class => 'registerfield'
-%p.text_field
-  = form.label :password_confirmation, "Confirm password"
-  %br
-  = form.password_field :password_confirmation, :class => 'registerfield'

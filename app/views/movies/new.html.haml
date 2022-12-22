@@ -5,7 +5,7 @@
     - form_for(@movie) do |form|
       = render :partial => "form", :object => form
       %p
-        = form.submit 'Create', :onclick => 'submitMovie(this.form);'
+        = form.submit 'Create'
 
     = link_to 'Back', movies_path
 

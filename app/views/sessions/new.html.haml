@@ -17,20 +17,9 @@
       %p.submit_field
         = form.submit "Log in", :disable_with => "Please wait..."
       %p
-        =link_to "Forgot password?", forgot_password_path
+        =link_to "Forgot password?", new_password_path
     %br
-
-    / %h3 Login via Facebook
-
-    / = fb_connect_javascript_tag
-    / = init_fb_connect "XFBML","Api"
-    / = fb_login_and_redirect facebook_new_session_path
-    / &nbsp;
-    / = link_to image_tag('connect_twitter.png'), twitter_oauth_path
-
-    / %br
-    / %br
 
     %p
       Not a member?
-      = link_to "Sign up", signup_path
+      = link_to "Sign up", sign_up_path

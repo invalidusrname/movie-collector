@@ -1,0 +1,24 @@
+name: ruby
+"on":
+  push:
+    branches:
+      - master
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: run tests
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Lint
+        run: bundle exec rubocop
+      - name: Run Rails tests
+        run: bundle exec rails test
+      - name: Run specs
+        run: bundle exec rspec
+      - name: Run features
+        run: bundle exec cucumber

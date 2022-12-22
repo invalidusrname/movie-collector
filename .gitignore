@@ -6,8 +6,6 @@ tmp/**/*
 doc/api
 doc/app
 doc/features.html
-config/database.yml
-config/facebooker.yml
 config/newrelic.yml
 config/config.yml
 config/twitter_auth.yml

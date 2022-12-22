@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 MovieCollector::Application.configure do
   # Edit at your own peril - it's recommended to regenerate this file
   # in the future when you upgrade to a newer version of Cucumber.
@@ -22,5 +24,5 @@ MovieCollector::Application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
-  HOST = 'test'
+  HOST = "test"
 end
