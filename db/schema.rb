@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2009_11_27_171407) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_21_192619) do
   create_table "box_office_films", force: :cascade do |t|
     t.string "title"
     t.text "url"
@@ -67,8 +67,10 @@ ActiveRecord::Schema[7.0].define(version: 2009_11_27_171407) do
     t.string "remember_token"
     t.datetime "remember_token_expires_at", precision: nil
     t.string "confirmation_token"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email"
     t.index ["id", "token"], name: "index_users_on_id_and_token"
+    t.index ["remember_token"], name: "index_users_on_remember_token", unique: true
     t.index ["token"], name: "index_users_on_token"
   end
 

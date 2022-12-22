@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class UsersMoviesControllerTest < ActionController::TestCase
+class UsersMoviesControllerTest < ActionDispatch::IntegrationTest
   # Replace this with your real tests.
   test "the truth" do
     assert true

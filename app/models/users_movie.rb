@@ -3,7 +3,7 @@
 class UsersMovie < ApplicationRecord
   belongs_to :movie
   belongs_to :user
-  belongs_to :borrower, class_name: "User"
+  belongs_to :borrower, class_name: "User", optional: true
 
   validates_associated :movie
   validates :rating, inclusion: { in: Movie::RATINGS }
@@ -42,6 +42,10 @@ class UsersMovie < ApplicationRecord
         options.merge!(conditions: ["movies.title LIKE ?", "%#{search}%"])
       end
     end
-    paginate(:all, options)
+
+    options.delete(:order) if options.key? :order
+    options.delete(:include) if options.key? :include
+
+    paginate(options)
   end
 end

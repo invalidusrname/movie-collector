@@ -88,17 +88,7 @@ function removeImages() {
   }
 }
 
-function submitMovie(form) {
-  if (form.publish_to_facebook.value == 1) {
-    templates = {
-      title: form.movie_title.value,
-      url: form.amazon_page_url.value,
-      images: [
-        { src: form.amazon_image_url.value, href: form.amazon_page_url.value },
-      ],
-    };
-  }
-}
+function submitMovie(form) {}
 
 $(function () {
   $("ul.sf-menu").superfish();

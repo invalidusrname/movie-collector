@@ -1,11 +1,11 @@
 - if @users_movie.errors.any?
   .fieldWithErrors
     %h2
-      =pluralize(@users_movie.errors.count, "error") 
+      =pluralize(@users_movie.errors.count, "error")
       prohibited this movie from being added to your collection:
     %ul
     - @users_movie.errors.full_messages.each do |msg|
-      %li.error 
+      %li.error
         = msg
 
 %p Add a new movie by either adding the UPC code, or searching by title

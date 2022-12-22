@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -8,24 +9,23 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 ["Action",
-  "Adult",
-  "Adventure",
-  "Animation",
-  "Biography",
-  "Children's",
-  "Comedy",
-  "Crime",
-  "Disaster",
-  "Drama",
-  "Fantasy",
-  "Horror",
-  "Musical",
-  "Mystery",
-  "Romance",
-  "Sci-Fi",
-  "Short",
-  "Sport",
-  "Thriller",
-  "War",
-  "Western"].each { |name| Genre.create(name:) }
-end
+ "Adult",
+ "Adventure",
+ "Animation",
+ "Biography",
+ "Children's",
+ "Comedy",
+ "Crime",
+ "Disaster",
+ "Drama",
+ "Fantasy",
+ "Horror",
+ "Musical",
+ "Mystery",
+ "Romance",
+ "Sci-Fi",
+ "Short",
+ "Sport",
+ "Thriller",
+ "War",
+ "Western"].each { |name| Genre.create(name:) }

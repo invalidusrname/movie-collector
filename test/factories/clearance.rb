@@ -8,7 +8,6 @@ FactoryBot.define do
   factory :user do
     email                { FactoryBot.next :email }
     password             { "password" }
-    password_confirmation { "password" }
   end
 
   factory :email_confirmed_user, parent: :user do

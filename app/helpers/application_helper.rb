@@ -44,7 +44,7 @@ module ApplicationHelper
   LETTERS = ("A".."Z").entries + ["All"]
 
   def navigation_links(current_letter, controller)
-    html = ""
+    html = "".dup
     LETTERS.each do |letter|
       html << if letter == current_letter
                 " #{content_tag(:span, letter, class: "current")}"

@@ -3,8 +3,6 @@
 class MoviesController < ApplicationController
   before_action :require_admin, except: %w[amazon_search index show]
 
-  respond_to :html, :xml
-
   # GET /movies
   # GET /movies.xml
   def index
@@ -22,25 +20,19 @@ class MoviesController < ApplicationController
 
     term ||= params[:search]
 
-    @movies = Movie.search(term, search_options, options)
-
-    respond_with(@movies)
+    @movies = Movie.search(term, search_options, options) || []
   end
 
   # GET /movies/1
   # GET /movies/1.xml
   def show
     @movie = Movie.find(params[:id])
-
-    respond_with(@movie)
   end
 
   # GET /movies/new
   # GET /movies/new.xml
   def new
     @movie = Movie.new
-
-    respond_with(@movie)
   end
 
   # GET /movies/1/edit
@@ -51,10 +43,15 @@ class MoviesController < ApplicationController
   # POST /movies
   # POST /movies.xml
   def create
-    @movie = Movie.new(params[:movie])
+    @movie = Movie.new(movie_params)
 
-    flash[:notice] = "Movie was successfully created." if @movie.save
-    respond_with(@movie)
+    respond_to do |format|
+      if @movie.save
+        format.html { redirect_to movie_url(@movie), notice: "Movie was successfully created." }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PUT /movies/1
@@ -62,8 +59,13 @@ class MoviesController < ApplicationController
   def update
     @movie = Movie.find(params[:id])
 
-    flash[:notice] = "Movie was successfully updated." if @movie.update(params[:movie])
-    respond_with(@movie)
+    respond_to do |format|
+      if @movie.update(movie_params)
+        format.html { redirect_to movie_url(@movie), notice: "Movie was successfully updated." }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
   end
 
   # DELETE /movies/1
@@ -92,5 +94,9 @@ class MoviesController < ApplicationController
         render json: m
       end
     end
+  end
+
+  def movie_params
+    params.require(:movie).permit(:upc, :title, :format, :genre)
   end
 end

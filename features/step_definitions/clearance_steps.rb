@@ -3,42 +3,36 @@
 # General
 
 Then(/^I should see error messages$/) do
-  assert_match(/error(s)? prohibited/m, response.body)
+  assert_match(/error(s)?\n?prohibited/m, page.body)
 end
 
 # Database
 
 Given(/^no user exists with an email of "(.*)"$/) do |email|
-  assert_nil User.find_by(email:)
+  user = User.find_by(email:)
+  assert_nil user
 end
 
 Given(%r{^I signed up with "(.*)/(.*)"$}) do |email, password|
-  user = Factory :user,
-                 email:,
-                 password:,
-                 password_confirmation: password
+  create(:user, email:, password:)
 end
 
 Given(%r{^I am signed up and confirmed as "(.*)/(.*)"$}) do |email, password|
-  user = Factory :email_confirmed_user,
-                 email:,
-                 password:,
-                 password_confirmation: password
+  create(:user, email:, password:)
 end
 
 # Session
 
 Then(/^I should be signed in$/) do
-  assert controller.signed_in?
+  assert page.body.include? "Log out"
 end
 
 Then(/^I should be signed out$/) do
-  assert !controller.signed_in?
+  assert page.body.include? "Log in"
 end
 
 When(/^session is cleared$/) do
-  request.reset_session
-  controller.instance_variable_set(:@_current_user, nil)
+  page.reset_session!
 end
 
 # Emails
@@ -66,7 +60,7 @@ Then(/^a password reset message should be sent to "(.*)"$/) do |email|
   assert_match(/password/i, sent.subject)
 
   assert user.confirmation_token.present?
-  assert_match(/#{user.confirmation_token}/, sent.body)
+  assert_match(/#{user.confirmation_token}/, sent.body.encoded)
 end
 
 When(/^I follow the password reset link sent to "(.*)"$/) do |email|
@@ -86,30 +80,24 @@ end
 # Actions
 
 When(%r{^I sign in( with "remember me")? as "(.*)/(.*)"$}) do |remember, email, password|
-  When %(I go to the sign in page)
-  And %(I fill in "Email" with "#{email}")
-  And %(I fill in "Password" with "#{password}")
-  And %(I check "Remember me") if remember
-  And %(I press "Log In")
+  step %(I go to the sign in page)
+  step %(I fill in "Email" with "#{email}")
+  step %(I fill in "Password" with "#{password}")
+  step %(I check "Remember me") if remember
+  step %(I press "Log in")
 end
 
 When(/^I sign out$/) do
-  visit "/session", :delete
+  click_link "Log out"
 end
 
 When(/^I request password reset link to be sent to "(.*)"$/) do |email|
-  When %(I go to the password reset request page)
-  And %(I fill in "Email address" with "#{email}")
-  And %(I press "Reset password")
+  step %(I go to the request password page)
+  step %(I fill in "Email address" with "#{email}")
+  step %(I press "Reset password")
 end
 
-When(%r{^I update my password with "(.*)/(.*)"$}) do |password, confirmation|
-  And %(I fill in "Choose password" with "#{password}")
-  And %(I fill in "Confirm password" with "#{confirmation}")
-  And %(I press "Save this password")
-end
-
-When(/^I return next time$/) do
-  When %(session is cleared)
-  And %(I go to the homepage)
+When(/^I update my password with "(.*)"$/) do |password|
+  step %(I fill in "Choose password" with "#{password}")
+  step %(I press "Save this password")
 end

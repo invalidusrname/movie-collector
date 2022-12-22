@@ -3,8 +3,6 @@
 class HomeController < ApplicationController
   before_action :redirect, if: :signed_in?
 
-  respond_to :html
-
   def index; end
 
   protected

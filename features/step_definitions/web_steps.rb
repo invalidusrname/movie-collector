@@ -16,6 +16,10 @@ Given(/^(?:|I )am on (.+)$/) do |page_name|
   visit path_to(page_name)
 end
 
+When(/^(?:|I )pause$/) do
+  binding.pry
+end
+
 When(/^(?:|I )go to (.+)$/) do |page_name|
   visit path_to(page_name)
 end
@@ -142,20 +146,9 @@ end
 
 Then(/^(?:|I )should see "([^"]*)"$/) do |text|
   if defined?(Spec::Rails::Matchers)
-    response.should contain(text)
+    page.body.should contain(text)
   else
-    assert_contain text
-  end
-end
-
-Then(/^(?:|I )should see "([^"]*)" within "([^"]*)"$/) do |text, selector|
-  within(selector) do |content|
-    if defined?(Spec::Rails::Matchers)
-      content.should contain(text)
-    else
-      hc = Webrat::Matchers::HasContent.new(text)
-      assert hc.matches?(content), hc.failure_message
-    end
+    assert_match(/#{text}/, page.text)
   end
 end
 
@@ -165,17 +158,6 @@ Then(%r{^(?:|I )should see /([^/]*)/$}) do |regexp|
     response.should contain(regexp)
   else
     assert_match(regexp, response_body)
-  end
-end
-
-Then(%r{^(?:|I )should see /([^/]*)/ within "([^"]*)"$}) do |regexp, selector|
-  within(selector) do |content|
-    regexp = Regexp.new(regexp)
-    if defined?(Spec::Rails::Matchers)
-      content.should contain(regexp)
-    else
-      assert_match(regexp, content)
-    end
   end
 end
 
@@ -201,9 +183,9 @@ end
 Then(%r{^(?:|I )should not see /([^/]*)/$}) do |regexp|
   regexp = Regexp.new(regexp)
   if defined?(Spec::Rails::Matchers)
-    response.should_not contain(regexp)
+    page.should_not contain(regexp)
   else
-    assert_not_contain(regexp)
+    assert_no_match(regexp, page.body)
   end
 end
 

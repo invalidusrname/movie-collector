@@ -4,14 +4,11 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  include Clearance::Authentication
-  # include FacebookerAuthentication::Controller
-
-  # before_filter :facebook_login_required, :if => :request_comes_from_facebook?
+  include Clearance::Controller
 
   unless Rails.env.development?
     rescue_from ActiveRecord::RecordNotFound, ActionView::TemplateError,
-                ActionController::UnknownAction, ActionController::RoutingError,
+                ActionController::RoutingError,
                 with: :render_404
   end
 
@@ -30,13 +27,6 @@ class ApplicationController < ActionController::Base
     deny_access("Restricted Area")
   end
 
-  # redirect users once they've authorized the application
-  # intended to work with facebook canvas pages, not facebook connect
-  def after_facebook_login_url
-    # request.request_uri
-    "http://apps.facebook.com/#{Facebooker.facebooker_config["canvas_page_name"]}"
-  end
-
   def movie_sort_order(params)
     sort = if params[:sort] == "genre"
              "genres.name"
@@ -49,7 +39,6 @@ class ApplicationController < ActionController::Base
 
   # render 404 errors so the layout looks like the rest of the app
   def render_404(exception)
-    # notify_hoptoad(exception)
     logger.debug(exception)
     render file: "#{Rails.root}/public/404.html",
            layout: "application",

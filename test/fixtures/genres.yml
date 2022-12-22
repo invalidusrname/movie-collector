@@ -1,7 +1,44 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
-
-two:
-  name: MyString
+action:
+  name: Action
+adult:
+  name: Adult
+adventure:
+  name: Adventure
+animation:
+  name: Animation
+biography:
+  name: Biography
+children's:
+  name: Children's
+comedy:
+  name: Comedy
+crime:
+  name: Crime
+disaster:
+  name: Disaster
+drama:
+  name: Drama
+fantasy:
+  name: Fantasy
+horror:
+  name: Horror
+musical:
+  name: Musical
+mystery:
+  name: Mystery
+romance:
+  name: Romance
+scifi:
+  name: Sci-Fi
+short:
+  name: Short
+sport:
+  name: Sport
+thriller:
+  name: Thriller
+war:
+  name: War
+western:
+  name: Western

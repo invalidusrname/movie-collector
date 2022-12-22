@@ -5,7 +5,7 @@ require "amazon/aws/search"
 class Movie < ApplicationRecord
   has_many :users, through: :users_movies
   has_many :users_movies, dependent: :destroy
-  belongs_to :genre
+  belongs_to :genre, optional: true
 
   FORMATS = ["Blu-ray", "DVD", "HD-DVD", "LaserDisc", "VHS Tape"].freeze
   RATINGS = [nil, 1, 2, 3, 4, 5].freeze
@@ -15,6 +15,9 @@ class Movie < ApplicationRecord
   validates :format, inclusion: { in: FORMATS }
 
   def self.search_titles_on_amazon(title, limit = 5)
+    # FIXME
+    return {}
+
     return {} if title.to_s.length < 4
 
     is = Amazon::AWS::ItemSearch.new("Video", { "Title" => title })
@@ -63,6 +66,9 @@ class Movie < ApplicationRecord
   end
 
   def self.lookup_on_amazon(upc)
+    # FIXME
+    return {}
+
     return {} if upc.to_s.length < 4
 
     lookup_attributes = { "ItemId" => upc, "SearchIndex" => "Video" }
@@ -92,20 +98,24 @@ class Movie < ApplicationRecord
       attributes[:title]        = item.item_attributes.title.to_s
       attributes[:release_date] = item.item_attributes.release_date.to_s
       attributes[:format]       = item.item_attributes[0].binding.to_s || item.item_attributes.product_group.to_s
+
       return attributes
     end
 
     {}
   end
 
-  def self.search(search, search_options = {}, options = {})
-    if search.to_s.length.positive?
-      if search_options.key? :starts_with
-        options.merge!(conditions: ["title LIKE ?", "#{search}%"])
-      else
-        options.merge!(conditions: ["title LIKE ?", "%#{search}%"])
-      end
-    end
-    paginate(:all, options)
+  def self.search(title, search_options = {}, options = {})
+    return unless title.to_s.length.positive?
+
+    r = if search_options.key? :starts_with
+          where("title LIKE ?", "#{title}%")
+        else
+          where("title LIKE ?", "%#{title}%")
+        end
+
+    page = options[:page]
+
+    r.paginate(page:)
   end
 end

@@ -12,6 +12,12 @@ module NavigationHelpers
 
     when /the home\s?page/
       "/"
+    when /the sign in page/
+      "/sign_in"
+    when /the sign up page/
+      "/sign_up"
+    when /the request password page/
+      "/passwords/new"
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

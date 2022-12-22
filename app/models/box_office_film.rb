@@ -3,10 +3,14 @@
 require "open-uri"
 
 class BoxOfficeFilm < ApplicationRecord
-  scope :top_films, conditions: ["position is not null"], order: :position
-  scope :this_week, lambda {
-                      { conditions: ["release_date >= ? AND release_date <= ?", Date.today.beginning_of_week, Date.today.end_of_week], order: "release_date DESC" }
-                    }
+  scope :top_films, -> { where("position is not null").order(:position) }
+
+  def self.this_week
+    start_date = Date.today.beginning_of_week
+    end_date = Date.today.end_of_week
+
+    where("release_date >= ? AND release_date <= ?", start_date, end_date).order("release_date DESC")
+  end
 
   def self.check_release_info(f, url)
     attributes = {}

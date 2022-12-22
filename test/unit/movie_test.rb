@@ -5,6 +5,7 @@ require "test_helper"
 class MovieTest < ActiveSupport::TestCase
   test "valid movie" do
     m = Movie.new(title: "Sample Movie", upc: "1234", format: "Blu-ray")
+
     assert m.valid?, m.errors.full_messages * "\n"
   end
 

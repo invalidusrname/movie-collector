@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-MovieCollector::Application.routes.draw do
+Rails.application.routes.draw do
   resource :session
 
   resources :movies do
@@ -28,7 +28,17 @@ MovieCollector::Application.routes.draw do
   get "/logout", to: "sessions#destroy", as: "logout"
   # get "/signup", to: "Clearance::Users#new", as: "signup"
   # get "/create_user", to: "Clearance::Users#create", as: "create_user"
-  # get "/forgot_password", to: "Clearance::Passwords#new", as: "forgot_password"
+
+  # get "/forgot_password" => "clearance/passwords/new", as: "forgot_password"
+
+  resources :passwords, controller: "clearance/passwords", only: %i[create new]
+  resource :session, controller: "clearance/sessions", only: [:create]
+
+  resources :users, controller: "clearance/users", only: [:create] do
+    resource :password,
+             controller: "clearance/passwords",
+             only: %i[edit update]
+  end
 
   root "home#index"
 end
