@@ -10,9 +10,9 @@ That's pretty much it. Make a note, send me an email, or issue a ticket if I've 
 
 In order to get movie collector running you'll need to install any missing gems. The list of requirements is changing over time, so rather than list an incomplete list, use the following command to install the required gems on your system:
 
-  rake gems:install
-
-Don't forget to adjust the RAILS_ENV variable to install gems for each environment. This'll make sure you only install the gems you need for each environment work in
+```
+bundle
+```
 
 ## Setting up
 
@@ -21,7 +21,3 @@ There's a few settings files that will have to be adjusted. These files are not 
 - amazonrc.txt     (amazon configuration settings used to lookup and movies)
 - config.yml       (application-wide settings. Currently used to for mail settings)
 - database.yml     (the same familiar database settings present in most rails apps)
-
-## Deploying
-
-Capistrano is used for deployment. Currently this project deploys to moviecollector.org, but could be changed in the future.
