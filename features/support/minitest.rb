@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # ripped from https://gist.github.com/tooky/5933773
 # caused by https://github.com/minitest/minitest/issues/286
 

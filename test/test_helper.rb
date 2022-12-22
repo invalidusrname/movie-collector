@@ -19,7 +19,7 @@ module ActiveSupport
 
     def create_admin
       u = User.new(email: "test@domain.org", email_confirmed: true)
-      u.password              = "pass"
+      u.password = "pass"
       u.admin = true
       u.save
 
