@@ -1,19 +1,41 @@
-.bundle
-db/*.sqlite3
-log/*.log
-tmp/**/*
 .DS_Store
+
+config/config.yml
+config/twitter_auth.yml
+
 doc/api
 doc/app
 doc/features.html
-config/newrelic.yml
-config/config.yml
-config/twitter_auth.yml
-# compiled files
-app/stylesheets/.sass-cache*
-# public/stylesheets/compiled/*
-public/stylesheets/*packaged*
-public/javascripts/*packaged*
-vendor/gems
+
 rerun.txt
 mkmf.log
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-*
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore uploaded files in development.
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
+
+/public/assets
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
