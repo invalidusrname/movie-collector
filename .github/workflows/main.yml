@@ -8,6 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     name: run tests
+    env:
+      RAILS_ENV: test
     steps:
       - uses: actions/checkout@v3
       - name: Set up Ruby
@@ -18,7 +20,6 @@ jobs:
         run: bundle exec rubocop
       - name: Prepare test suite
         run: |
-          bin/rails db:environment:set RAILS_ENV=test
           bin/rails db:prepare
           bin/rails assets:precompile
       - name: Run Rails tests
