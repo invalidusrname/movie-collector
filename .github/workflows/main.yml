@@ -16,6 +16,10 @@ jobs:
           bundler-cache: true
       - name: Lint
         run: bundle exec rubocop
+      - name: Prepare test suite
+        run: |
+          bundle exec rails db:prepare
+          bundle exec rake assets:precompile
       - name: Run Rails tests
         run: bundle exec rails test
       - name: Run specs
