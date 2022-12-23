@@ -24,11 +24,11 @@ end
 # Session
 
 Then(/^I should be signed in$/) do
-  assert page.body.include? "Log out"
+  assert page.body.include? "Sign out"
 end
 
 Then(/^I should be signed out$/) do
-  assert page.body.include? "Log in"
+  assert page.body.include? "Sign in"
 end
 
 When(/^session is cleared$/) do
@@ -84,11 +84,11 @@ When(%r{^I sign in( with "remember me")? as "(.*)/(.*)"$}) do |remember, email, 
   step %(I fill in "Email" with "#{email}")
   step %(I fill in "Password" with "#{password}")
   step %(I check "Remember me") if remember
-  step %(I press "Log in")
+  step %(I press "Sign in")
 end
 
 When(/^I sign out$/) do
-  click_link "Log out"
+  click_link "Sign out"
 end
 
 When(/^I request password reset link to be sent to "(.*)"$/) do |email|

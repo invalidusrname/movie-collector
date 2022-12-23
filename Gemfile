@@ -7,29 +7,30 @@ gem "rails", "~> 7.0"
 
 gem "bootsnap", require: false
 gem "clearance", "~> 2.6"
+gem "cssbundling-rails", "~> 1.1"
 gem "haml", ">= 3.0.18"
 gem "iconv", "~> 1.0.8"
 gem "importmap-rails"
-gem "jbuilder"
+gem "jbuilder", "~> 2.11"
 gem "json", "~> 2.6"
 gem "nokogiri", "~> 1.13"
 gem "puma", "~> 6.0"
 gem "ruby-aaws", "~> 0.7", require: "amazon"
 gem "sprockets-rails"
 gem "sqlite3", "~> 1.4"
-gem "stimulus-rails"
-gem "turbo-rails"
+gem "stimulus-rails", "~> 1.2"
+gem "turbo-rails", "~> 1.3"
 gem "will_paginate", "~> 3.3"
 
 group :development do
-  gem "web-console"
+  gem "web-console", "~> 4.2"
 end
 
 group :test do
   gem "capybara"
   gem "selenium-webdriver", "~> 4.7.1"
   gem "shoulda", "~> 4.0"
-  gem "webdrivers"
+  gem "webdrivers", "~> 5.2"
   gem "webrat", "~> 0.7"
 end
 

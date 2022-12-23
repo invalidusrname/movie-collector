@@ -7,12 +7,12 @@ Feature: Sign up
       When I go to the sign up page
       And I fill in "Email" with "invalidemail"
       And I fill in "Password" with "password"
-      And I press "Sign Up"
-      Then I should see error messages
+      And I press "Sign up"
+      Then I should see "Email is invalid"
 
     Scenario: User signs up with valid data
       When I go to the sign up page
       And I fill in "Email" with "email@person.com"
       And I fill in "Password" with "password"
-      And I press "Sign Up"
+      And I press "Sign up"
       Then I should see "My Movies"

@@ -1,12 +1,12 @@
-- if flash[:notice] || flash[:error] || flash[:failure] || flash[:success] || flash[:alert]
-  #flash
-    - if flash[:notice]
-      .notice
-        = html_escape(flash[:notice])
-    - if flash[:error] || flash[:failure] || flash[:alert]
-      .error
-        = html_escape(flash[:error] || flash[:failure] || flash[:alert])
-    - if flash[:success]
-      .success
-        = html_escape(flash[:success])
-  .clear
+- flash.keys.each do |key|
+  #flash.row
+    - msg = html_escape(flash[key])
+    - if key == 'notice'
+      .alert.alert-primary
+        = msg
+    - if %w(alert error failure).include? key
+      .alert.alert-danger
+        = msg
+    - if key == 'success'
+      .alert.alert-success
+        = msg

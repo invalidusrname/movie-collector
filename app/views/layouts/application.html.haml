@@ -8,16 +8,24 @@
     = csrf_meta_tag
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_importmap_tags
 
     %title
       = @title ? "#{@title} - Movie Collector" : "Movie Collector - Catalog your collection of movies"
     = yield(:head)
   %body
-    #pages
-    #pagewrapper
+    = render_or_default('sidebar')
+    .overlay
+
+    %main.main-wrapper
       = render_or_default('header')
-      = render_or_default('topnav')
-      #main
-        = render :partial => 'shared/flashes'
-        = yield
+      / ========== section start ==========
+      %section.section
+        .container-fluid
+          = render :partial => 'shared/flashes'
+          = yield
+        / end container
+      / ========== section end ==========
+
       = render_or_default('footer')
+

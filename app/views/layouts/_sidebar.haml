@@ -1,0 +1,13 @@
+%aside.sidebar-nav-wrapper
+  %nav.sidebar-nav
+    %ul
+      %li.nav-item.nav-item
+        = link_to "Library", movies_path, :alt => "Movie Library"
+      %li.nav-item.nav-item
+        = link_to "My Movies", users_movies_path, :alt => "My Movies"
+      %li.nav-item.nav-item
+        = link_to "Add Movie", new_users_movie_path, :alt => "Add a Movie"
+      %li.nav-item.nav-item
+        = link_to "My Movies", users_movies_path, :alt => "My Movies"
+      %li.nav-item.nav-item
+        = link_to "Box Office", box_office_path, :alt => "Top Box Office Movies"

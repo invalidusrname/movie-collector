@@ -4,5 +4,5 @@
   .firstpostcontent
     = form_for @user do |form|
       = render :partial => '/users/form', :object => form
-      = form.submit 'Sign Up', :disable_with => 'Please wait...'
+      = form.submit I18n.t("layouts.application.sign_up"), :disable_with => 'Please wait...'
     %br

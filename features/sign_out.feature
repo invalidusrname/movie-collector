@@ -8,5 +8,5 @@ Feature: Sign out
       When I sign in as "email@person.com/password"
       Then I should be signed in
       And I sign out
-      Then I should see "Log in"
+      Then I should see "Sign in"
       And I should be signed out

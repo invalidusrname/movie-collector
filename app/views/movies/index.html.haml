@@ -1,44 +1,65 @@
-%h1= @title = 'Listing Movies'
+%section.table-components
+  .container-fluid
+    / ========== title-wrapper start ==========
+    .title-wrapper.pt-30
+      .row.align-items-center
+        .col-md-6
+          .title.mb-30
+            %h2
+              =@title = 'Listing Movies'
+        / end col
+      / end row
+    / ========== title-wrapper end ==========
 
-- if @movies.size > 0
-  .actions
-    = render :partial => "search"
-    - if current_user&.admin?
-      = link_to('New movie', new_movie_path)
-  %br
-  %br
-  .wp-pagenavi
-    = raw navigation_links('a', controller.controller_name)
-  %table#movies{:style => "width: 100%"}
-    %tfoot
-      %tr.wp-pagenavi
-        %td{:style => ""}
-          = "#{@movies.total_entries} total movies"
-        %td{:colspan => 4, :style => ""}
-          = will_paginate @movies
-    %thead
-      %tr
-        %th.text
-        %th.text
-          = sortable_link 'Title', :column => 'title'
-        %th.text
-          = sortable_link 'Genre', :column => 'genre'
-        %th.text
-          = sortable_link 'Format', :column => 'format'
-    %tbody
-      - @movies.each do |movie|
-        %tr{:class => cycle('odd', 'even')}
-          %td.thumbnail= link_to(image_tag(thumbnail(movie), :title => movie.title), movie_path(movie))
-          %td.title= h movie.title
-          %td.genre= h movie.genre.name unless movie.genre.nil?
-          %td.format= h movie.format
-          - if current_user&.admin?
-            %td= link_to 'Edit', edit_movie_path(movie)
-            %td=# link_to 'Delete', movie, :confirm => 'Are you sure?', :method => :delete
-- else
-  .actions
-    %p
-      There are no movies.
-    - if current_user&.admin?
-      %p Please
-      =link_to 'Add some', new_movie_path
+    / ========== tables-wrapper start ==========
+    .tables-wrapper
+      .row
+        .col-lg-12
+          .card-style.mb-30
+            .text-sm.mb-20
+              = raw navigation_links('a', controller.controller_name)
+
+            - if @movies.size > 0
+              .actions
+                = render :partial => "search"
+                - if current_user&.admin?
+                  = link_to('New movie', new_movie_path)
+            - else
+              .actions
+                %p
+                  There are no movies.
+                - if current_user&.admin?
+                  %p Please
+                  =link_to 'Add some', new_movie_path
+
+            .table-wrapper.table-responsive
+              %table.table
+                %thead
+                  %tr
+                    %th
+                      %h6
+                        =sortable_link 'Title', :column => 'title'
+                    %th
+                      %h6
+                        = sortable_link 'Genre', :column => 'genre'
+                    %th
+                      %h6
+                        = sortable_link 'Format', :column => 'format'
+                  / end table row
+                %tbody
+                  - @movies.each do |movie|
+                    %tr
+                      %td.min-width.thumbnail= link_to(image_tag(thumbnail(movie), :title => movie.title), movie_path(movie))
+                      %td.min-width.title= h movie.title
+                      %td.min-width.genre= h movie.genre.name unless movie.genre.nil?
+                      %td.min-width.format= h movie.format
+                      - if current_user&.admin?
+                        %td.min-width= link_to 'Edit', edit_movie_path(movie)
+                        %td.min-width=# link_to 'Delete', movie, :confirm => 'Are you sure?', :method => :delete
+                  / end table row
+                %tfoot
+                  %tr.wp-pagenavi
+                    %td{:style => ""}
+                      = "#{@movies.total_entries} total movies"
+                    %td{:colspan => 4, :style => ""}
+                      = will_paginate @movies
