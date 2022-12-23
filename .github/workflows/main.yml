@@ -18,8 +18,9 @@ jobs:
         run: bundle exec rubocop
       - name: Prepare test suite
         run: |
-          bundle exec rails db:prepare
-          bundle exec rake assets:precompile
+          bin/rails db:environment:set RAILS_ENV=test
+          bin/rails db:prepare
+          bin/rails assets:precompile
       - name: Run Rails tests
         run: bundle exec rails test
       - name: Run specs
