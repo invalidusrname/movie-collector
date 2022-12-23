@@ -29,10 +29,4 @@ RSpec.describe "Visitor signs up" do
 
     expect_user_to_be_signed_out
   end
-
-  it "tries with invalid email" do
-    sign_up_with "invalidemail", "password"
-
-    expect_user_to_be_signed_out
-  end
 end
