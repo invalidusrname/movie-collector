@@ -16,7 +16,7 @@ class BoxOfficeFilm < ApplicationRecord
     attributes = {}
 
     if (f.release_date.blank? || f.duration.blank?) && url
-      doc = Nokogiri::HTML(open(url))
+      doc = Nokogiri::HTML(URI(url).open)
 
       line = doc.at("#info ul li[2]")
       if line
@@ -35,7 +35,7 @@ class BoxOfficeFilm < ApplicationRecord
   end
 
   def self.update
-    doc = Nokogiri::HTML(open("http://fandango.com/"))
+    doc = page
 
     BoxOfficeFilm.update_all("position = null, amount = null", "position is not NULL OR amount is not null")
 
@@ -58,8 +58,12 @@ class BoxOfficeFilm < ApplicationRecord
     end
   end
 
+  def self.page
+    Nokogiri::HTML(URI("http://fandango.com/").open)
+  end
+
   def self.update_retail
-    doc = Nokogiri::HTML(open("http://fandango.com/"))
+    doc = page
 
     list = doc.at("#movieDropDownContents ul.clearfix")
 
