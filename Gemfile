@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Edit this Gemfile to bundle your application's dependencies.
-source "http://rubygems.org"
+source "https://rubygems.org"
 
 gem "rails", "~> 7.0"
 
