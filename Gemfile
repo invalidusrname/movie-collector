@@ -20,7 +20,7 @@ gem "sprockets-rails"
 gem "sqlite3", "~> 1.6"
 gem "stimulus-rails", "~> 1.2"
 gem "turbo-rails", "~> 1.4"
-gem "will_paginate", "~> 3.3"
+gem "will_paginate", "~> 4.0"
 
 group :development do
   gem "web-console", "~> 4.2"
