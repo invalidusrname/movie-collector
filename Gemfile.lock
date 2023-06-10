@@ -302,7 +302,7 @@ GEM
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
-    selenium-webdriver (4.9.1)
+    selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -387,7 +387,7 @@ DEPENDENCIES
   rubocop-rails (~> 2.19)
   rubocop-rspec (~> 2.22)
   ruby-aaws (~> 0.7)
-  selenium-webdriver (~> 4.9.1)
+  selenium-webdriver (~> 4.10.0)
   shoulda (~> 4.0)
   sprockets-rails
   sqlite3 (~> 1.6)
