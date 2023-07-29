@@ -190,7 +190,7 @@ GEM
     mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
     minitest (5.18.1)
-    mocha (2.0.4)
+    mocha (2.1.0)
       ruby2_keywords (>= 0.0.5)
     msgpack (1.6.0)
     multi_test (1.1.0)
@@ -381,7 +381,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder (~> 2.11)
   json (~> 2.6)
-  mocha (~> 2.0)
+  mocha (~> 2.1)
   nokogiri (~> 1.15)
   pry (~> 0.14)
   puma (~> 6.3)
