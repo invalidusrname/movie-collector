@@ -28,7 +28,7 @@ end
 
 group :test do
   gem "capybara"
-  gem "selenium-webdriver", "~> 4.10.0"
+  gem "selenium-webdriver", "~> 4.11.0"
   gem "shoulda", "~> 4.0"
   gem "webdrivers", "~> 5.2"
   gem "webrat", "~> 0.7"
