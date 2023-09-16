@@ -8,7 +8,7 @@ require "minitest"
 module Cucumber
   module MiniTestAssertions
     def self.extended(base)
-      base.extend(MiniTest::Assertions)
+      base.extend(Minitest::Assertions)
       base.assertions = 0
     end
 
