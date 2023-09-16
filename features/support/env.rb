@@ -7,6 +7,7 @@
 # files.
 
 require "cucumber/rails"
+require "pry"
 
 # frozen_string_literal: true
 
