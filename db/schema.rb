@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_21_192619) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_16_153918) do
   create_table "box_office_films", force: :cascade do |t|
     t.string "title"
     t.text "url"
