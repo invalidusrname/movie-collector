@@ -18,7 +18,7 @@ gem "puma", "~> 6.3"
 gem "ruby-aaws", "~> 0.7", require: "amazon"
 gem "sprockets-rails"
 gem "sqlite3", "~> 1.6"
-gem "stimulus-rails", "~> 1.2"
+gem "stimulus-rails", "~> 1.3"
 gem "turbo-rails", "~> 1.4"
 gem "will_paginate", "~> 4.0"
 
