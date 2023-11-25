@@ -156,7 +156,7 @@ GEM
       rake
     globalid (1.2.1)
       activesupport (>= 6.1)
-    haml (6.1.2)
+    haml (6.2.3)
       temple (>= 0.8.2)
       thor
       tilt
@@ -329,9 +329,9 @@ GEM
       railties (>= 6.0.0)
     sys-uname (1.2.2)
       ffi (~> 1.1)
-    temple (0.10.2)
-    thor (1.2.2)
-    tilt (2.2.0)
+    temple (0.10.3)
+    thor (1.3.0)
+    tilt (2.3.0)
     timeout (0.4.0)
     turbo-rails (1.4.0)
       actionpack (>= 6.0.0)
