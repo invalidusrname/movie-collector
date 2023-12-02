@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+class A
+end
+
 def add_movies(upcs)
   failed = []
   current_user = User.first
