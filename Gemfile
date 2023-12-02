@@ -30,7 +30,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver", "~> 4.10.0"
   gem "shoulda", "~> 4.0"
-  gem "webdrivers", "~> 5.3"
   gem "webrat", "~> 0.7"
 end
 
