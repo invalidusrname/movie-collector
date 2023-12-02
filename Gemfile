@@ -3,7 +3,7 @@
 # Edit this Gemfile to bundle your application's dependencies.
 source "https://rubygems.org"
 
-gem "rails", "~> 7.0"
+gem "rails", "~> 7.1"
 
 gem "bootsnap", require: false
 gem "clearance", "~> 2.6"
