@@ -173,7 +173,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    json (2.6.3)
+    json (2.7.0)
     language_server-protocol (3.17.0.3)
     loofah (2.22.0)
       crass (~> 1.0.2)
@@ -381,7 +381,7 @@ DEPENDENCIES
   iconv (~> 1.0.8)
   importmap-rails
   jbuilder (~> 2.11)
-  json (~> 2.6)
+  json (~> 2.7)
   mocha (~> 2.1)
   nokogiri (~> 1.15)
   pry (~> 0.14)
