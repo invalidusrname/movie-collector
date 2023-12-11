@@ -21,3 +21,4 @@ There's a few settings files that will have to be adjusted. These files are not 
 - amazonrc.txt     (amazon configuration settings used to lookup and movies)
 - config.yml       (application-wide settings. Currently used to for mail settings)
 - database.yml     (the same familiar database settings present in most rails apps)
+
