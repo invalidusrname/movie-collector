@@ -43,6 +43,6 @@ group :development, :test do
   gem "pry", "~> 0.14"
   gem "rails-controller-testing", "~> 1.0.5"
   gem "rspec-rails", "~> 6.1.0"
-  gem "rubocop-rails", "~> 2.22", require: false
+  gem "rubocop-rails", "~> 2.23", require: false
   gem "rubocop-rspec", "~> 2.25", require: false
 end
