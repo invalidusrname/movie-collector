@@ -17,7 +17,7 @@ gem "nokogiri", "~> 1.15"
 gem "puma", "~> 6.4"
 gem "ruby-aaws", "~> 0.7", require: "amazon"
 gem "sprockets-rails"
-gem "sqlite3", "~> 1.6"
+gem "sqlite3", "~> 1.7"
 gem "stimulus-rails", "~> 1.3"
 gem "turbo-rails", "~> 1.5"
 gem "will_paginate", "~> 4.0"
@@ -38,11 +38,11 @@ group :development, :test do
   gem "database_cleaner", "~> 2.0"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
-  gem "factory_bot_rails", "~> 6.4.2"
+  gem "factory_bot_rails", "~> 6.4.3"
   gem "mocha", "~> 2.1"
   gem "pry", "~> 0.14"
   gem "rails-controller-testing", "~> 1.0.5"
   gem "rspec-rails", "~> 6.1.0"
   gem "rubocop-rails", "~> 2.23", require: false
-  gem "rubocop-rspec", "~> 2.25", require: false
+  gem "rubocop-rspec", "~> 2.26", require: false
 end
