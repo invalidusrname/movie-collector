@@ -7,7 +7,7 @@ gem "rails", "~> 7.1"
 
 gem "bootsnap", require: false
 gem "clearance", "~> 2.6"
-gem "cssbundling-rails", "~> 1.3"
+gem "cssbundling-rails", "~> 1.4"
 gem "haml", ">= 3.0.18"
 gem "iconv", "~> 1.0.8"
 gem "importmap-rails"
