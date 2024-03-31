@@ -28,7 +28,7 @@ end
 
 group :test do
   gem "capybara"
-  gem "selenium-webdriver", "~> 4.18.1"
+  gem "selenium-webdriver", "~> 4.19.0"
   gem "shoulda", "~> 4.0"
   gem "webrat", "~> 0.7"
 end
@@ -42,7 +42,7 @@ group :development, :test do
   gem "mocha", "~> 2.1"
   gem "pry", "~> 0.14"
   gem "rails-controller-testing", "~> 1.0.5"
-  gem "rspec-rails", "~> 6.1.1"
-  gem "rubocop-rails", "~> 2.23", require: false
+  gem "rspec-rails", "~> 6.1.2"
+  gem "rubocop-rails", "~> 2.24", require: false
   gem "rubocop-rspec", "~> 2.27", require: false
 end
