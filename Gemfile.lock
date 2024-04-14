@@ -198,7 +198,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.5)
     minitest (5.22.3)
-    mocha (2.1.0)
+    mocha (2.2.0)
       ruby2_keywords (>= 0.0.5)
     msgpack (1.7.2)
     multi_test (1.1.0)
@@ -403,7 +403,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder (~> 2.11)
   json (~> 2.7)
-  mocha (~> 2.1)
+  mocha (~> 2.2)
   nokogiri (~> 1.16)
   pry (~> 0.14)
   puma (~> 6.4)
