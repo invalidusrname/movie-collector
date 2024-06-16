@@ -11,7 +11,7 @@ RSpec.describe "Visitor signs in" do
     expect_user_to_be_signed_in
   end
 
-  it "with valid mixed-case email and password " do
+  it "with valid mixed-case email and password" do
     create_user "user.name@example.com", "password"
     sign_in_with "User.Name@example.com", "password"
 
