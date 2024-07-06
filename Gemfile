@@ -42,7 +42,7 @@ group :development, :test do
   gem "mocha", "~> 2.2"
   gem "pry", "~> 0.14"
   gem "rails-controller-testing", "~> 1.0.5"
-  gem "rspec-rails", "~> 6.1.2"
+  gem "rspec-rails", "~> 6.1.3"
   gem "rubocop-rails", "~> 2.25", require: false
   gem "rubocop-rspec", "~> 3.0", require: false
 end
