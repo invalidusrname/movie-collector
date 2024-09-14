@@ -317,7 +317,7 @@ GEM
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     securerandom (0.3.1)
-    selenium-webdriver (4.23.0)
+    selenium-webdriver (4.24.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -403,7 +403,7 @@ DEPENDENCIES
   rubocop-rails (~> 2.26)
   rubocop-rspec (~> 3.0)
   ruby-aaws (~> 0.7)
-  selenium-webdriver (~> 4.23.0)
+  selenium-webdriver (~> 4.24.0)
   shoulda (~> 4.0)
   sprockets-rails
   sqlite3 (~> 1.7)
