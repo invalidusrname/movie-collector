@@ -93,7 +93,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    clearance (2.7.2)
+    clearance (2.8.0)
       actionmailer (>= 5.0)
       activemodel (>= 5.0)
       activerecord (>= 5.0)
@@ -382,7 +382,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   capybara
-  clearance (~> 2.7)
+  clearance (~> 2.8)
   cssbundling-rails (~> 1.4)
   cucumber-rails
   database_cleaner (~> 2.0)
