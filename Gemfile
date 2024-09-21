@@ -9,7 +9,7 @@ gem "bootsnap", require: false
 gem "clearance", "~> 2.7"
 gem "cssbundling-rails", "~> 1.4"
 gem "haml", ">= 3.0.18"
-gem "iconv", "~> 1.0.8"
+gem "iconv", "~> 1.1.0"
 gem "importmap-rails"
 gem "jbuilder", "~> 2.12"
 gem "json", "~> 2.7"

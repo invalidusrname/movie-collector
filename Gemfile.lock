@@ -168,7 +168,7 @@ GEM
       tilt
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
-    iconv (1.0.8)
+    iconv (1.1.0)
     importmap-rails (2.0.1)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
@@ -389,7 +389,7 @@ DEPENDENCIES
   debug
   factory_bot_rails (~> 6.4.3)
   haml (>= 3.0.18)
-  iconv (~> 1.0.8)
+  iconv (~> 1.1.0)
   importmap-rails
   jbuilder (~> 2.12)
   json (~> 2.7)
