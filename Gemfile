@@ -9,7 +9,7 @@ gem "bootsnap", require: false
 gem "clearance", "~> 2.8"
 gem "cssbundling-rails", "~> 1.4"
 gem "haml", ">= 3.0.18"
-gem "iconv", "~> 1.0.8"
+gem "iconv", "~> 1.1.0"
 gem "importmap-rails"
 gem "jbuilder", "~> 2.12"
 gem "json", "~> 2.7"
@@ -28,7 +28,7 @@ end
 
 group :test do
   gem "capybara"
-  gem "selenium-webdriver", "~> 4.23.0"
+  gem "selenium-webdriver", "~> 4.25.0"
   gem "shoulda", "~> 4.0"
   gem "webrat", "~> 0.7"
 end
@@ -42,7 +42,7 @@ group :development, :test do
   gem "mocha", "~> 2.4"
   gem "pry", "~> 0.14"
   gem "rails-controller-testing", "~> 1.0.5"
-  gem "rspec-rails", "~> 6.1.3"
-  gem "rubocop-rails", "~> 2.25", require: false
+  gem "rspec-rails", "~> 6.1.4"
+  gem "rubocop-rails", "~> 2.26", require: false
   gem "rubocop-rspec", "~> 3.0", require: false
 end
