@@ -6,7 +6,7 @@ source "https://rubygems.org"
 gem "rails", "~> 7.2"
 
 gem "bootsnap", require: false
-gem "clearance", "~> 2.8"
+gem "clearance", "~> 2.9"
 gem "cssbundling-rails", "~> 1.4"
 gem "haml", ">= 3.0.18"
 gem "iconv", "~> 1.1.0"
