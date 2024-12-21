@@ -38,7 +38,7 @@ group :development, :test do
   gem "database_cleaner", "~> 2.1"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
-  gem "factory_bot_rails", "~> 6.4.3"
+  gem "factory_bot_rails", "~> 6.4.4"
   gem "mocha", "~> 2.7"
   gem "pry", "~> 0.15"
   gem "rails-controller-testing", "~> 1.0.5"
