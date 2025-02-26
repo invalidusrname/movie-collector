@@ -74,7 +74,7 @@ GEM
       tzinfo (~> 2.0, >= 2.0.5)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
-    argon2 (2.3.0)
+    argon2 (2.3.2)
       ffi (~> 1.15)
       ffi-compiler (~> 1.0)
     ast (2.4.2)
@@ -95,7 +95,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    clearance (2.8.0)
+    clearance (2.9.3)
       actionmailer (>= 5.0)
       activemodel (>= 5.0)
       activerecord (>= 5.0)
@@ -211,7 +211,7 @@ GEM
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-smtp (0.5.0)
+    net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.4)
     nokogiri (1.18.3-arm64-darwin)
@@ -391,7 +391,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   capybara
-  clearance (~> 2.8)
+  clearance (~> 2.9)
   cssbundling-rails (~> 1.4)
   cucumber-rails
   database_cleaner (~> 2.1)
