@@ -95,7 +95,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    clearance (2.9.3)
+    clearance (2.10.0)
       actionmailer (>= 5.0)
       activemodel (>= 5.0)
       activerecord (>= 5.0)
@@ -177,7 +177,7 @@ GEM
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.8.0)
-    irb (1.15.1)
+    irb (1.15.2)
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
@@ -283,7 +283,7 @@ GEM
     rdoc (6.13.1)
       psych (>= 4.0.0)
     regexp_parser (2.10.0)
-    reline (0.6.0)
+    reline (0.6.1)
       io-console (~> 0.5)
     rexml (3.4.1)
     rspec-core (3.13.3)
@@ -397,7 +397,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   capybara
-  clearance (~> 2.9)
+  clearance (~> 2.10)
   cssbundling-rails (~> 1.4)
   cucumber-rails
   database_cleaner (~> 2.1)
